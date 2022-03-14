@@ -1,0 +1,131 @@
+/* Navigation */
+.navbar .logo-icon{
+    font-size: 35px;
+    /* padding: 20px 30px; */
+    width: 60px;
+    height: 60px;
+    margin-right: 5px;
+    border-radius: 50%;
+    color: #ffffff;
+    border: 2px solid  #ffffff;
+    background-color: #ff3200;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.navbar .logo-text{
+    color: #ff3200;
+    font-size: 35px;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+}
+.navbar .nav .sign-in,
+.navbar .nav .create{
+    border-radius: 90px;
+    font-size: 20px;
+    padding: 5px 30px;
+    outline: none;
+    border: 2px solid #ff6400;
+    margin: 0 10px;
+}
+.navbar .nav .sign-in{
+   background-color: #ffffff;
+   color: #ff6400;
+  
+}
+.navbar .nav .sign-in:hover{
+    transform: scale(1.1);
+ }
+.navbar .nav .create{
+    background-color: #ff6400;
+    color: #ffffff;
+}
+.navbar .nav .create:hover{
+    transform: scale(1.1);
+  
+}
+/* Body */
+body{
+    background-image: url('/images/landing-background.jpg');
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+body::before{
+    content: "";
+    display: block;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.4);
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+}
+/* .app{
+    position: relative;
+    z-index: 10;
+} */
+.find-bus-section{
+    margin-top: 100px;
+    
+}
+.find-bus-section  .inner-content{
+    background-color:#ffffff;
+    padding: 20px;
+    border-radius: 10px;
+}
+.find-bus-section  .head-content{
+    background-color: #ff3200;
+    width: fit-content;
+    padding: 10px 65px 10px 30px;
+    margin-top: -20px;
+    margin-left: -20px;
+    color: #ffffff;
+    border-radius: 10px 0 100px 0;
+}
+.find-bus-section  .head-content .h3{
+    margin: 0;
+}
+.find-bus-section  .input-form{
+    margin: 20px 0px 0px 0px;
+    
+}
+.find-bus-section  .input-group .space-margin{
+    width: 20px;
+}
+.find-bus-section  input{
+    width: 100%;
+    font-size: 18px;
+    padding: 0.375rem 0.75rem;
+    border-radius: 0 9px 9px 0;
+    border: 2px solid #e6e6e6;
+}
+.find-bus-section  input[type="date"]{
+    margin-right: 15px;
+}
+.find-bus-section  .icon{
+    width: 20px;
+    color:#ff3200;
+    background-color: #e6e6e6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    padding: 0 20px;
+    border-radius: 9px 0 0 9px;
+}
+.find-bus-section  .form-nav button{
+    color: #ffffff;
+    background-color: #ff3200;
+    border: none;
+    font-size: 18px ;
+    font-weight: bolder;
+    margin-top: 30px;
+    padding: 10px 60px;
+    border-radius: 50px;
+}
+.find-bus-section  .form-nav button:hover{
+    transform: scale(1.1);
+    background-color:  #ff6400;
+    color: #ffffff;
+}
+
