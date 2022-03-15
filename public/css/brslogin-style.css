@@ -1,0 +1,112 @@
+/* Body */
+body{
+    background-image: url('/images/landing-background.jpg');
+    background-size: 50% 100vh;
+    background-repeat: no-repeat;
+}
+.login .login-inner{
+    width: 500px;
+}
+
+.login  .content{
+    background-color: transparent;
+    box-shadow: 0px 2px 5px 4px rgba(252, 102, 3, 0.5);
+    margin: 100px 0 0 0 !important;
+    padding: 40px;
+    border-radius: 10px;
+    /* height: 400px; */
+}
+.login  .text-content{
+    /* margin-top: 30px; */
+    
+}
+.login .logo{
+    box-shadow: 0px 2px 5px 4px rgba(252, 102, 3, 0.5);
+    height: 130px;
+    width: 130px;
+    font-weight: bolder;
+    border-radius: 10px;
+}
+.login .statement{
+    color: white;
+    font-size: 20px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+.login .create{margin-top: 20px;
+    background-color: #ff6400;
+    color: white;
+    font-weight: bolder;
+    font-size: 20px;
+    margin-top: 50px;
+    width: 300px;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+}
+/* Sign In */
+.login .header{
+    margin: 0 0 40px 0;
+}
+.login h3{
+    color: #ff6400;
+    font-weight: bolder;
+    font-size: 40px;
+    text-align: center;
+}
+.login .line-top{
+    content: "";
+    display: block;
+    width: 90px;
+    height: 6px;
+    background-color: #ff6400;
+    margin-bottom: 10px;
+}
+.login .content input,
+.login .content select {
+    font-size: 16px;
+    display: block;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: transparent;
+    background-clip: padding-box;
+    border-radius: 0 8px 8px 0;
+    border: 1px solid #ff6400;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.login .content span > .fa{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: white;
+    background-color: #ff6400;
+    padding: 10px;
+    border-radius: 8px 0 0 8px;
+    width: 50px;
+    margin-bottom: 10px;
+}
+
+.login a,
+.login .button, 
+.login .btn{
+    color: #ff6400;
+    display: flex;
+    justify-content: center;
+}
+.login .btn{
+    font-weight: bolder;
+    font-size: 20px;
+    margin-top: 15px;
+    width: 200px;
+    border: 1px solid #ff6400;
+    border-radius: 10px;
+}
+
