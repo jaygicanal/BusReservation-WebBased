@@ -1,26 +1,13 @@
 @extends('layouts.brsApp')
+@include('brsHeader');
+
 @push('styles')
 <link rel="stylesheet" href="{{asset('css/brslandingpage-style.css')}}">    
 @endpush
 
 @section('content')
-<nav class="navbar navbar-light bg-white">
-  <div class="container">
-        <a class="navbar-brand d-flex justify-content-center" href="#">
-            <div class="logo-icon"><i class="fa fa-bus" aria-hidden="true"></i></div>
-            <div class="logo-text fw-bold h1">Bus Reservation System</div>
-        </a>
-        <ul class="nav d-flex justify-content-end">
-            <li class="nav-item">
-                <button class="sign-in" type="button">Sign In</button>
-            </li>
-            <li class="nav-item">
-                <button class="create" type="button">Create Account</button>
-            </li>
-        </ul>
-    </div>
-</nav>
 <section class="find-bus-section" >
+    
     <div class="container">
         <div class="row d-flex justify-content-center align-items-center">
             <div class="col-md-7 inner-content">

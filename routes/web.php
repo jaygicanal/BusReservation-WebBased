@@ -26,5 +26,9 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/brs-login', [App\Http\Controllers\brsLoginController::class, 'login'])->name('brsLogin');
+Route::get('/login', [App\Http\Controllers\brsLoginController::class, 'login'])->name('brsLogin');
+
+Route::get('/available-bus', function () {
+    return view('brsListofBus');
+});
 

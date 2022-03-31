@@ -1,0 +1,94 @@
+.listofbus{
+    margin-top: 40px;
+}
+
+.listofbus .bus-box{
+    background-color: white;
+    box-sizing: border-box;
+    position: relative;
+    box-shadow: 0px 3px 5px 3px rgb(0, 0, 0, 0.3);
+    margin: 10px;
+    padding: 9px;
+}
+
+.listofbus .bus-box img{
+    height: 190px;
+    width: 190px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 10px;
+}
+
+.listofbus .bus-box .bus-info{
+    margin-left: 15px
+}
+
+.listofbus .bus-box .bus-category{
+    background-color: #ff3200;
+    width: max-content;
+    font-weight: 700;
+    padding: 10px 65px 10px 30px;
+    margin-top: -10px;
+    margin-right: -10px;
+    color: #ffffff;
+    border-radius: 0 0px 0 100px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+.listofbus .bus-box .bus-name{
+    margin-top: 20px;
+    font-size: 25px;
+    font-weight: 900;
+    font-family: Poppins-Bold, sans-serif;
+    text-transform: uppercase;
+}
+
+.listofbus .bus-box .bus-features{
+    margin-top: 15px;
+}
+
+.listofbus .bus-box .bus-features .li-feat{
+    font-size: 16px;
+}
+
+.listofbus .bus-features .li-feat .icon{
+    width: 20px;
+}
+
+.listofbus .bus-box .ratings{
+    margin-top: 20px;
+}
+
+.listofbus .bus-box .ratings span{
+    font-size: 25px;
+    color: #ff6400;
+}
+
+.listofbus .box-footer{
+    margin-top: 20px;
+}
+
+.listofbus .dep-time{
+    font-size: 22px;
+}
+
+.listofbus .bus-price .price{
+    font-size: 35px;
+}
+
+.listofbus .bus-price button{
+    font-size: 19px;
+    border: none;
+    border-radius: 9px;
+    padding: 6px 35px;
+    background-color: #ff6400;
+    color: #ffffff;
+    font-weight: 500;
+}
+
+.listofbus .bus-price button:hover{
+    opacity: 0.9;
+    box-shadow: 0px 1px 6px 3px rgb(0, 0, 0, 0.6);
+}

@@ -6,15 +6,15 @@
 @section('content')
 <section class="login">
     <div class="container">
-        <div class="row d-flex justify-content-center content">
-            <div class="col-md-6 d-flex justify-content-center align-items-center">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-5 d-flex justify-content-center align-items-center content-1">
                 <div class="text-content">
                     <div class="logo d-flex justify-content-center align-items-center">LOGO</div>
                     <div class="statement text-center">Make sure you log in to book your next reservation with ease!</div>
                     <div class="button"><button type="submit" class="create">CREATE ACCOUNT</button></div>
                 </div>
             </div>
-            <div class="col-md-6 login-inner d-flex justify-content-center align-items-center">
+            <div class="col-md-5 login-inner d-flex justify-content-center align-items-center content-2">
                 <form method="POST" action="">    
                     <div class="header"> 
                         <div class="line-top"></div>
