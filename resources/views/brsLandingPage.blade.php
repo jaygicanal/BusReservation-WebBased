@@ -15,7 +15,7 @@
                     <div class="h3">Book a Ride Now!</div>
                 </div>
                 <div class="form-content d-flex justify-content-center ">
-                    <form action="">
+                    <div class="form-reserve">
                         <div class="input-form d-flex">
                             <div class="icon">
                                 <i class="fa fa-dot-circle-o" aria-hidden="true"></i>
@@ -44,9 +44,9 @@
                             </div>
                         </div>
                         <div class="form-nav d-flex justify-content-center">
-                            <button type="submit">Find A Bus</button>
+                            <button ><a href="{{ url('available-bus') }}">Find A Bus</a></button>
                         </div>
-                    </form>
+                    </div>
                     
                 </div>
             </div>

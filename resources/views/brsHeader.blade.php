@@ -34,9 +34,9 @@
     border: 2px solid #ff6400;
     margin: 0 10px;
 }
-.navbar .nav .sign-in{
-   background-color: #e5e5e5;
+.navbar .sign-in a{
    color: #ff6400;
+   text-decoration:none;
   
 }
 .navbar .nav .sign-in:hover{
@@ -51,7 +51,7 @@
   
 }
 </style>
-<nav class="navbar navbar-light bg-white">
+<nav class="navbar ">
   <div class="container">
         <a class="navbar-brand d-flex justify-content-center" href="#">
             <div class="logo-icon"><i class="fa fa-bus" aria-hidden="true"></i></div>
@@ -59,10 +59,10 @@
         </a>
         <ul class="nav d-flex justify-content-end">
             <li class="nav-item">
-                <button class="sign-in" type="button">Sign In</button>
+                <button class="sign-in" type="button"><a href="{{ url('login') }}">Sign In</a></button>
             </li>
             <li class="nav-item">
-                <button class="create" type="button">Create Account</button>
+                <button class="create" type="button"> Create Account</button>
             </li>
         </ul>
     </div>

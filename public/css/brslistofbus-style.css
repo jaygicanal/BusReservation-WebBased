@@ -1,13 +1,9 @@
-.listofbus{
-    margin-top: 40px;
-}
-
 .listofbus .bus-box{
     background-color: white;
     box-sizing: border-box;
     position: relative;
     box-shadow: 0px 3px 5px 3px rgb(0, 0, 0, 0.3);
-    margin: 10px;
+    margin: 15px;
     padding: 9px;
 }
 
@@ -90,5 +86,99 @@
 
 .listofbus .bus-price button:hover{
     opacity: 0.9;
-    box-shadow: 0px 1px 6px 3px rgb(0, 0, 0, 0.6);
+    box-shadow: 0px 1px 6px 3px rgba(248, 60, 3, 0.6);
+}
+
+/* Side Bar panel  */
+.sidepanel  {
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    height: 100vh;
+    top: 0;
+    right: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidepanel a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidepanel a:hover {
+    color: #f1f1f1;
+}
+
+.sidepanel .closebtn {
+    position: absolute;
+    top: 0;
+    right: 5px;
+    font-size: 36px;
+}
+
+.openbtn {
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #111;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+}
+
+.openbtn:hover {
+    background-color:#444;
+}
+
+/* Modal */
+/* #confirmationmodal{
+} */
+#confirmationmodal button{
+    background-color: #e5e5e5;
+    color: #ff6400;
+    border-color: #ff6400;; 
+}
+.modal .confimation-header{
+}
+.modal .ratings span{
+    font-size: 25px;
+    color: #ff6400;
+}
+.modal .bus-features .icon{
+    color:#ff6400;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    padding: 0 20px;
+}
+.modal .Ticket-option{
+    box-shadow: -15px 0px 40px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: -15px 0px 40px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: -15px 0px 40px 0px rgba(0,0,0,0.75);
+}
+.modal .modal-dialog  {
+    height: 500px;
+}
+.modal .modal-dialog{
+    background-color: white;
+}
+
+.modal img{
+    width: 400px;
+}
+.modal .ticket-content .icon{
+    width: 20px;
+    color:#ff6400;
+    display: flex;
+    justify-content: center;
+    font-size: 25px;
+    padding: 0 20px;
+    border-radius: 9px 0 0 9px;
 }

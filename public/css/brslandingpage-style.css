@@ -67,7 +67,6 @@ body::before{
     border-radius: 9px 0 0 9px;
 }
 .find-bus-section  .form-nav button{
-    color: #ffffff;
     background-color: #ff6400;
     border: none;
     font-size: 18px ;
@@ -81,4 +80,7 @@ body::before{
     background-color:  #ff6400;
     color: #ffffff;
 }
-
+.find-bus-section  .form-nav a{
+    color: white;
+    text-decoration: none;
+}
