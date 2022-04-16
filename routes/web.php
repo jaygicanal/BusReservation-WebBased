@@ -30,6 +30,5 @@ Route::get('/login', [App\Http\Controllers\brsLoginController::class, 'login'])-
 
 Route::get('/available-bus', function () {
     return view('brsListofBus');
-
 });
 

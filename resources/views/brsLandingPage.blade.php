@@ -7,7 +7,6 @@
 
 @section('content')
 <section class="find-bus-section" >
-    
     <div class="container">
         <div class="row d-flex justify-content-center align-items-center">
             <div class="col-md-7 inner-content">
