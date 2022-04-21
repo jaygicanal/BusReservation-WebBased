@@ -1,0 +1,187 @@
+/* Body */
+body{
+    background-image: url('/images/landing-background.jpg');
+    background-size: 49.1% 100vh;
+    background-repeat: no-repeat;
+    background-color: #e5e5e5;
+}
+.admin .admin-inner{
+    width: 500px;
+}
+
+.admin  .content-1{
+    background-color: transparent;
+   /*  box-shadow: 0px 0px 5px 4px #e5e5e5; */
+    margin: 100px 0 0 0 !important;
+    padding: 40px;
+    border-radius: 10px 0 0 10px;
+    border: 3px solid #e5e5e5;
+    border-right: none;
+}
+.admin  .content-2{
+    background-color: transparent;
+    /* box-shadow: 0px 0px 5px 4px rgba(252, 102, 3, 0.5); */
+    margin: 100px 0 0 0 !important;
+    padding: 40px;
+    border-radius: 0px 10px 10px 0px;
+    border: 3px solid #ff6400;
+    border-left: none;
+}
+
+
+.admin .logo{
+    box-shadow: 0px 2px 5px 4px rgba(252, 102, 3, 0.5);
+    height: 130px;
+    width: 130px;
+    font-weight: bolder;
+    border-radius: 10px;
+}
+.admin .statement{
+    color: white;
+    font-size: 20px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+.admin .text-content button{
+    margin-top: 20px;
+    background-color: #ff6400;
+    color: white;
+    font-weight: bolder;
+    font-size: 20px;
+    margin-top: 50px;
+    width: 300px;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+}
+.admin .text-content button:hover{
+    transform: scale(1.1);
+    background-color: #ff6400;
+    color: white;
+    font-weight: bolder;
+
+}
+/* Sign In */
+.admin .header{
+    margin: 0 0 40px 0;
+}
+.admin h3{
+    color: #ff6400;
+    font-weight: bolder;
+    font-size: 40px;
+    text-align: center;
+}
+.admin .line-top{
+    content: "";
+    display: block;
+    width: 90px;
+    height: 6px;
+    background-color: #ff6400;
+    margin-bottom: 10px;
+}
+.admin .content-2 input,
+.admin .content-2 select {
+    font-size: 16px;
+    display: block;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: transparent;
+    background-clip: padding-box;
+    border-radius: 0 8px 8px 0;
+    border: 1px solid #ff6400;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.admin .content-2 span > .fa{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: white;
+    background-color: #ff6400;
+    padding: 10px;
+    border-radius: 8px 0 0 8px;
+    width: 50px;
+    margin-bottom: 10px;
+}
+
+.admin a,
+.admin .button, 
+.admin .btn{
+    color: #ff6400;
+    display: flex;
+    justify-content: center;
+}
+.admin a:hover{
+  color:black;
+}
+.admin .btn{
+    font-weight: bolder;
+    font-size: 20px;
+    margin-top: 15px;
+    width: 200px;
+    border: 1px solid #ff6400;
+    border-radius: 10px;
+}
+.admin .btn:hover{
+    transform: scale(1.1);
+    border: 1px solid #ff6400;
+    font-weight: bolder;
+}
+/* Modal */
+.modal .logo-img{
+    background-color: #e5e5e5; 
+}
+.modal .logo{
+    box-shadow: 0px 2px 5px 4px rgba(252, 102, 3, 0.5);
+    height: 230px;
+    width: 230px;
+    font-weight: bolder;
+    border-radius: 10px;
+}
+.modal .icon{
+    color: red;
+    font-size: 100px;
+    margin-top: 50px;
+}
+.modal .confirmation-col{
+    background-color:#ff6400 ;
+    height: auto;
+    padding-bottom: 10px;
+}
+.modal .register-heading{
+    color: white;
+    margin-top: 10px;
+}
+.modal .register-form{
+    background-color: white;
+    border-radius: 10px;
+    width: auto;
+}
+.modal .form-group{
+    margin-bottom: 10px;
+}
+.modal button{
+    color: #ff6400;
+    border: 2px solid #ff6400;
+    background-color: white;
+    margin-bottom: 10px;
+    font-size: 18px;
+    font-weight: bolder;
+    padding: 10px 20px 10px 20px;
+    border-radius: 10px;
+}
+.modal  button:hover{
+    transform: scale(1.1);
+    color: #ff6400;
+    border: 2px solid #ff6400;
+    background-color: white;
+}
+
+

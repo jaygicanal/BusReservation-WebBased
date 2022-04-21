@@ -28,7 +28,13 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('/login', [App\Http\Controllers\brsLoginController::class, 'login'])->name('brsLogin');
 
+Route::get('/admin', [App\Http\Controllers\brsAdminController::class, 'admin'])->name('brsAdmin');
+
 Route::get('/available-bus', function () {
     return view('brsListofBus');
+});
+
+Route::get('/payment', function () {
+    return view('brsPayment');
 });
 

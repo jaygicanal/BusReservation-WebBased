@@ -1,10 +1,10 @@
 @extends('layouts.brsApp')
 @push('styles')
-<link rel="stylesheet" href="{{asset('css/brslogin-style.css')}}">    
+<link rel="stylesheet" href="{{asset('css/brsadmin-style.css')}}">    
 @endpush
 
 @section('content')
-<section class="login">
+<section class="admin">
     <div class="container">
         <div class="row d-flex justify-content-center">
             <div class="col-md-5 d-flex justify-content-center align-items-center content-1">
@@ -16,11 +16,11 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-5 login-inner d-flex justify-content-center align-items-center content-2">
+            <div class="col-md-5 admin-inner d-flex justify-content-center align-items-center content-2">
                 <form method="POST" action="">    
                     <div class="header"> 
                         <div class="line-top"></div>
-                        <h3 class="text-center">Log In User</h3>
+                        <h3 class="text-center">Log In Admin</h3>
                     </div>
                     <div class="form-group d-flex">
                         <span class="d-flex align-items-center justify-content-center"><em class="fa fa-envelope-o"></em></span>

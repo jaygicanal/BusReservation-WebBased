@@ -1,0 +1,18 @@
+body{
+    background-color: #e5e5e5;
+}
+
+.payment .payment-inner,
+.payment .tab-pane{
+    background-color: white;
+  
+}
+.payment .nav-tabs{
+    border-bottom: 1px solid #e5e5e5;
+}
+.payment .nav-link.active{
+    border-top: none;
+    border-right: solid 1px #e5e5e5;
+    border-bottom: solid 1px white;
+    
+}

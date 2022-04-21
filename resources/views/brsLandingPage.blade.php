@@ -39,7 +39,7 @@
                                 <div class="icon">
                                     <i class="fa fa-user" aria-hidden="true"></i>
                                 </div>    
-                                <input type="number" id="tp-id" name="tp" placeholder="0" min="0" oninput="validity.valid||(value='');" required>
+                                <input type="number" id="tp-id" name="tp" placeholder="0" min="1" oninput="validity.valid||(value='');" required>
                             </div>
                         </div>
                         <div class="form-nav d-flex justify-content-center">
