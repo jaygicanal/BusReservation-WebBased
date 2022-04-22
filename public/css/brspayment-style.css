@@ -2,17 +2,42 @@ body{
     background-color: #e5e5e5;
 }
 
-.payment .payment-inner,
+.payment .payment-inner {
+    background-color: #e5e5e5;
+}
+
 .payment .tab-pane{
     background-color: white;
-  
 }
-.payment .nav-tabs{
-    border-bottom: 1px solid #e5e5e5;
+
+.payment img{
+    width:100px;
+    height:100px;
 }
-.payment .nav-link.active{
-    border-top: none;
-    border-right: solid 1px #e5e5e5;
-    border-bottom: solid 1px white;
-    
+
+.payment .nav-link{
+    border:none;
+    padding-bottom: 20px;
 }
+
+.payment .nav-link:hover{
+    background-color: #ff6400;
+}
+.payment .nav-link.active img{
+    background-color: white;
+    border: 5px solid  white;
+}
+.payment .nav-link.active:hover {
+    background-color: white;
+}
+
+.payment .tab-content{
+    border: none;
+}
+.payment .payment-side{
+    background-color: white;
+    height: 450px;
+}
+
+
+
