@@ -24,9 +24,27 @@
                         </div>
                     </nav>
                     <div class="tab-content" id="nav-tabContent">
-                        <div class="tab-pane fade show active" id="nav-Paymaya" aria-labelledby="nav-Paymaya-tab">Paymaya</div>
-                        <div class="tab-pane fade" id="nav-Palawan-Express" aria-labelledby="nav-Palawan-Express-tab">Palawan Express</div>
-                        <div class="tab-pane fade" id="nav-Gcash" aria-labelledby="nav-Gcash-tab">Gcash</div>
+                        <div class="tab-pane fade show active" id="nav-Gcash" aria-labelledby="nav-Gcash-tab">
+                            <div class="Gcash-content">
+                                <h4>Gcash</h4>
+                                <p><b>Name:</b>Dondon linis</p>
+                                <p><b>Mobile Number:</b>09090502132</p>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="nav-Palawan-Express" aria-labelledby="nav-Palawan-Express-tab">
+                            <div class="Palawan-content">
+                                <h4>Palawan Express</h4>
+                                <p><b>Name:</b>Dondon linis</p>
+                                <p><b>Mobile Number:</b>09090502132</p>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="nav-Paymaya" aria-labelledby="nav-Paymaya-tab">
+                            <div class="paymaya-content">
+                                <h4>Paymaya</h4>
+                                <p><b>Name: </b>Dondon linis
+                                <b>Mobile Number: </b>09090502132</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-5  payment-side">

@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controller\UserAuth;
+use App\Http\Controllers\brsLoginController;
+use App\Http\Controllers\brsAdminController;
+use App\Http\Controllers\brsRegistrationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,28 +15,28 @@ use App\Http\Controller\UserAuth;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Auth::routes();
 
 Route::get('/', function () {
     return view('brsLandingPage');
 });
 
-Auth::routes();
+Route::get('/login', [brsLoginController::class, 'index'])->name('login');
+Route::post('user-login', [brsLoginController::class, 'userlogin'])->name('user.login');
+Route::get('sign-out', [brsLoginController::class, 'signOut'])->name('user.signout');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/admin', [brsAdminController::class, 'admin'])->name('brsAdmin');
 
-Auth::routes();
+Route::resource('register', brsRegistrationController::class);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::group([ 'middleware' => ['auth']], function () {
+    Route::get('/', [brsLoginController::class, 'dashboard'])->name('dashboard');
 
-Route::get('/login', [App\Http\Controllers\brsLoginController::class, 'login'])->name('brsLogin');
+    Route::get('/available-bus', function () {
+        return view('brsListofBus');
+    });
 
-Route::get('/admin', [App\Http\Controllers\brsAdminController::class, 'admin'])->name('brsAdmin');
-
-Route::get('/available-bus', function () {
-    return view('brsListofBus');
+    Route::get('/payment', function () {
+        return view('brsPayment');
+    });
 });
-
-Route::get('/payment', function () {
-    return view('brsPayment');
-});
-

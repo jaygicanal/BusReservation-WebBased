@@ -96,7 +96,7 @@ body{
     margin-bottom: 10px;
 }
 
-.login .content-2 span > .fa{
+.login .content-2 .icon-login > .fa{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -109,6 +109,19 @@ body{
     border-radius: 8px 0 0 8px;
     width: 50px;
     margin-bottom: 10px;
+}
+
+.login .show_li_password {
+    height: 43px;
+    position: absolute;
+    display: inline;
+    transform: translateX(270px);
+}
+
+.login .show_li_password i {
+    margin: 0;
+    padding: 0;
+    font-size: 20px !important;
 }
 
 .login a,
@@ -165,6 +178,22 @@ body{
     width: auto;
 }
 .modal .form-group{
+    margin-bottom: 10px;
+}
+.modal input,
+.modal select {
+    font-size: 16px;
+    display: block;
+    width: 100%;
+    padding: 0.375rem 0.375rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: transparent;
+    background-clip: padding-box;
+    border-radius: 8px;
+    border: 1px solid #000000;
+    font-size: 18px;
     margin-bottom: 10px;
 }
 .modal button{
