@@ -40,3 +40,7 @@ Route::group([ 'middleware' => ['auth']], function () {
         return view('brsPayment');
     });
 });
+
+Route::get('/booking', function () {
+    return view('brsBooking');
+});
