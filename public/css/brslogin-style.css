@@ -132,7 +132,7 @@ body{
     justify-content: center;
 }
 .login a:hover{
-  color:black;
+    color:black;
 }
 .login .btn{
     font-weight: bolder;
@@ -211,6 +211,32 @@ body{
     color: #ff6400;
     border: 2px solid #ff6400;
     background-color: white;
+}
+
+/* password */
+.grp-password {
+    position: relative;
+}
+
+.modal .password-viewer .password-rules {
+    position: absolute;
+    display: none;
+    border: 1px solid #ced4da;
+    background-color: #ffffff;
+    padding: 10px;
+    font-size: 12px;
+    width: auto;
+    z-index: 10;
+}
+.modal .password-viewer .password-rules h6 {
+    font-size: 14px;
+}
+
+.modal .password-viewer .password-rules p {
+    margin: 0 0 5px 0;
+    color: #ff0000;
+}
+.modal .form-content button{
 }
 
 

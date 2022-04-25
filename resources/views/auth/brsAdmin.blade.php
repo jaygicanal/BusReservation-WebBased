@@ -39,13 +39,15 @@
         <div class="modal fade brs-register-modal" tabindex="-1" role="dialog" aria-labelledby="create" aria-hidden="true">
             <div class="modal-dialog modal-lg modal-dialog-centered">
                 <div class="modal-content d-flex justify-content-center">
-                    <div class="row ">
-                        <div class="logo-img col-md-4 d-flex justify-content-center align-items-center">
-                            <div class="logo">
-                                <div class="icon d-flex justify-content-center">
-                                    <i class="fa fa-user-circle-o" aria-hidden="true"></i>
-                                </div>
-                                <input type="file" id="avatar" name="avatar" accept="image/png,image/jpeg"></input>
+                    <div class="row d-flex justify-content-center align-items-center">
+                        <div class="permit col-md-4">
+                            <div class="business">
+                                <h5>Business Permit</h5>
+                                <input type="file" class="business_img" id="business_permit" name="business_permit" accept="image/png,image/jpeg"></input>
+                            </div>
+                            <div class="bir">
+                                <h5>BIR Permit</h5>
+                                <input type="file" class="bir_img" id="bir_permit" name="bir_permit" accept="image/png,image/jpeg"></input>
                             </div>
                         </div>
                         <div class="confirmation-col col-md-8 ">
@@ -53,37 +55,22 @@
                             <div class="row register-form  d-flex justify-content-start">
                                 <div class="form-content col-6 p-2">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="First Name" value="" required/>
+                                        <input type="text" class="form-control" placeholder="Company  Name" value="" required/>
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" class="form-control"  placeholder="Middle Name" value="" required/>
+                                        <input type="text" class="form-control"  placeholder="Owner  Name" value="" required/>
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" class="form-control"  placeholder="Last Name" value="" required/>
+                                        <input type="text" class="form-control"  placeholder="Address " value="" required/>
                                     </div>
-                                    <div class="combine d-flex justify-content-evenly align-items-center">
-                                        <div class="form-group col-4">
-                                            <input type="number" class="form-control"  placeholder="Age" min="1" oninput="validity.valid||(value='');" required />
-                                        </div>
-                                        <div class="form-group col-5">
-                                            <div class="maxl">
-                                                <label class="radio inline"> 
-                                                    <input type="radio" name="gender" value="male" checked>
-                                                    <span> Male </span> 
-                                                </label>
-                                                <label class="radio inline"> 
-                                                    <input type="radio" name="gender" value="female">
-                                                    <span>Female </span> 
-                                                </label>
-                                            </div>
-                                        </div>
+                                    <div class="form-group">
+                                        <input type="number" class="form-control"  placeholder="Phone number" min="1" oninput="validity.valid||(value='');" required />
                                     </div>
-                                    
                                 </div>
                                 <!-- <div class="ps-2"></div> -->
                                 <div class="form-content col-6 p-2">
                                     <div class="form-group">
-                                        <input type="email" class="form-control" placeholder="Email" value="" required/>
+                                        <input type="email" class="form-control" placeholder="Email Address" value="" required/>
                                     </div>
                                     <div class="form-group">
                                         <input type="password" class="form-control" placeholder="Password" value="" required/>

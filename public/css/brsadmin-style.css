@@ -28,14 +28,6 @@ body{
     border-left: none;
 }
 
-
-.admin .logo{
-    box-shadow: 0px 2px 5px 4px rgba(252, 102, 3, 0.5);
-    height: 130px;
-    width: 130px;
-    font-weight: bolder;
-    border-radius: 10px;
-}
 .admin .statement{
     color: white;
     font-size: 20px;
@@ -135,20 +127,14 @@ body{
     font-weight: bolder;
 }
 /* Modal */
-.modal .logo-img{
-    background-color: #e5e5e5; 
+.modal .bir,
+.modal .business{
+    color: #ff6400;
 }
-.modal .logo{
-    box-shadow: 0px 2px 5px 4px rgba(252, 102, 3, 0.5);
-    height: 230px;
-    width: 230px;
-    font-weight: bolder;
-    border-radius: 10px;
-}
-.modal .icon{
-    color: red;
-    font-size: 100px;
-    margin-top: 50px;
+.modal input.business_img,
+.modal input.bir_img{
+    color:black;
+    border:1px solid #212529;
 }
 .modal .confirmation-col{
     background-color:#ff6400 ;
@@ -182,6 +168,16 @@ body{
     color: #ff6400;
     border: 2px solid #ff6400;
     background-color: white;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }
 
 
