@@ -44,7 +44,7 @@
                                 </div>
                                 <div class="bus-info">
                                     <div class="bus-category d-flex justify-content-center">VIP</div>
-                                    <div class="bus-name">QUEENS</div>
+                                    <div class="bus-name">Elevel</div>
                                     <div class="bus-features row">
                                         <div class="li-feat col-6 d-flex align-items-center">
                                             <div class="icon"><i class="fa fa-wifi" aria-hidden="true"></i></div>
@@ -96,7 +96,7 @@
                                 </div>
                                 <div class="bus-info">
                                     <div class="bus-category d-flex justify-content-center">VIP</div>
-                                    <div class="bus-name">QUEENS</div>
+                                    <div class="bus-name">Dondon linis</div>
                                     <div class="bus-features row">
                                         <div class="li-feat col-6 d-flex align-items-center">
                                             <div class="icon"><i class="fa fa-wifi" aria-hidden="true"></i></div>
@@ -150,7 +150,7 @@
                                 </div>
                                 <div class="bus-info">
                                     <div class="bus-category d-flex justify-content-center">VIP</div>
-                                    <div class="bus-name">QUEENS</div>
+                                    <div class="bus-name">Mac QUEENS</div>
                                     <div class="bus-features row">
                                         <div class="li-feat col-6 d-flex align-items-center">
                                             <div class="icon"><i class="fa fa-wifi" aria-hidden="true"></i></div>
@@ -204,7 +204,7 @@
                                 </div>
                                 <div class="bus-info">
                                     <div class="bus-category d-flex justify-content-center">VIP</div>
-                                    <div class="bus-name">QUEENS</div>
+                                    <div class="bus-name">Optimumpraym</div>
                                     <div class="bus-features row">
                                         <div class="li-feat col-6 d-flex align-items-center">
                                             <div class="icon"><i class="fa fa-wifi" aria-hidden="true"></i></div>
