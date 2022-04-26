@@ -1,0 +1,57 @@
+body{
+    background-color: #e5e5e5 !important;
+}
+.booking .booking-head{
+    background-color: #ff3200; 
+    width: 100%;
+}
+.booking .nav-tabs{
+    background-color: #ff3200;    
+    border:3px solid #ff3200;
+    border-bottom: white;
+}
+.booking .nav-link{
+    color: white;
+    font-weight: bolder;
+    font-size: 18px;
+}
+.booking .nav-link:hover{
+    border: none;
+    transform: scale(1.1);
+    color: white;
+}
+.booking .nav-link.active{
+    border: none;
+    color: black;
+    transform: none;
+    
+}
+.booking .tab-content{
+    background-color: white;
+    height: 550px;
+}
+.booking .tab-pane {
+    border:1px solid black;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+/* table */
+.booking .table{
+    font-weight: bolder;
+    text-align: center;
+}
+.booking thead{
+    background-color: #ff6400;
+    color: white;
+    
+}
+.booking .confirm{
+    border:1px solid black;
+    color: white;
+    background-color: #ff6400;
+}
+.booking .refund{
+    border:1px solid black;
+    color: white;
+    background-color: #ff3200;
+}

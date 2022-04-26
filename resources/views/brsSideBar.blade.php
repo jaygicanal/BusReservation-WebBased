@@ -15,42 +15,54 @@
     
 }
 
-.orm-tooltip {
+.nav-item {
     position: relative;
     display: inline-block;
+    z-index: 3;
+    padding: 10px 0;
 }
 
-.orm-tooltip::before {
-    content: attr(data-text);
-    /* here's the magic */
+.nav-item .link-label{
     position: absolute;
 
-    left: 100%;
-    margin-left: 0px;
-    /* and add a small left margin */
+    top: 0px;
+    left: 80px;
 
-    /* basic styles */
     width: 120px;
     height: 100%;
-    padding: 8px;
+    padding: 0 10px;
     border-radius: 0 8px 8px 0;
     background: #ff6400;
     color: #fff;
     text-align: center;
-    font-size: 15px !important;
+    font-size: 18px !important;
     white-space: nowrap;
-    transform: scale(1.2);
     transition: 1s ease-in;
     
     display: none;
-    /* hide by default */
 }
 
-.orm-tooltip:hover:before {
+.nav-item:hover{
+    background: #ff6400;
+}
+
+.nav-item.active {
+    cursor: default;
+    pointer-events: none;
+    background: #ff6400;
+}
+
+.nav-item:hover em,
+.nav-item.active em{
+    font-size: 35px;
+}
+
+.nav-item:hover .link-label{
     display:flex;
     justify-content: center;
     align-items: center;
 }
+
 .side-nav .head-logo{
     height: 100px;
     padding: 15px;
@@ -58,18 +70,6 @@
 
 .side-nav .nav-link {
     border-radius: 0px;
-}
-
-.side-nav .nav-link:hover,
-.side-nav .nav-link.active {
-    background: #ff6400;
-    transform: scale(1.2);
-}
-
-
-.side-nav .nav-link.active {
-    cursor: default;
-    pointer-events: none;
 }
 
 .side-nav .dropdown-toggle::after{
@@ -96,34 +96,24 @@
                 </div>
                 <ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
                     <li class="nav-item orm-tooltip" data-text="Dashboard">
-                        <a href="{{ url('/') }}" class=" nav-link py-3 {{Request::is('/') ? 'active':''}}">
+                        <a href="{{ url('') }}" class=" nav-link py-3 {{Request::is('/') ? 'active':''}}">
                             <em class="fa fa-home"></em>
                         </a>
+                        <div class="link-label">Dashboard</div>
                     </li>
-                    <li class="nav-item orm-tooltip" data-text="Inventory">
-                        <a href="{{ url('inventory') }}" class="nav-link py-3 {{Request::is('inventory') ? 'active':'' }}">
+                    <li class="nav-item {{Request::is('booking') ? 'active':'' }} " data-text="Booking">
+                        <a href="{{ url('booking') }}" class="nav-link py-3 ">
                         <em class="fa fa-calendar-check-o" aria-hidden="true"></em>
                         </a>
+                        <div class="link-label">Booking</div>
                     </li>
-                    <li class="nav-item orm-tooltip" data-text="Transaction">
-                        <a href="{{ url('transaction') }}" class="nav-link py-3 {{Request::is('transaction') ? 'active':'' }}" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Orders">
-                            <em class="fa fa-calendar-plus-o" aria-hidden="true"></em>
+                    <li class="nav-item {{Request::is('transaction') ? 'active':'' }}" data-text="Forecasting">
+                        <a href="{{ url('transaction') }}" class="nav-link py-3 " title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Orders">
+                            <em class="fa fa-line-chart" aria-hidden="true"></em>
                         </a>
+                        <div class="link-label">Forecasting</div>
                     </li>
                 </ul>
-                <div class="dropdown">
-                    <a href="#" class="d-flex align-items-center justify-content-center p-3 link-dark text-decoration-none dropdown-toggle" id="dropdownUser" data-bs-toggle="dropdown" aria-expanded="false">  
-                        <img class="image rounded-circle" src="images/user.png" alt="profile_image" style="width: 55px;height: 55px; padding: 5px; margin: 0px; ">
-                    </a>
-                    
-                    <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser" style="">
-                        <li><span class="text-nowrap ps-3 fw-bold">{{Auth::User()->fname ?? 'None'}}</span></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">Profile</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="{{ url('signout') }}">Sign out</a></li>
-                    </ul>
-                </div>
             <!-- </div> -->
         </div>
     </div>
