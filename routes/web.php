@@ -44,3 +44,7 @@ Route::group([ 'middleware' => ['auth']], function () {
 Route::get('/booking', function () {
     return view('brsBooking');
 });
+
+Route::get('/dashboard', function () {
+    return view('brdDashBoard');
+});

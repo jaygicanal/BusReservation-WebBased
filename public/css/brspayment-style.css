@@ -1,14 +1,11 @@
 body{
-    background-color: #e5e5e5;
+    background-color: white !important;
 }
 
 .payment .payment-inner {
-    background-color: #e5e5e5;
-}
-
-.payment .tab-pane{
     background-color: white;
 }
+
 
 .payment img{
     width:100px;
@@ -16,27 +13,40 @@ body{
 }
 
 .payment .nav-link{
-    border:none;
-    padding-bottom: 20px;
+    border:10px solid #e5e5e5 !important;
 }
 
 .payment .nav-link:hover{
     background-color: #ff6400;
 }
 .payment .nav-link.active img{
-    background-color: white;
+    background-color: #e5e5e5 !important ;
     border: 5px solid  white;
 }
-.payment .nav-link.active:hover {
-    background-color: white;
+.payment .nav-link.active{
+    background-color: #e5e5e5 !important;
 }
 
 .payment .tab-content{
     border: none;
+    padding: 20px;
+    background-color: #e5e5e5;
+}
+.payment .payment-img{
+    padding: 25px;
+    padding-top: 15px;
+    border: 1px solid #ff6400;
+    width: 300px;
+}
+.payment .fa-arrow-circle-down{
+    display: flex;
+    justify-content: center;
+    font-size: 50px;
+    color: #ff3200;
 }
 .payment .payment-side{
-    background-color: white;
-    height: 450px;
+    background-color: #e5e5e5;
+    height: 500px;
 }
 
 

@@ -63,7 +63,7 @@ body::before{
     justify-content: center;
     align-items: center;
     font-size: 25px;
-    padding: 0 20px;
+    padding: 10 20px;
     border-radius: 9px 0 0 9px;
 }
 .find-bus-section  .form-nav button{
@@ -83,4 +83,9 @@ body::before{
 .find-bus-section  .form-nav a{
     color: white;
     text-decoration: none;
+}
+.find-bus-section select{
+    width: 250px;
+    font-size: 18px;
+    padding: 5px 10px;
 }

@@ -49,7 +49,9 @@
                                     <input type="email" id="email" name="email" class="form-control" placeholder="Email" required/>
                                 </div>
                                 <div class="form-group grp-password">
-                                    <input type="password" id="password" name="password" class="form-control" placeholder="Password" required/>
+                                    <input type="password" id="password" placeholder="Password" name="password"> 
+                                    <span class="show_password d-flex align-items-center justify-content-end" id="reg-pass-show"><!-- </span>
+                                    <i class="fa fa-eye-slash" aria-hidden="true"></i> -->
                                     <span class="password-viewer">
                                         <div class="password-rules">
                                             <h6 style="font-weight:400;">Password must contain the following:</h6>
@@ -63,7 +65,6 @@
                                         </div>
                                     </span>
                                 </div>
-                                
                                 <div class="form-group">
                                     <input type="password" id="re_password" name="re_password" class="form-control" placeholder="Confirm Password" required/>
                                 </div>

@@ -141,11 +141,13 @@ body{
     width: 200px;
     border: 1px solid #ff6400;
     border-radius: 10px;
+    color:#ff6400 ;
 }
 .login .btn:hover{
     transform: scale(1.1);
     border: 1px solid #ff6400;
     font-weight: bolder;
+    color:#ff6400 ;
 }
 /* Modal */
 .modal .logo-img{

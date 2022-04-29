@@ -83,6 +83,7 @@
     color: white;
     font-size: 30px
 }
+
 </style>
 
 <div class="row">
@@ -96,7 +97,7 @@
                 </div>
                 <ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
                     <li class="nav-item orm-tooltip" data-text="Dashboard">
-                        <a href="{{ url('') }}" class=" nav-link py-3 {{Request::is('/') ? 'active':''}}">
+                        <a href="{{ url('/') }}" class=" nav-link py-3 {{Request::is('dashboard') ? 'active':''}}">
                             <em class="fa fa-home"></em>
                         </a>
                         <div class="link-label">Dashboard</div>
@@ -107,12 +108,19 @@
                         </a>
                         <div class="link-label">Booking</div>
                     </li>
-                    <li class="nav-item {{Request::is('transaction') ? 'active':'' }}" data-text="Forecasting">
-                        <a href="{{ url('transaction') }}" class="nav-link py-3 " title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Orders">
+                    <li class="nav-item {{Request::is('forecasting') ? 'active':'' }}" data-text="Forecasting">
+                        <a href="{{ url('forecasting') }}" class="nav-link py-3 " title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Orders">
                             <em class="fa fa-line-chart" aria-hidden="true"></em>
                         </a>
                         <div class="link-label">Forecasting</div>
                     </li>
+                    <li class="nav-item {{Request::is('bus-schedule') ? 'active':'' }}" data-text="bus-schedule">
+                        <a href="{{ url('bus-schedule') }}" class="nav-link py-3 " title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Orders">
+                            <em class="fa fa-bus" aria-hidden="true"></em>
+                        </a>
+                        <div class="link-label">Bus Schedule</div>
+                    </li>
+                    
                 </ul>
             <!-- </div> -->
         </div>

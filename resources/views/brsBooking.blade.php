@@ -44,7 +44,7 @@
                                     <td>9:00 Am</td>
                                     <td>Bulan</td>
                                     <td>Sorsogon</td>
-                                    <td>1</td>
+                                    <td></td>
                                     <td>Gcash</td>
                                     <td><button class="confirm">Confirm</button></td> 
                                     </tr>
@@ -55,7 +55,7 @@
                                     <td>6:00 Am</td>
                                     <td>Bulan</td>
                                     <td>Sorsogon</td>
-                                    <td>2</td>
+                                    <td></td>
                                     <td>Paymaya</td>
                                     <td><button class="confirm">Confirm</button></td> 
                                     </tr>

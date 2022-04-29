@@ -8,7 +8,13 @@ body{
 .admin .admin-inner{
     width: 500px;
 }
-
+.admin .logo{
+    box-shadow: 0px 2px 5px 4px rgba(252, 102, 3, 0.5);
+    height: 130px;
+    width: 130px;
+    font-weight: bolder;
+    border-radius: 10px;
+}
 .admin  .content-1{
     background-color: transparent;
    /*  box-shadow: 0px 0px 5px 4px #e5e5e5; */
@@ -120,11 +126,13 @@ body{
     width: 200px;
     border: 1px solid #ff6400;
     border-radius: 10px;
+    color:#ff6400 ;
 }
 .admin .btn:hover{
     transform: scale(1.1);
     border: 1px solid #ff6400;
     font-weight: bolder;
+    color:#ff6400 ;
 }
 /* Modal */
 .modal .bir,

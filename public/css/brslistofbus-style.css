@@ -93,32 +93,35 @@
 .sidepanel  {
     width: 0;
     position: fixed;
+    display: inline;
     z-index: 1;
     height: 100vh;
     top: 0;
     right: 0;
-    background-color: #111;
+    background-color: #e5e5e5;
     overflow-x: hidden;
     transition: 0.5s;
-    padding-top: 60px;
+    padding-top: 160px;
 }
 
-.sidepanel a {
+.sidepanel .check,
+.sidepanel .closebtn {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
     font-size: 25px;
-    color: #818181;
+    color: #ff6400;
     display: block;
     transition: 0.3s;
 }
 
-.sidepanel a:hover {
-    color: #f1f1f1;
+.sidepanel .check:hover,
+.sidepanel .closebtn:hover {
+    transform: scale(1.1);
 }
 
 .sidepanel .closebtn {
     position: absolute;
-    top: 0;
+    top: 100px;
     right: 5px;
     font-size: 36px;
 }
@@ -193,10 +196,23 @@
     background-color: white;
     border: 2px solid #ff6400;
 }
-.modal .continue button{
-    background-color:#ff6400 ;
-    color:white;
+.modal  .cancel button:hover{
+    transform: scale(1.1);
+    color:#ff6400 ;
+    background-color: white;
     border: 2px solid #ff6400;
-    
+}
+.modal .continue button {
+    background-color:#ff6400 ;
+    border: 2px solid #ff6400;
+}
+.modal .continue button a{
+    text-decoration: none;
+    color:white;
+}
+.modal .continue button:hover {
+    transform: scale(1.1);
+    background-color:#ff6400 ;
+    border: 2px solid #ff6400;
 }
 

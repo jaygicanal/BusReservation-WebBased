@@ -7,14 +7,31 @@
         $(document).ready(function(){
             $('#login-pass-show').on('click', function() {
                 event.preventDefault();
-                if($('.login-inner #password').attr("type") == "text"){
-                    $('.login-inner #password').attr('type', 'password');
+                if($('.login-inner #li_password').attr("type") == "text"){
+                    $('.login-inner #li_password').attr('type', 'password');
                     $('#login-pass-show i').addClass( "fa-eye-slash" );
                     $('#login-pass-show i').removeClass( "fa-eye" );
-                }else if($('.login-inner #password').attr("type") == "password"){
-                    $('.login-inner #password').attr('type', 'text');
+                }else if($('.login-inner #li_password').attr("type") == "password"){
+                    $('.login-inner #li_password').attr('type', 'text');
                     $('#login-pass-show i').removeClass( "fa-eye-slash" );
                     $('#login-pass-show i').addClass( "fa-eye" );
+                }
+            })
+        });
+    </script>
+
+    <script>
+        $(document).ready(function(){
+            $('#reg-pass-show').on('click', function() {
+                event.preventDefault();
+                if($('#password').attr("type") == "text"){
+                    $('#password').attr('type', 'password');
+                    $('#reg-pass-show i').addClass( "fa-eye-slash" );
+                    $('#reg-pass-show i').removeClass( "fa-eye" );
+                }else if($('#password').attr("type") == "password"){
+                    $('#password').attr('type', 'text');
+                    $('#reg-pass-show i').removeClass( "fa-eye-slash" );
+                    $('#reg-pass-show i').addClass( "fa-eye" );
                 }
             })
         });
@@ -145,7 +162,8 @@
                     <div class="form-group d-flex">
                         <span class="icon-login d-flex align-items-center justify-content-center"><em class="fa fa-lock"></em></span>
                         <input type="password" class="form-input" id="li_password" name="password" placeholder="Password">
-                        <span class="show_li_password d-flex align-items-center justify-content-end" id="login-pass-show"><i class="fa fa-eye-slash" aria-hidden="true"></i></span>
+                        <span class="show_li_password d-flex align-items-center justify-content-end" id="login-pass-show">
+                            <i class="fa fa-eye-slash" aria-hidden="true"></i></span>
                     </div>
                     <div class="fp"><a href="/forgot-password">Forgot Password?</a></div>
                     <div class="button"><button type="submit" class="btn">SIGN IN</button></div>

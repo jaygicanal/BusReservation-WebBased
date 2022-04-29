@@ -31,7 +31,7 @@
                         <input type="password" class="form-input" id="siPassword" name="password" placeholder="Password">
                     </div>
                     <div class="fp"><a href="/forgot-password">Forgot Password?</a></div>
-                    <div class="button"><button type="submit" class="btn">SIGN IN</button></div>
+                    <div class="button"><button type="submit" class="btn"><a href="{{ url('booking') }}">SIGN IN</a></button></div>
                 </form>
             </div>
         </div>
