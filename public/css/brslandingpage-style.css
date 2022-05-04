@@ -42,9 +42,6 @@ body::before{
     margin: 20px 0px 0px 0px;
     
 }
-.find-bus-section  .input-group .space-margin{
-    width: 20px;
-}
 .find-bus-section  input{
     width: 100%;
     font-size: 18px;
@@ -55,6 +52,17 @@ body::before{
 .find-bus-section  input[type="date"]{
     margin-right: 15px;
 }
+.find-bus-section  .text{
+    width: 100%;
+    color:#ff6400;
+    background-color: #e6e6e6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10 20px;
+    border-radius: 9px 9px 0 0 ;
+    font-weight: bolder;
+}
 .find-bus-section  .icon{
     width: 20px;
     color:#ff6400;
@@ -64,7 +72,7 @@ body::before{
     align-items: center;
     font-size: 25px;
     padding: 10 20px;
-    border-radius: 9px 0 0 9px;
+    border-radius: 9px  0 0 9px  ;
 }
 .find-bus-section  .form-nav button{
     background-color: #ff6400;
@@ -85,7 +93,25 @@ body::before{
     text-decoration: none;
 }
 .find-bus-section select{
-    width: 250px;
+    width: 100%;
     font-size: 18px;
     padding: 5px 10px;
+}
+.find-bus-section .from .cmb-ttl
+.find-bus-section .to .cmb-ttl{
+    font-size: 20px;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* Schedul of Bus */
+.sched-bus .table{
+    background-color: white;
+    text-align: center;
+}
+.sched-bus thead{
+    background-color: #ff3200;
+    color: white;
 }

@@ -4,6 +4,7 @@ body{
 .booking .booking-head{
     background-color: #ff3200; 
     width: 100%;
+    height: 75px;
 }
 .booking .nav-tabs{
     background-color: #ff3200;    
@@ -24,6 +25,7 @@ body{
     border: none;
     color: black;
     transform: none;
+    height: 75px;
     
 }
 .booking .tab-content{

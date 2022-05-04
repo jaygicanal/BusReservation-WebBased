@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class brsDashboardController extends Controller
+class brsForecastingController extends Controller
 {
     /**
      * Display a listing of the resource.

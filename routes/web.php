@@ -25,7 +25,7 @@ Route::get('/login', [brsLoginController::class, 'index'])->name('login');
 Route::post('user-login', [brsLoginController::class, 'userlogin'])->name('user.login');
 Route::get('sign-out', [brsLoginController::class, 'signOut'])->name('user.signout');
 
-Route::get('/admin', [brsAdminController::class, 'admin'])->name('brsAdmin');
+Route::get('/admin-login', [brsAdminController::class, 'admin'])->name('brsAdmin');
 
 Route::resource('register', brsRegistrationController::class);
 
@@ -45,6 +45,15 @@ Route::get('/booking', function () {
     return view('brsBooking');
 });
 
-Route::get('/dashboard', function () {
-    return view('brdDashBoard');
+Route::get('/admin', function () {
+    return view('brsAdminDashboard');
 });
+
+Route::get('/forecasting', function () {
+    return view('brsForecasting');
+});
+Route::get('/scheduling', function () {
+    return view('brsScheduling');
+});
+
+

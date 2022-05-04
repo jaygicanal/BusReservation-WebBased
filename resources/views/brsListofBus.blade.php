@@ -6,83 +6,41 @@
 @endpush
 
 @section('content')
-    <section class="filter-bus mt-3">
-        <div class="container">
-            <div class="row">
-                <div class="p-0 col-md-12 d-flex justify-content-end">
-                    <button class="openbtn" onclick="openNav()"><em class="fa fa-filter"></em> Filter Bus</button> 
-                    <script>
-                        function openNav() {
-                            document.getElementById("mySidepanel").style.width = "300px";
-                        }
-                        function closeNav() {
-                            document.getElementById("mySidepanel").style.width = "0";
-                        }
-                    </script>
-
-                    <div id="mySidepanel" class="sidepanel">
-                        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-                        <div class="check">
-                            <input class="check-wifi" type="checkbox" value="" id="wifi">
-                            <label class="wifi-check-label" for="wifi">
-                                Wifi
-                            </label>
-                        </div>
-                        <div class="check">
-                            <input class="check-television" type="checkbox" value="" id="television">
-                            <label class="television-check-label" for="television">
-                                Television
-                            </label>
-                        </div>
-                        <div class="check">
-                            <input class="check-air-con" type="checkbox" value="" id="air-con">
-                            <label class="air-con-check-label" for="air-con">
-                                Television
-                            </label>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
     <section class="listofbus">
         <div class="container">
             <div class="row d-flex justify-content-center">
                 <!-- Box Section -->
-                <div class="bus-box col-md-12 d-flex justify-content-start">
-                    <div class="box-inner">
-                        <div class="box-header d-flex">
-                            <div class="bus-img">
-                                <img src="{{ asset('images/landing-background.jpg') }}" alt="">
+                <div class="bus-box col-md-10 d-flex justify-content-start">
+                    <div class="bus-img">
+                        <img src="{{ asset('images/landing-background.jpg') }}" alt="">
+                    </div>
+                    <div class="bus-info">
+                        <div class="bus-category d-flex justify-content-center">CLASS</div>
+                        <div class="bus-name">Dondon linis</div>
+                        <div class="bus-features row">
+                            <div class="li-feat col-6 d-flex align-items-center">
+                                <div class="icon"><i class="fa fa-wifi" aria-hidden="true"></i></div>
+                                <div class="feat-name">Wifi</div>
                             </div>
-                            <div class="bus-info">
-                                <div class="bus-category d-flex justify-content-center">VIP</div>
-                                <div class="bus-name">Dondon linis</div>
-                                <div class="bus-features row">
-                                    <div class="li-feat col-6 d-flex align-items-center">
-                                        <div class="icon"><i class="fa fa-wifi" aria-hidden="true"></i></div>
-                                        <div class="feat-name">Wifi</div>
-                                    </div>
-                                    <div class="li-feat col-6 d-flex align-items-center">
-                                        <div class="icon"><i class="fa fa-television" aria-hidden="true"></i></div>
-                                        <div class="feat-name">Television</div>
-                                    </div>
-                                    <div class="li-feat col-6 d-flex align-items-center">
-                                        <div class="icon"><i class="fa fa-wheelchair" aria-hidden="true"></i></div>
-                                        <div class="feat-name">PWD Seat</div>
-                                    </div>
-                                    <div class="li-feat col-6 d-flex align-items-center">
-                                        <div class="icon"><i class="fa fa-dot-circle-o" aria-hidden="true"></i></div>
-                                        <div class="feat-name">Air-Con</div>
-                                    </div>
-                                </div>
-                                <div class="ratings">
-                                    <span class="fa fa-star"></span>
-                                    <span class="fa fa-star "></span>
-                                    <span class="fa fa-star-half-o "></span>
-                                    <span class="fa fa-star-o"></span>
-                                    <span class="fa fa-star-o"></span>
-                                </div>
+                            <div class="li-feat col-6 d-flex align-items-center">
+                                <div class="icon"><i class="fa fa-television" aria-hidden="true"></i></div>
+                                <div class="feat-name">Television</div>
                             </div>
+                            <div class="li-feat col-6 d-flex align-items-center">
+                                <div class="icon"><i class="fa fa-wheelchair" aria-hidden="true"></i></div>
+                                <div class="feat-name">PWD Seat</div>
+                            </div>
+                            <div class="li-feat col-6 d-flex align-items-center">
+                                <div class="icon"><i class="fa fa-dot-circle-o" aria-hidden="true"></i></div>
+                                <div class="feat-name">Air-Con</div>
+                            </div>
+                        </div>
+                        <div class="ratings">
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star "></span>
+                            <span class="fa fa-star-half-o "></span>
+                            <span class="fa fa-star-o"></span>
+                            <span class="fa fa-star-o"></span>
                         </div>
                         <div class="box-footer d-flex justify-content-between align-items-center">
                             <div class="dep-time">

@@ -96,8 +96,8 @@
                     </a>
                 </div>
                 <ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
-                    <li class="nav-item orm-tooltip" data-text="Dashboard">
-                        <a href="{{ url('/') }}" class=" nav-link py-3 {{Request::is('dashboard') ? 'active':''}}">
+                    <li class="nav-item orm-tooltip {{Request::is('admin') ? 'active':''}}" data-text="Dashboard">
+                        <a href="{{ url('/admin') }}" class=" nav-link py-3 ">
                             <em class="fa fa-home"></em>
                         </a>
                         <div class="link-label">Dashboard</div>
@@ -114,11 +114,11 @@
                         </a>
                         <div class="link-label">Forecasting</div>
                     </li>
-                    <li class="nav-item {{Request::is('bus-schedule') ? 'active':'' }}" data-text="bus-schedule">
-                        <a href="{{ url('bus-schedule') }}" class="nav-link py-3 " title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Orders">
+                    <li class="nav-item {{Request::is('scheduling') ? 'active':'' }}" data-text="Scheduling">
+                        <a href="{{ url('scheduling') }}" class="nav-link py-3 " title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Orders">
                             <em class="fa fa-bus" aria-hidden="true"></em>
                         </a>
-                        <div class="link-label">Bus Schedule</div>
+                        <div class="link-label">Scheduling</div>
                     </li>
                     
                 </ul>

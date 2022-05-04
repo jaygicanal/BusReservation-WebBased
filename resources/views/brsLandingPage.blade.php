@@ -74,7 +74,7 @@ $(document).ready(function(){
 @endpush
 
 @section('content')
-<section class="find-bus-section" >
+<section class="find-bus-section">
     <div class="container">
         <div class="row d-flex justify-content-center align-items-center">
             <div class="col-md-7 inner-content">
@@ -84,34 +84,41 @@ $(document).ready(function(){
                 <div class="form-content d-flex justify-content-center ">
                     <div class="row form-reserve">
                         <div class="input-form col-6">
-                            <div class="row from d-flex justify-content-end">
-                                <div class="icon">
-                                    <i class="fa fa-dot-circle-o " aria-hidden="true"></i>
+                            
+                            <div class="from">
+                                <div class="text d-flex">
+                                    <!-- <i class="fa fa-dot-circle-o" aria-hidden="true"></i> -->
+                                    <div class="cmb-ttl">O R I G I N</div>
                                 </div>
-                                <select class="from-city from-city-sm " onblur="this.size=1;"  aria-label=".form-select-lg example" id="frm-city-dd"></select>
-                                <select class="from-option from-option-sm " onblur="this.size=1;" aria-label=".form-select-lg example" id="frm-opt-dd"></select>
-                                <select class="from-barangay from-barangay-sm " onblur="this.size=1;" aria-label=".form-select-lg example" id="frm-brgy-dd"></select>
+                                <div class="cmb-group">
+                                    <select class="from-city from-city-sm " onblur="this.size=1;"  aria-label=".form-select-lg example" id="frm-city-dd"></select>
+                                    <select class="from-option from-option-sm " onblur="this.size=1;" aria-label=".form-select-lg example" id="frm-opt-dd"></select>
+                                    <select class="from-barangay from-barangay-sm " onblur="this.size=1;" aria-label=".form-select-lg example" id="frm-brgy-dd"></select>
+                                </div>
                             </div>
                         </div>
                         <div class="input-form col-6 ">
-                            <div class="row to d-flex justify-content-end">
-                                <div class="icon">
-                                    <i class="fa fa-map-marker" aria-hidden="true"></i>
+                            <div class="to ">
+                                <div class="text">
+                                    <!-- <i class="fa fa-map-marker" aria-hidden="true"></i> -->
+                                    <div class="cmb-ttl">D E S T I N A T I O N </div>
                                 </div>
-                                <select class="to-city to-city-sm " onblur="this.size=1;"  aria-label=".form-select-lg example" id="to-city-dd"></select>
-                                <select class="to-option to-option-sm " onblur="this.size=1;" aria-label=".form-select-lg example" id="to-opt-dd"></select>
-                                <select class="to-barangay to-barangay-sm" onblur="this.size=1;" id="to-brgy-dd"></select>
+                                <div class="cmb-group">
+                                    <select class="to-city to-city-sm " onblur="this.size=1;"  aria-label=".form-select-lg example" id="to-city-dd"></select>
+                                    <select class="to-option to-option-sm " onblur="this.size=1;" aria-label=".form-select-lg example" id="to-opt-dd"></select>
+                                    <select class="to-barangay to-barangay-sm" onblur="this.size=1;" id="to-brgy-dd"></select>
+                                </div>
                             </div>
                         </div>
                         <div class="input-group">
-                            <div class="col-8 input-form d-flex justify-content-center">
+                            <div class="col-5 input-form d-flex justify-content-center">
                                 <div class="icon">
                                     <i class="fa fa-calendar" aria-hidden="true"></i>
                                 </div>    
                                 <input type="date" id="date" name="date" placeholder="Date" required/>
                             </div>
-                            <!-- <div class="space-margin"></div> -->
-                            <div class="col-4 input-form d-flex">
+                            <div class="col-1 me-3 "></div>
+                            <div class="col-3 input-form d-flex justify-content-center">
                                 <div class="icon">
                                     <i class="fa fa-user" aria-hidden="true"></i>
                                 </div>    
@@ -122,14 +129,50 @@ $(document).ready(function(){
                             <button ><a href="{{ url('available-bus') }}">Find A Bus</a></button>
                         </div>
                     </div>
-                    
                 </div>
             </div>
         </div>
     </div>
-
 </section>
+<section class="sched-bus">
+    <div class="container">
+        <div class="row d-flex justify-content-center align-items-center">
+            <div class="col-12 sched-content justify-content-center">  
+                <div class="text-date d-flex justify-content-start">
+                    <h1><input type="date" id="date" name="date" placeholder="Date" required/></H1>
+                </div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                        <th scope="col">Bus Name</th>  
+                        <th scope="col">Date</th>
+                        <th scope="col">Time</th>
+                        <th scope="col">Seats Status</th>
+                        <th scope="col">View Seats</th>
 
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                        <td>Queens</td>
+                        <td>10/10/22</td>
+                        <td>9:00 Am</td>
+                        <td>Full</td>
+                        <th scope="col"><button>View</button></th> 
+                        </tr>
+                        <tr>
+                        <td>Queens</td>
+                        <td>11/11/22</td>
+                        <td>6:00 Am</td>
+                        <td>Full</td>
+                        <th scope="col"><button>View</button></th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
 @endsection
 
 

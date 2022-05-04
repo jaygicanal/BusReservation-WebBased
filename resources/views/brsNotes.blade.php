@@ -14,8 +14,9 @@
 <img src="{{ asset('images/logo2.png') }}" alt="">
 
 
+<i class="fa fa-square" aria-hidden="true"></i>
 
-
+<i class="fa fa-square-o" aria-hidden="true"></i>
 
 <!-- Registration -->
 <section class="registration">

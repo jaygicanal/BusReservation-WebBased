@@ -1,6 +1,5 @@
 @extends('layouts.brsApp')
 
-
 @push('styles')
     <link rel="stylesheet" href="{{asset('css/brslogin-style.css')}}"> 
     <script>

@@ -5,8 +5,8 @@
             <form action="register" method="POST">
                 @csrf
                 <div class="row ">   
-                    <div class="logo-img col-md-4 d-flex justify-content-center align-items-center">
-                        <div class="logo">
+                    <div class="profile-img col-md-4 d-flex justify-content-center align-items-center">
+                        <div class="profile">
                             <div class="icon d-flex justify-content-center">
                                 <i class="fa fa-user-circle-o" aria-hidden="true"></i>
                             </div>
@@ -29,19 +29,12 @@
                                 <div class="form-group">
                                     <input type="text" id="lname" name="lname" class="form-control"  placeholder="Last Name" required/>
                                 </div>
-                                <div class="combine d-flex justify-content-between align-items-center">
-                                    <div class="form-group col-4">
-                                        <input type="number" id="age" name="age" class="form-control"  placeholder="Age" required>
-                                    </div>
-                                    <div class="form-group col-7">
-                                        <select name="gender" id="gender" class="form-option" required>
-                                            <option selected>Your Gender</option>
-                                            <option value="Male">Male</option>
-                                            <option value="Female">Female</option>
-                                        </select>
-                                    </div>
+                                <div class="form-group">
+                                    <input type="text" id="address" name="address" class="form-control"  placeholder="Address" required/>
                                 </div>
-                                
+                                <div class="form-group">
+                                    <input type="number" id="contact" name="contact" class="form-control"  placeholder="Contact Number" required>
+                                </div>
                             </div>
                             <!-- <div class="ps-2"></div> -->
                             <div class="form-content col-6 p-2">
@@ -49,9 +42,11 @@
                                     <input type="email" id="email" name="email" class="form-control" placeholder="Email" required/>
                                 </div>
                                 <div class="form-group grp-password">
-                                    <input type="password" id="password" placeholder="Password" name="password"> 
-                                    <span class="show_password d-flex align-items-center justify-content-end" id="reg-pass-show"></span>
-                                    <i class="fa fa-eye-slash" aria-hidden="true"></i>
+                                    <div class="inner d-flex">
+                                    <input type="password" class="form-input" id="password" name="password" placeholder="Password">
+                                    <span class="show_reg_password d-flex align-items-center justify-content-end" id="modal_reg_pass_show">
+                                        <i class="fa fa-eye-slash" aria-hidden="true"></i></span>
+                                    </div>
                                     <span class="password-viewer">
                                         <div class="password-rules">
                                             <h6 style="font-weight:400;">Password must contain the following:</h6>
@@ -66,7 +61,7 @@
                                     </span>
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" id="re_password" name="re_password" class="form-control" placeholder="Confirm Password" required/>
+                                    <input type="password" id="reg_re_password" name="reg_re_password" class="form-control" placeholder="Confirm Password" required/>
                                 </div>
                             </div>
                             <div class="form-content col-12">
