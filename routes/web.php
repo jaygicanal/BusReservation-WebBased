@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\brsLoginController;
 use App\Http\Controllers\brsAdminController;
 use App\Http\Controllers\brsRegistrationController;
+use App\Http\Controllers\brsSchedulingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,8 +53,8 @@ Route::get('/admin', function () {
 Route::get('/forecasting', function () {
     return view('brsForecasting');
 });
-Route::get('/scheduling', function () {
-    return view('brsScheduling');
-});
+
+Route::get('/scheduling', [brsSchedulingController::class, 'index'])->name('scheduling');
+Route::resource('schedule', brsSchedulingController::class);
 
 

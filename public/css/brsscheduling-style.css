@@ -9,7 +9,7 @@ body{
 .scheduling .add{
     margin-right: 20px;
 }
-.scheduling button{
+.scheduling .add button{
     padding: 10px 30px;
     border-radius: 10px;
     border: 2px solid white;
@@ -17,11 +17,11 @@ body{
     font-weight: bolder;
     width: 190px;
 }
-.scheduling button:hover{
+.scheduling .add button:hover{
     transform: scale(1.1);
     margin: 0 10px;
 }
-.scheduling .scheduling-content{
+.scheduling  .scheduling-content{
     background-color: white;
     text-align: center;
 }
