@@ -150,7 +150,8 @@
                 </div>
             </div>
             <div class="col-md-5 admin-inner d-flex justify-content-center align-items-center content-2">
-                <form method="POST" action="">    
+                <form method="POST" action="{{ route('admin.login.submit') }}">    
+                    @csrf
                     <div class="header"> 
                         <div class="line-top"></div>
                         <h3 class="text-center">Log In Admin</h3>
@@ -166,7 +167,7 @@
                             <i class="fa fa-eye-slash" aria-hidden="true"></i></span>
                     </div>
                     <div class="fp"><a href="/forgot-password">Forgot Password?</a></div>
-                    <div class="button"><button type="submit" class="btn"><a href="{{ url('booking') }}">SIGN IN</a></button></div>
+                    <div class="button"><button type="submit" class="btn">SIGN IN</button></div>
                 </form>
             </div>
         </div>

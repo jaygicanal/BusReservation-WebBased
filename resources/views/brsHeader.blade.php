@@ -64,7 +64,6 @@
                     @unless (Auth::check())    
                     <img class="image rounded-circle" src="images/landing-background.png" alt="profile_image" style="width: 55px;height: 55px; padding: 5px; margin: 0px; ">
                     @endunless
-                    <img class="image rounded-circle" src="images/{{Auth::user()->upload_img}}" alt="profile_image" style="width: 55px;height: 55px; padding: 5px; margin: 0px; ">
                     </a>
                     <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser" style="">
                         <li><span class="text-nowrap ps-3 fw-bold">{{Auth::User()->fname ?? 'None'}}</span></li>

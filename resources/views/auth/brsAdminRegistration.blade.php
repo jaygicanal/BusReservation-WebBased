@@ -2,7 +2,7 @@
 <div class="modal fade brs-register-modal" tabindex="-1" role="dialog" aria-labelledby="create" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content d-flex justify-content-center">
-            <form action="register" method="POST">
+            <form action="{{ route('admin.register.submit') }}" method="POST">
                 @csrf
                 <div class="row ">   
                     <div class="profile-img col-md-4 d-flex justify-content-center align-items-center">

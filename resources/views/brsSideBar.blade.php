@@ -120,6 +120,10 @@
                         </a>
                         <div class="link-label">Scheduling</div>
                     </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('admin.logout') }}">Logout</a>
+                    </li>
                     
                 </ul>
             <!-- </div> -->

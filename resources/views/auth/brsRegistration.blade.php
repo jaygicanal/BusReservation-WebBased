@@ -49,9 +49,11 @@
                                     <input type="email" id="email" name="email" class="form-control" placeholder="Email" required/>
                                 </div>
                                 <div class="form-group grp-password">
-                                    <input type="password" id="password" placeholder="Password" name="password"> 
-                                    <span class="show_password d-flex align-items-center justify-content-end" id="reg-pass-show"></span>
-                                    <i class="fa fa-eye-slash" aria-hidden="true"></i>
+                                    <div class="inner d-flex">
+                                        <input type="password" id="password" placeholder="Password" name="password"> 
+                                        <span class="show_password d-flex align-items-center justify-content-end" id="reg-pass-show">
+                                        <i class="fa fa-eye-slash" aria-hidden="true"></i></span>
+                                    </div>
                                     <span class="password-viewer">
                                         <div class="password-rules">
                                             <h6 style="font-weight:400;">Password must contain the following:</h6>

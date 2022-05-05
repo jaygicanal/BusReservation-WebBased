@@ -59,6 +59,9 @@
 
         var confirm_password = false;
         $(document).ready(function(){
+            $('#reg-pass-show').on('click', function() {
+                $('.password-rules').css('display', 'inline-block');
+            });
             $('#password').keyup(function(){
                 // check if Uppercase Letter existed in Password
                 if (/[A-Z]+/.test($("#password").val())) {
@@ -127,7 +130,6 @@
                     $("#confirm_password").css('border-color', '#ff0000');
                     confirm_password = false;
                 }
-                
             });
         });
     </script>
