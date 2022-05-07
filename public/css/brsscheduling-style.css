@@ -1,8 +1,9 @@
-body{
+.scheduling{
     background-color: #e5e5e5 !important;
+    height: 100vh;
 }
 .scheduling .scheduling-header{
-    background-color: #ff3200; 
+    background-color: #fa5127; 
     width: 100%;
     height: 75px;
 }
@@ -24,13 +25,25 @@ body{
 .scheduling  .scheduling-content{
     background-color: white;
     text-align: center;
+    padding-top: 15px;
 }
-.scheduling .table-content{
-    margin-top: 35px;
-    border: 1px solid black;
-    margin-bottom: 35px;
+
+tbody, td, tfoot, th, thead, tr {
+    border: none !important;
 }
+.scheduling .table-content, .scheduling td{
+    border: none !important;
+}
+
+.scheduling .sched_content{
+    border: 1px solid #e6e6e6 !important;
+    background-color: #e6e6e6;
+    border-radius: 15px;
+    padding: 15px 0;
+}
+
 .scheduling thead{
-    background-color: #ff6400; 
-    color: white;
+    background-color: #ffffff; 
+    color: #000000;
+    font-weight: 900;
 }

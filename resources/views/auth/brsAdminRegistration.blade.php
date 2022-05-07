@@ -1,5 +1,6 @@
 <!-- Modal -->
-<div class="modal fade brs-register-modal" tabindex="-1" role="dialog" aria-labelledby="create" aria-hidden="true">
+<div class="modal fade brs-register-modal" tabindex="-1" role="dialog" 
+data-bs-backdrop="static" data-bs-keyboard="false"  aria-labelledby="create" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content d-flex justify-content-center">
             <form action="{{ route('admin.register.submit') }}" method="POST">
@@ -61,12 +62,16 @@
                                     </span>
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" id="reg_re_password" name="reg_re_password" class="form-control" placeholder="Confirm Password" required/>
+                                <div class="inner d-flex">
+                                    <input type="password" id="reg_re_password" name="reg_re_password" class="form-control" disabled  placeholder="Confirm Password" required/>  
+                                    <span class="show_reg_re_password d-flex align-items-center justify-content-end" id="modal_reg_repass_show" >
+                                        <i class="fa fa-eye-slash" aria-hidden="true"></i></span>
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-content col-12">
                                 <div class="button-sec col-12 d-flex justify-content-center">
-                                    <button type="submit" id="submit" >Register</button>
+                                    <button type="submit" hover="false "id="submit" disabled>Register</button>
                                 </div>
                             </div>
                         </div>

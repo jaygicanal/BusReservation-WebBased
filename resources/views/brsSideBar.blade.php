@@ -1,8 +1,9 @@
 <style>
 /* SIDE NAVIGATION */
 .side-nav{
-    width: 80px;
+    width: 90px;
     position: fixed;
+    z-index: 99;
 }
 .side-nav .col-sm-auto{
     padding: 0;

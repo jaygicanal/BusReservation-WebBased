@@ -17,7 +17,6 @@
             })
         });
     </script>
-
     <script>
         $(document).ready(function(){
             $('#modal_reg_pass_show').on('click', function() {
@@ -31,6 +30,23 @@
                     $('.confirmation-col #password').attr('type', 'text');
                     $('#modal_reg_pass_show i').removeClass( "fa-eye-slash" );
                     $('#modal_reg_pass_show i').addClass( "fa-eye" );
+                }
+            })
+        });
+    </script>
+     <script>
+        $(document).ready(function(){
+            $('#modal_reg_repass_show').on('click', function() {
+                /* $('.password-rules').css('display', 'inline-block'); */
+                event.preventDefault();
+                if($('.confirmation-col #reg_re_password').attr("type") == "text"){
+                    $('.confirmation-col #reg_re_password').attr('type', 'password');
+                    $('#modal_reg_repass_show i').addClass( "fa-eye-slash" );
+                    $('#modal_reg_repass_show i').removeClass( "fa-eye" );
+                }else if($('.confirmation-col #reg_re_password').attr("type") == "password"){
+                    $('.confirmation-col #reg_re_password').attr('type', 'text');
+                    $('#modal_reg_repass_show i').removeClass( "fa-eye-slash" );
+                    $('#modal_reg_repass_show i').addClass( "fa-eye" );
                 }
             })
         });
@@ -59,9 +75,9 @@
 
         var confirm_password = false;
         $(document).ready(function(){
-            $('#modal_reg_pass_show').on('click', function() {
+           /*  $('#modal_reg_pass_show').on('click', function() {
                 $('.password-rules').css('display', 'inline-block');
-            });
+            }); */
             $('#password').keyup(function(){
                 // check if Uppercase Letter existed in Password
                 if (/[A-Z]+/.test($("#password").val())) {
@@ -99,6 +115,7 @@
                 if ($('#password').val().length > 7){
                     $('#length').css('color', '#00ff00');
                     length = true;
+                    
                 } else{
                     $('#length').css('color', '#ff0000');
                     length = false;
@@ -107,31 +124,43 @@
                     $("#password").css('border-color', '#00ff00');
                     $('.password-rules').css('display', 'none');
                     pass_contain = true;
+                    $("#reg_re_password").attr("disabled", false);
                     
                 } else{
                     $("#password").css('border-color', '#ff0000');
                     pass_contain = false;
                     $('.password-rules').css('display', 'inline-block');
+                    $("#reg_re_password").attr("disabled", true);
                 }
             });
-
             $('#password').mouseleave(function(){ 
                 //if (pass_contain == true){
                     $(this).css('border-color', '#000000')
                 //}
             });
 
-            $('#confirm_password').keyup(function(){
-                if ($('#confirm_password :password').val() == $('#password :password').val()){
-                    $("#confirm_password").css('border-color', '#00ff00');
+            $('#reg_re_password').mouseleave(function(){
+                if ($('#reg_re_password :password').val() == $('#password :password').val()){
                     confirm_password = true;
-                    /* $("#submit").attr("disabled", true); */
+                    $("#submit").attr("disabled", false);
+                    $("#submit").css("border-color", '#ff6400');
+                    $("#submit").css("color", '#ff6400');
+                    $("#submit").hover("border-color", '#ff6400');
+                    $("#submit").hover("color", '#ff6400');
+                    $("#submit").hover("transform", 'scale("1.1")');
+                    
+                    
                 } else {
-                    $("#confirm_password").css('border-color', '#ff0000');
                     confirm_password = false;
+                    $("button").attr("disabled", true);
+                    $("#submit").css("border-color", 'black');
+                    $("#submit").css("color", 'black');
+                    $("#submit").hover("border-color", 'black');
+                    $("#submit").hover("color", 'black');
+                    
                 }
-                
             });
+
         });
     </script>   
 @endpush

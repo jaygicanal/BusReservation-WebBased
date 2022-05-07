@@ -6,9 +6,9 @@
 
 @section('content')
 <section class="scheduling">
-    <div class="container">
+    <div class="container-xxl">
         <div class="row">
-            <div class="col">
+            <div class="col-md-12 p-0">
                 <div class="scheduling-header d-flex justify-content-end align-items-center">
                     <div class="add">
                         <button id="btn_add_sched" class= "btn-add" data-bs-toggle="modal" data-bs-target="#brs-add-schedule">Add Schedule</button>
@@ -17,9 +17,43 @@
                     @include('schedule_views.add_schedule')
                 </div>
                 
-                <div class="scheduling-content d-flex justify-content-center">
-                    <div class="table-content col-md-11">
-                        <table class="table">
+                <div class="scheduling-content d-flex justify-content-center py-3">
+                    <div class="inner-content col-md-11">
+                        <div class="row py-3">
+                            <div class="col-3 d-flex align-items-center justify-content-center">Route</div>
+                            <div class="col-2 d-flex align-items-center justify-content-center">Departure Time</div>
+                            <div class="col-2 d-flex align-items-center justify-content-center">Bus Class</div>
+                            <div class="col-2 d-flex align-items-center justify-content-center">Features</div>
+                            <div class="col-2 d-flex align-items-center justify-content-center">Seat Status</div>
+                            <div class="col-1 d-flex align-items-center justify-content-center">Actions </div>
+                        </div>
+                        
+                        @if($scheds)
+                        @foreach($scheds as $scheduleList)
+                        <div class="row sched_content my-2">
+                            <div class="col-3 d-flex align-items-center justify-content-center">
+                                <div class="bus-route">
+                                    <div class="route">{{$scheduleList->origin}} - {{$scheduleList->destination}}</div>
+                                    @if($scheduleList->via != "-")
+                                    <div class="via">via {{$scheduleList->via}}</div>
+                                    @endif
+                                </div>
+                                
+                            </div>
+                            <div class="col-2 d-flex align-items-center justify-content-center">{{$scheduleList->departure_time}}</div>
+                            <div class="col-2 d-flex align-items-center justify-content-center">{{$scheduleList->bus_class}}</div>
+                            <div class="col-2 d-flex align-items-center justify-content-center">
+                                <div class="features">
+                                    <p>{{$scheduleList->with_wifi}}</p>
+                                    <p>{{$scheduleList->with_tv}}</p>
+                                </div>
+                            </div>
+                            <div class="col-2 d-flex align-items-center justify-content-center">20 Left</div>
+                            <div class="col-1 d-flex align-items-center justify-content-center"><button>View Details</button></div>
+                        </div>
+                        @endforeach
+                        @endif
+                        <!-- <table class="table">
                             <thead>
                                 <tr>
                                 <th scope="col">Route</th>
@@ -30,7 +64,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
+                                <tr class="row_sched">
                                     <td>Bulan - Sorsogon</td>
                                     <td>10:00 AM</td>
                                     <td>Ordinary</td>
@@ -38,7 +72,7 @@
                                     <td><button>View Details</button></td>
                                 </tr>
                             </tbody>
-                        </table> 
+                        </table>  -->
                     </div>
                 </div>
             </div>

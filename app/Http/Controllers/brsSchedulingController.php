@@ -20,7 +20,8 @@ class brsSchedulingController extends Controller
      */
     public function index()
     {
-        return view('brsScheduling');
+        $scheds = Scheduling::all();
+        return view('brsScheduling')->with('scheds', $scheds);
     }
 
     /**
@@ -68,7 +69,7 @@ class brsSchedulingController extends Controller
         ]);
         event(new Registered($schedule));
 
-        return redirect()->intended(route('scheduling'))->with('success', 'Added Successfully!');
+        return redirect()->route('scheduling')->with('success', 'Added Successfully!');
     }
 
     /**

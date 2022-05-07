@@ -36,14 +36,17 @@ Route::prefix('admin')->group(function() {
     Route::post('/register', [AdminRegisterController::class, 'store'])->name('admin.register.submit');
     Route::get('/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
 
-   }) ;
+});
 
 // FOR NORMAL USER REGISTRATION AND LOGIN
-    Route::get('/login', [brsLoginController::class, 'index'])->name('login');
-    Route::post('user-login', [brsLoginController::class, 'userlogin'])->name('user.login');
-    Route::get('sign-out', [brsLoginController::class, 'signOut'])->name('user.signout');
+Route::get('/login', [brsLoginController::class, 'index'])->name('login');
+Route::post('user-login', [brsLoginController::class, 'userlogin'])->name('user.login');
+Route::get('sign-out', [brsLoginController::class, 'signOut'])->name('user.signout');
+Route::resource('/register', brsRegistrationController::class);
 
-    //Route::resource('/register', brsRegistrationController::class);
+Route::get('/scheduling', [brsSchedulingController::class, 'index'])->name('scheduling');
+
+Route::resource('/schedule', brsSchedulingController::class);
 
 
 
@@ -60,9 +63,6 @@ Route::prefix('admin')->group(function() {
 //     });
 // });
 
-
-
-
 // Route::get('/booking', function () {
 //     return view('brsBooking');
 // });
@@ -75,7 +75,6 @@ Route::prefix('admin')->group(function() {
 //     return view('brsForecasting');
 // });
 
-// Route::get('/scheduling', [brsSchedulingController::class, 'index'])->name('scheduling');
-// Route::resource('schedule', brsSchedulingController::class);
+
 
 
