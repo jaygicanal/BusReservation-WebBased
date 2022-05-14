@@ -113,5 +113,49 @@ input::-webkit-inner-spin-button {
 }
 .sched-bus thead{
     background-color: #ff3200;
-    color: white;
+    color: #ffffff;
+}
+
+/* modal */
+.brs-busseat-modal .content{
+    margin-bottom: 1px;
+}
+.brs-busseat-modal .pass-details,
+.brs-busseat-modal .bus-details{
+    margin-top: 20px;
+}
+
+.grp-seats ul{
+    list-style: none;
+}
+
+.grp-seats .grp-inner{
+    position: relative;
+    text-align: center;
+}
+
+.grp-seats .icon-seat{
+    background-color: #b1b1b1;
+    width: 40px;
+}
+
+.grp-seats .seat-nbr{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: bold;
+}
+
+.grp-seats .bus-hallway{
+    width: 40px;
+}
+
+/* CSS Style when Seat is selected */
+.grp-seats a.selected .icon-seat{
+    background-color: #ff6400 !important;
+}
+
+.grp-seats a.selected .seat-nbr{
+    color: #ffffff;
 }

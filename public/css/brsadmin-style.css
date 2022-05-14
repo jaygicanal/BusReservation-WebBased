@@ -213,11 +213,20 @@ body{
     padding: 10px 20px 10px 20px;
     border-radius: 10px;
 }
-.modal  button:hover{
-    transform: none;
+
+.modal  #submit:hover{
+    transform: scale(1.1);
     color: black;
     border: 2px solid black;
     background-color: white;
+}
+
+/* .modal #submit.enable{
+    transform: scale(1.2);
+} */
+
+.modal #submit.disable:hover{
+    transform: scale(1);
 }
 
 /* password */

@@ -1,7 +1,7 @@
 @extends('layouts.brsApp')
 @push('styles')
 <link rel="stylesheet" href="{{asset('css/brsadmin-style.css')}}"> 
-<script>
+    <script>
         $(document).ready(function(){
             $('#admin-pass-show').on('click', function() {
                 event.preventDefault();
@@ -139,17 +139,14 @@
                 //}
             });
 
-            $('#reg_re_password').mouseleave(function(){
-                if ($('#reg_re_password :password').val() == $('#password :password').val()){
+            $('#reg_re_password').keyup(function(){
+                if ($('#password').val() == $('#reg_re_password').val()){
                     confirm_password = true;
                     $("#submit").attr("disabled", false);
                     $("#submit").css("border-color", '#ff6400');
                     $("#submit").css("color", '#ff6400');
                     $("#submit").hover("border-color", '#ff6400');
                     $("#submit").hover("color", '#ff6400');
-                    $("#submit").hover("transform", 'scale("1.1")');
-                    
-                    
                 } else {
                     confirm_password = false;
                     $("button").attr("disabled", true);
@@ -157,7 +154,6 @@
                     $("#submit").css("color", 'black');
                     $("#submit").hover("border-color", 'black');
                     $("#submit").hover("color", 'black');
-                    
                 }
             });
 

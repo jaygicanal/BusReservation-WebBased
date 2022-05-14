@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\brsLoginController;
 use App\Http\Controllers\brsRegistrationController;
 use App\Http\Controllers\brsSchedulingController;
+use App\Http\Controllers\brsReservationController;
 use App\Http\Controllers\Auth\AdminLoginController;
 use App\Http\Controllers\Auth\AdminController;
 use App\Http\Controllers\Auth\AdminRegisterController;
@@ -19,10 +20,6 @@ use App\Http\Controllers\Auth\AdminRegisterController;
 |
 */
 Auth::routes();
-
-Route::get('/', function () {
-    return view('brsLandingPage');
-});
 
 Route::get('admin/', function () {
     return view('auth.brsAdmin');
@@ -50,30 +47,29 @@ Route::resource('/schedule', brsSchedulingController::class);
 
 
 
+Route::group([ 'middleware' => ['auth']], function () {
+    Route::get('/', [brsReservationController::class, 'index'])->name('dashboard');
 
-// Route::group([ 'middleware' => ['auth']], function () {
-//     Route::get('/', [brsLoginController::class, 'dashboard'])->name('dashboard');
+    Route::get('/available-bus', function () {
+        return view('brsListofBus');
+    });
 
-//     Route::get('/available-bus', function () {
-//         return view('brsListofBus');
-//     });
+    Route::get('/payment', function () {
+        return view('brsPayment');
+    });
+});
 
-//     Route::get('/payment', function () {
-//         return view('brsPayment');
-//     });
-// });
+Route::get('/booking', function () {
+    return view('brsBooking');
+});
 
-// Route::get('/booking', function () {
-//     return view('brsBooking');
-// });
+Route::get('/admin', function () {
+    return view('brsAdminDashboard');
+});
 
-// Route::get('/admin', function () {
-//     return view('brsAdminDashboard');
-// });
-
-// Route::get('/forecasting', function () {
-//     return view('brsForecasting');
-// });
+Route::get('/forecasting', function () {
+    return view('brsForecasting');
+});
 
 
 

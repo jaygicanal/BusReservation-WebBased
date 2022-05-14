@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator; 
 use RealRashid\SweetAlert\Facades\Alert;
 
-class brsSchedulingController extends Controller
+class brsReservationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,8 +20,8 @@ class brsSchedulingController extends Controller
      */
     public function index()
     {
-        $scheds = Scheduling::all();
-        return view('brsScheduling')->with('scheds', $scheds);
+        $bus_scheds = Scheduling::all();
+        return view('brsLandingPage')->with('bus_scheds', $bus_scheds);
     }
 
     /**
@@ -31,7 +31,7 @@ class brsSchedulingController extends Controller
      */
     public function create()
     {
-        return view('brsScheduling');
+        //
     }
 
     /**
@@ -42,36 +42,7 @@ class brsSchedulingController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(), [ 
-            'trans_id' => 'required',
-            'origin' => 'required',
-            'destination' => 'required',
-            'via' => 'required',
-            'bus_schedule' => 'required',
-            'departure_time' => 'required',
-            'bus_class' => 'required',
-            'with_wifi' => 'required',
-            'with_tv' => 'required',
-        ]);
-
-        if ($validator->fails()) { 
-            return redirect()->back()->withErrors('Required field is empty')->withInput(); 
-        }
-        
-        $schedule = Scheduling::create([
-            'trans_id' => $request['trans_id'], 
-            'origin' => $request['origin'], 
-            'destination' => $request['destination'],
-            'via' => $request['via'], 
-            'bus_schedule' => $request['bus_schedule'], 
-            'departure_time' => $request['departure_time'],
-            'bus_class' => $request['bus_class'],
-            'with_wifi' => $request['with_wifi'],
-            'with_tv' => $request['with_tv'],
-        ]);
-        event(new Registered($schedule));
-
-        return redirect()->route('scheduling')->with('success', 'Added Successfully!');
+        //
     }
 
     /**

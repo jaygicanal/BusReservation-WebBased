@@ -199,8 +199,8 @@ body{
     margin-bottom: 10px;
 }
 .modal button{
-    color: #ff6400;
-    border: 2px solid #ff6400;
+    color: black;
+    border: 2px solid black;
     background-color: white;
     margin-bottom: 10px;
     font-size: 18px;
@@ -208,14 +208,18 @@ body{
     padding: 10px 20px 10px 20px;
     border-radius: 10px;
 }
-.modal  button:hover{
+.modal button:hover{
     transform: scale(1.1);
-    color: #ff6400;
-    border: 2px solid #ff6400;
+    color: black;
+    border: 2px solid black;
     background-color: white;
 }
 
 /* password */
+#password {
+    margin-bottom: 0;
+}
+
 .grp-password {
     position: relative;
 }
@@ -252,4 +256,17 @@ body{
     font-size: 20px !important;
 }
 
+.modal .show_re_password{
+    height: 43px;
+    position: absolute;
+    display: inline;
+    transform: translateX(225px);
+    z-index: 2;
+    
+}
+.modal .show_re_password i {
+    margin: 0;
+    padding: 0;
+    font-size: 20px !important;
+}
 

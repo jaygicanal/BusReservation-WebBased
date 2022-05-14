@@ -15,7 +15,7 @@
                                 <div class="form-content col-9 p-2">
                                     <div class="form-group">
                                         <label for="trans_id"></label>
-                                        <input type="text" id="trans_id" name="trans_id" class="form-control"  placeholder="0000" required disabled/>
+                                        <input type="text" id="trans_id" name="trans_id" class="form-control"  placeholder="0000" required readonly/>
                                     </div>
                                     <div class="grp-route">
                                         <div class="ipt-label">Route</div>

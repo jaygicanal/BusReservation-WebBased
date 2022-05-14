@@ -1,7 +1,8 @@
 @extends('layouts.brsApp')
 
 @push('styles')
-    <link rel="stylesheet" href="{{asset('css/brslogin-style.css')}}"> 
+    <link rel="stylesheet" href="{{asset('css/brslogin-style.css')}}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
         $(document).ready(function(){
             $('#login-pass-show').on('click', function() {
@@ -38,6 +39,24 @@
 
     <script>
         $(document).ready(function(){
+            $('#modal_repass_show').on('click', function() {
+                /* $('.password-rules').css('display', 'inline-block'); */
+                event.preventDefault();
+                if($('.confirmation-col #re_password').attr("type") == "text"){
+                    $('.confirmation-col #re_password').attr('type', 'password');
+                    $('#modal_repass_show i').addClass( "fa-eye-slash" );
+                    $('#modal_repass_show i').removeClass( "fa-eye" );
+                }else if($('.confirmation-col #re_password').attr("type") == "password"){
+                    $('.confirmation-col #re_password').attr('type', 'text');
+                    $('#modal_repass_show i').removeClass( "fa-eye-slash" );
+                    $('#modal_repass_show i').addClass( "fa-eye" );
+                }
+            })
+        });
+    </script>
+
+    <script>
+        $(document).ready(function(){
             $('.brs-register-modal').on('hidden.bs.modal', function() {
                 $('.brs-register-modal form')[0].reset();
                 $('.password-rules').css('display', 'none');
@@ -45,6 +64,65 @@
             $('#password').focusout(function() {
                 $('.password-rules').css('display', 'none');
             }); 
+        });
+    </script>
+
+    <script>
+        function autoAge(){
+            var birth_date = new Date(document.getElementById("bday").value);
+            var birth_date_day = birth_date.getDate();
+            var birth_date_month = birth_date.getMonth()
+            var birth_date_year = birth_date.getFullYear();
+
+            var today_date = new Date();
+            var today_day = today_date.getDate();
+            var today_month = today_date.getMonth();
+            var today_year = today_date.getFullYear();
+
+            var calculated_age = 0;
+
+            if (today_month > birth_date_month) {
+                calculated_age = today_year - birth_date_year;
+            }
+            else if (today_month == birth_date_month)
+            {
+                if (today_day >= birth_date_day) {
+                    calculated_age = today_year - birth_date_year;
+                }
+                else {
+                    calculated_age = today_year - birth_date_year - 1;
+                }
+            }
+
+            else {
+                calculated_age = today_year - birth_date_year - 1;
+            }
+
+            var output_value = calculated_age;
+
+            if(output_value <= 0){
+                calculated_age = 0;
+            }
+            else{
+                calculated_age = output_value;
+            }
+            document.getElementById('age').value = calculated_age;
+        }
+    </script>
+    
+    <script>
+        $(document).ready(function(){
+            $('#grp_id-number').hide();
+            $('#discount').on('change', function(){
+                var discount = $('#discount :selected').val();
+                if((discount == "PWD") || (discount == "Senior Citizen") || (discount == "Student")){
+                    $('#grp_id-number').show();
+                }
+                else{
+                    $('#grp_id-number').hide();
+                    $('#id_no').val('-');
+                }
+            })
         });
     </script>
 
@@ -59,9 +137,9 @@
 
         var confirm_password = false;
         $(document).ready(function(){
-            $('#reg-pass-show').on('click', function() {
+            /* $('#reg-pass-show').on('click', function() {
                 $('.password-rules').css('display', 'inline-block');
-            });
+            }); */
             $('#password').keyup(function(){
                 // check if Uppercase Letter existed in Password
                 if (/[A-Z]+/.test($("#password").val())) {
@@ -107,11 +185,13 @@
                     $("#password").css('border-color', '#00ff00');
                     $('.password-rules').css('display', 'none');
                     pass_contain = true;
+                    $("#re_password").attr("disabled", false);
                     
                 } else{
                     $("#password").css('border-color', '#ff0000');
                     pass_contain = false;
                     $('.password-rules').css('display', 'inline-block');
+                    $("#re_password").attr("disabled", true);
                 }
             });
 
@@ -121,18 +201,27 @@
                 //}
             });
 
-            $('#confirm_password').keyup(function(){
-                if ($('#confirm_password :password').val() == $('#password :password').val()){
-                    $("#confirm_password").css('border-color', '#00ff00');
+            $('#re_password').keyup(function(){
+                if ($('#password').val() == $('#re_password').val()){
                     confirm_password = true;
-                    /* $("#submit").attr("disabled", true); */
+                    $("#submit").attr("disabled", false);
+                    $("#submit").css("border-color", '#ff6400');
+                    $("#submit").css("color", '#ff6400');
+                    $("#submit").hover("border-color", '#ff6400');
+                    $("#submit").hover("color", '#ff6400');
                 } else {
-                    $("#confirm_password").css('border-color', '#ff0000');
                     confirm_password = false;
+                    $("button").attr("disabled", true);
+                    $("#submit").css("border-color", 'black');
+                    $("#submit").css("color", 'black');
+                    $("#submit").hover("border-color", 'black');
+                    $("#submit").hover("color", 'black');
                 }
             });
         });
     </script>
+
+    
 @endpush
 
 @section('content')

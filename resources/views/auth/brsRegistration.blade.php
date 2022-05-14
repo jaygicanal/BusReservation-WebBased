@@ -1,5 +1,5 @@
 <!-- Modal -->
-<div class="modal fade brs-register-modal" tabindex="-1" role="dialog" aria-labelledby="create" aria-hidden="true">
+<div class="modal fade brs-register-modal" tabindex="-1" role="dialog" aria-labelledby="create" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content d-flex justify-content-center">
             <form action="register" method="POST">
@@ -29,27 +29,40 @@
                                 <div class="form-group">
                                     <input type="text" id="lname" name="lname" class="form-control"  placeholder="Last Name" required/>
                                 </div>
-                                <div class="combine d-flex justify-content-between align-items-center">
-                                    <div class="form-group col-4">
-                                        <input type="number" id="age" name="age" class="form-control"  placeholder="Age" required>
-                                    </div>
-                                    <div class="form-group col-7">
-                                        <select name="gender" id="gender" class="form-option" required>
-                                            <option selected>Your Gender</option>
-                                            <option value="Male">Male</option>
-                                            <option value="Female">Female</option>
-                                        </select>
-                                    </div>
+                                <div class="form-group">
+                                    <input type="date" id="bday" name="bday" class="form-control"  placeholder="Birthday" required onchange="autoAge()">
+                                </div>
+                                <div class="form-group">
+                                    <input type="number" id="age" name="age" class="form-control"  placeholder="Age" readonly required>
+                                </div>
+                                <div class="form-group">
+                                    <select name="gender" id="gender" class="form-option" required>
+                                        <option selected>Your Gender</option>
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                    </select>
                                 </div>
                                 
                             </div>
                             <!-- <div class="ps-2"></div> -->
                             <div class="form-content col-6 p-2">
                                 <div class="form-group">
+                                    <select name="discount" id="discount" class="form-option" required>
+                                        <option selected>Discounted 20%</option>
+                                        <option value="None">None</option>
+                                        <option value="PWD">PWD</option>
+                                        <option value="Senior Citizen">Senior Citizen</option>
+                                        <option value="Student">Student</option>
+                                    </select>
+                                </div>
+                                <div class="form-group" id="grp_id-number">
+                                    <input type="text" id="id_no" name="id_no" class="form-control"  placeholder="I.D. Number">
+                                </div>
+                                <div class="form-group">
                                     <input type="email" id="email" name="email" class="form-control" placeholder="Email" required/>
                                 </div>
                                 <div class="form-group grp-password">
-                                    <div class="inner d-flex">
+                                    <div class="inner-grp d-flex">
                                         <input type="password" id="password" placeholder="Password" name="password"> 
                                         <span class="show_password d-flex align-items-center justify-content-end" id="reg-pass-show">
                                         <i class="fa fa-eye-slash" aria-hidden="true"></i></span>
@@ -68,12 +81,16 @@
                                     </span>
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" id="re_password" name="re_password" class="form-control" placeholder="Confirm Password" required/>
+                                    <div class="inner d-flex">
+                                        <input type="password" id="re_password" name="re_password" class="form-control" disabled  placeholder="Confirm Password" required/>
+                                        <span class="show_re_password d-flex align-items-center justify-content-end" id="modal_repass_show">
+                                            <i class="fa fa-eye-slash" aria-hidden="true"></i></span>
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-content col-12">
                                 <div class="button-sec col-12 d-flex justify-content-center">
-                                    <button type="submit" id="submit" >Register</button>
+                                    <button type="submit" id="submit" disabled >Register</button>
                                 </div>
                             </div>
                         </div>

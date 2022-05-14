@@ -15,6 +15,7 @@ class CreateSchedulingTable extends Migration
     {
         Schema::create('scheduling', function (Blueprint $table) {
             $table->id();
+            $table->string('trans_id');
             $table->string('origin');
             $table->string('destination');
             $table->string('via')->nullable();

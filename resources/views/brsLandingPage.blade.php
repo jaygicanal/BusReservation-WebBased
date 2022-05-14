@@ -2,75 +2,52 @@
 @include('brsHeader');
 
 @push('styles')
-<link rel="stylesheet" href="{{asset('css/brslandingpage-style.css')}}">   
-<script src="https://f001.backblazeb2.com/file/buonzz-assets/jquery.ph-locations-v1.0.0.js"></script> 
+    <link rel="stylesheet" href="{{asset('css/brslandingpage-style.css')}}">   
+    <script src="https://f001.backblazeb2.com/file/buonzz-assets/jquery.ph-locations-v1.0.0.js"></script> 
 
-<!-- <script>
+    <script>
+        $(document).ready(function(){
+            var seat_selected = false;
+            $('.grp-inner').click(function(){
+                var seat_number = $(this).find('.seat-nbr').text();
+
+                if(!$(this).hasClass("selected") && seat_selected == true){
+                    $(this).removeClass('selected');
+                }else if($(this).hasClass("selected")  && seat_selected == true){
+                    $(this).removeClass('selected');
+                    seat_selected = false;
+
+                    $('#seat_no').val('');
+                }else if(!$(this).hasClass("selected")  && seat_selected == false){
+                    $(this).addClass('selected');
+                    seat_selected = true;
+                    
+                    $('#seat_no').val(seat_number);
+                }
+            })
+        })
+    </script>
+
+    <!-- Fetch Bus Data -->
+    <script>    
+        $('#bus_details').on('show.bs.modal', function(event) {
+            var button = $(event.relatedTarget)
+            var trans_id = button.data('trans_id')
+            var departure = button.data('depart_time')
+            var bus_class = button.data('bus_class')
+            var wifi = button.data('with_wifi')
+            var tv = button.data('with_tv')
             
-var myfrm_handlers = {
-    /* fill_provinces:  function(){
-        var region_code = $(this).val();
-        $('#frm-').ph_locations('fetch_list', [{"region_code": region_code}]);
-    }, */
 
-    /* fill_cities: function(){
-        var province_code = $(this).val();
-        $('#city').ph_locations( 'fetch_list', [{"province_code": province_code}]);
-    }, */
-
-    fill_barangays: function(){
-        var city_code = $(this).val();
-        $('#frm-brgy-dd').ph_locations('fetch_list', [{"city_code": city_code}]);
-    }
-};
-$(document).ready(function(){
-    $('#region').on('change', myfrm_handlers.fill_provinces);
-    $('#frm-prov-dd').on('change', myfrm_handlers.fill_cities);
-    $('#frm-city-dd').on('change', myfrm_handlers.fill_barangays);
-
-    /* $('#region').ph_locations({'location_type': 'regions'}); */
-    $('#frm-prov-dd').ph_locations({'location_type': 'provinces'});
-    $('#frm-city-dd').ph_locations({'location_type': 'cities'});
-    $('#frm-brgy-dd').ph_locations({'location_type': 'barangays'});
-
-    $('#frm-city-dd').ph_locations('fetch_list', [{"province_code": '0562'}]);
-});
-
-</script>
-
-
-<script>
-            
-var my_handlers = {
-    /* fill_provinces:  function(){
-        var region_code = $(this).val();
-        $('#frm-').ph_locations('fetch_list', [{"region_code": region_code}]);
-    }, */
-
-    /* fill_cities: function(){
-        var province_code = $(this).val();
-        $('#city').ph_locations( 'fetch_list', [{"province_code": province_code}]);
-    }, */
-
-    fill_barangays: function(){
-        var city_code = $(this).val();
-        $('#to-brgy-dd').ph_locations('fetch_list', [{"city_code": city_code}]);
-    }
-};
-$(document).ready(function(){
-    $('#region').on('change', my_handlers.fill_provinces);
-    $('#to-prov-dd').on('change', my_handlers.fill_cities);
-    $('#to-city-dd').on('change', my_handlers.fill_barangays);
-
-    /* $('#region').ph_locations({'location_type': 'regions'}); */
-    $('#to-prov-dd').ph_locations({'location_type': 'provinces'});
-    $('#to-city-dd').ph_locations({'location_type': 'cities'});
-    $('#to-brgy-dd').ph_locations({'location_type': 'barangays'});
-
-    $('#to-city-dd').ph_locations('fetch_list', [{"province_code": '0562'}]);
-});
-</script> -->
-
+            var modal = $(this)
+            /* modal.find('.modal-title').text('View Resident Profile'); */
+            modal.find('.modal-body #transit_id').val(trans_id);
+            modal.find('.modal-body #bus_class').val(bus_class);
+            modal.find('.modal-body #departure').val(departure);
+            modal.find('.modal-body #wifi').val(wifi);
+            modal.find('.modal-body #tv').val(tv);
+        })
+    </script>
 @endpush
 
 @section('content')
@@ -91,9 +68,12 @@ $(document).ready(function(){
                                     <div class="cmb-ttl">O R I G I N</div>
                                 </div>
                                 <div class="cmb-group">
-                                    <select class="from-city from-city-sm " onblur="this.size=1;"  aria-label=".form-select-lg example" id="frm-city-dd"></select>
-                                    <select class="from-option from-option-sm " onblur="this.size=1;" aria-label=".form-select-lg example" id="frm-opt-dd"></select>
-                                    <select class="from-barangay from-barangay-sm " onblur="this.size=1;" aria-label=".form-select-lg example" id="frm-brgy-dd"></select>
+                                    <select class="from-city from-city-sm " onblur="this.size=1;"  aria-label=".form-select-lg example" id="frm-city-dd">
+                                        <option selected>Pick-Up Location</option>
+                                        <option value="Male">Terminal</option>
+                                        <option value="Female">Along The Road</option></select>
+                                    <select class="from-option from-option-sm " onblur="this.size=1;" aria-label=".form-select-lg example" id="frm-opt-dd" hidden></select>
+                                    <select class="from-barangay from-barangay-sm " onblur="this.size=1;" aria-label=".form-select-lg example" id="frm-brgy-dd" hidden></select>
                                 </div>
                             </div>
                         </div>
@@ -104,25 +84,22 @@ $(document).ready(function(){
                                     <div class="cmb-ttl">D E S T I N A T I O N </div>
                                 </div>
                                 <div class="cmb-group">
-                                    <select class="to-city to-city-sm " onblur="this.size=1;"  aria-label=".form-select-lg example" id="to-city-dd"></select>
-                                    <select class="to-option to-option-sm " onblur="this.size=1;" aria-label=".form-select-lg example" id="to-opt-dd"></select>
-                                    <select class="to-barangay to-barangay-sm" onblur="this.size=1;" id="to-brgy-dd"></select>
+                                    <select class="to-city to-city-sm " onblur="this.size=1;"  aria-label=".form-select-lg example" id="to-city-dd">
+                                        <option selected>Landingan Location</option>
+                                        <option value="Male">Terminal</option>
+                                        <option value="Female">Along The Road</option>
+                                    </select>
+                                    <select class="to-option to-option-sm " onblur="this.size=1;" aria-label=".form-select-lg example" id="to-opt-dd" hidden></select>
+                                    <select class="to-barangay to-barangay-sm" onblur="this.size=1;" id="to-brgy-dd" hidden></select>
                                 </div>
                             </div>
                         </div>
-                        <div class="input-group">
+                        <div class="input-group d-flex justify-content-center">
                             <div class="col-5 input-form d-flex justify-content-center">
                                 <div class="icon">
                                     <i class="fa fa-calendar" aria-hidden="true"></i>
                                 </div>    
                                 <input type="date" id="date" name="date" placeholder="Date" required/>
-                            </div>
-                            <div class="col-1 me-3 "></div>
-                            <div class="col-3 input-form d-flex justify-content-center">
-                                <div class="icon">
-                                    <i class="fa fa-user" aria-hidden="true"></i>
-                                </div>    
-                                <input type="number" id="tp-id" name="tp" placeholder="0" min="1" oninput="validity.valid||(value='');" required/>
                             </div>
                         </div>
                         <div class="form-nav d-flex justify-content-center">
@@ -144,29 +121,40 @@ $(document).ready(function(){
                 <table class="table">
                     <thead>
                         <tr>
-                        <th scope="col">Bus Name</th>  
-                        <th scope="col">Date</th>
+                        <th scope="col">Route</th>  
                         <th scope="col">Time</th>
-                        <th scope="col">Seats Status</th>
+                        <th scope="col">Class</th>
                         <th scope="col">View Seats</th>
 
                         </tr>
                     </thead>
                     <tbody>
+                        @if($bus_scheds)
+                        @foreach($bus_scheds as $busSchedules)
                         <tr>
-                        <td>Queens</td>
-                        <td>10/10/22</td>
-                        <td>9:00 Am</td>
-                        <td>Full</td>
-                        <th scope="col"><button>View</button></th> 
+                            <!-- <div class="hidden_contents d-none">
+                                {{$busSchedules->id}} - {{$busSchedules->trans_id}}
+                            </div> -->
+                            <td>
+                                {{$busSchedules->origin}} - {{$busSchedules->destination}}
+                                @if($busSchedules->via != "-")
+                                <div class="via">via {{$busSchedules->via}}</div>
+                                @endif
+                            </td>
+                            <td>{{$busSchedules->departure_time}}</td>
+                            <td>{{$busSchedules->bus_class}}</td>
+                            <td>
+                                <div type="button" class="btn-inner">
+                                    <!-- <a href="#" class="text-nav btn-update d-flex align-items-center justify-content-center"><em class="fa fa-pencil" aria-hidden="true"></em>Edit</a> -->
+                                    <a data-bs-toggle="modal" type="button" data-trans_id="{{$busSchedules->trans_id}}" data-depart_time="{{$busSchedules->departure_time}}" data-bus_class="{{$busSchedules->bus_class}}" data-with_wifi="{{$busSchedules->with_wifi}}" data-with_tv="{{$busSchedules->with_tv}}" data-bs-target="#bus_details" class="text-nav btn-view-details d-flex align-items-center justify-content-center">
+                                        <em class="fa fa-eye" aria-hidden="true"></em>View
+                                    </a>
+                                    @include('brsBusSeat')
+                                </div>
+                            </td> 
                         </tr>
-                        <tr>
-                        <td>Queens</td>
-                        <td>11/11/22</td>
-                        <td>6:00 Am</td>
-                        <td>Full</td>
-                        <th scope="col"><button>View</button></th>
-                        </tr>
+                        @endforeach
+                        @endif
                     </tbody>
                 </table>
             </div>

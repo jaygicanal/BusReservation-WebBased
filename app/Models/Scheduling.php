@@ -11,6 +11,7 @@ class Scheduling extends Model
     public $table = 'scheduling';
 
     protected $fillable = [
+        'trans_id',
         'origin',
         'destination',
         'via',
