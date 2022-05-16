@@ -63,9 +63,30 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-11 tab-pane" id="nav-route" aria-labelledby="nav-route-tab">
-
-
+                <div class="col-12 tab-pane" id="nav-route" aria-labelledby="nav-route-tab">
+                    <div class="row">
+                        <div class="col-6">
+                            <h6>Terminal</h6>
+                            @if($routes)
+                            @foreach($routes as $routeList)
+                                @if($routeList->route_category == "Terminal")
+                                    <div class="listofterminals">{{$routeList->place}}</div>
+                                @endif
+                            @endforeach
+                            @endif
+                        </div>
+                        <div class="col-6">
+                            <h6>Along The Road</h6>
+                            @if($routes)
+                            @foreach($routes as $routeList)
+                                @if($routeList->route_category == "Along The Road")
+                                    <div class="listofroads">{{$routeList->place}}</div>
+                                @endif
+                            @endforeach
+                            @endif
+                        </div>
+                    </div>
+                </div>
                 </div>
             </div>
                 
@@ -120,14 +141,14 @@
             var newElem = "";
             newElem += '<tr>';
             newElem += '<td><div class="form-group">';
-            newElem += '<select name="bus_route" id="bus_route" class="form-select route_bus" required>';
+            newElem += '<select name="route_category[]" class="form-select route_bus" required>';
             newElem += '<option selected>Choose Option</option>';
             newElem += '<option value="Terminal">Terminal</option>';
             newElem += '<option value="Along The Road">Along The Road</option>';
             newElem += '</select>';
             newElem += '</div></td>';
             newElem += '<td><div class="form-group">';
-            newElem += '<input type="text" id="place" name="place" class="form-control inputted_place"  placeholder="" required/>';
+            newElem += '<input type="text" name="place[]" class="form-control inputted_place"  placeholder="" required/>';
             newElem += '</div></td>';
             newElem += '<td><button type="button" id="remove_routeCol" class="btn btn-danger"><i class="fa fa-times" aria-hidden="true"></i></button></td>';
             newElem += '</tr>';
@@ -161,5 +182,6 @@
         });
     }
 </script>
+
 
 @endsection
