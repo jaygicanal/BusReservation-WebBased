@@ -9,12 +9,12 @@
 .navbar .logo-icon{
     font-size: 35px;
     /* padding: 20px 30px; */
-    width: 105px;
-    height: 60px;
+    width: 165px;
+    height: 55px;
     margin-right: 5px;
     border-radius: 50%;
     color: #e5e5e5;
-    border: 2px solid  #ff6400;
+    border: 2px solid  #ff3200;
     background-color: #ff3200;
     display: flex;
     justify-content: center;

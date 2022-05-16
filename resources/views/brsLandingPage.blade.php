@@ -28,26 +28,6 @@
         })
     </script>
 
-    <!-- Fetch Bus Data -->
-    <script>    
-        $('#bus_details').on('show.bs.modal', function(event) {
-            var button = $(event.relatedTarget)
-            var trans_id = button.data('trans_id')
-            var departure = button.data('depart_time')
-            var bus_class = button.data('bus_class')
-            var wifi = button.data('with_wifi')
-            var tv = button.data('with_tv')
-            
-
-            var modal = $(this)
-            /* modal.find('.modal-title').text('View Resident Profile'); */
-            modal.find('.modal-body #transit_id').val(trans_id);
-            modal.find('.modal-body #bus_class').val(bus_class);
-            modal.find('.modal-body #departure').val(departure);
-            modal.find('.modal-body #wifi').val(wifi);
-            modal.find('.modal-body #tv').val(tv);
-        })
-    </script>
 @endpush
 
 @section('content')
@@ -70,8 +50,17 @@
                                 <div class="cmb-group">
                                     <select class="from-city from-city-sm " onblur="this.size=1;"  aria-label=".form-select-lg example" id="frm-city-dd">
                                         <option selected>Pick-Up Location</option>
-                                        <option value="Male">Terminal</option>
-                                        <option value="Female">Along The Road</option></select>
+                                        <optgroup label="Terminal">
+                                            <option value="Bulan Terminal">Bulan Terminal</option>
+                                            <option value="Sorsogon Terminal">Sorsogon Terminal</option>
+                                        </optgroup>
+                                        <optgroup label="Along The Road">
+                                            <option value="Bulan Terminal">Trese</option>
+                                            <option value="Bulan Terminal">Irosin</option>
+                                            <option value="Bulan Terminal">Bulan</option>
+                                            <option value="Bulan Terminal">Casiguran</option>
+                                            <option value="Bulan Terminal">Abuyog</option>
+                                        </optgroup>
                                     <select class="from-option from-option-sm " onblur="this.size=1;" aria-label=".form-select-lg example" id="frm-opt-dd" hidden></select>
                                     <select class="from-barangay from-barangay-sm " onblur="this.size=1;" aria-label=".form-select-lg example" id="frm-brgy-dd" hidden></select>
                                 </div>
@@ -115,9 +104,6 @@
     <div class="container">
         <div class="row d-flex justify-content-center align-items-center">
             <div class="col-12 sched-content justify-content-center">  
-                <div class="text-date d-flex justify-content-start">
-                    <h1><input type="date" id="date" name="date" placeholder="Date" required/></H1>
-                </div>
                 <table class="table">
                     <thead>
                         <tr>
@@ -136,13 +122,13 @@
                                 {{$busSchedules->id}} - {{$busSchedules->trans_id}}
                             </div> -->
                             <td>
-                                {{$busSchedules->origin}} - {{$busSchedules->destination}}
+                                <span data-label="origin">{{$busSchedules->origin}}</span> - <span data-label="destination">{{$busSchedules->destination}}</span>
                                 @if($busSchedules->via != "-")
-                                <div class="via">via {{$busSchedules->via}}</div>
+                                <div class="via" data-label="via">via {{$busSchedules->via}}</div>
                                 @endif
                             </td>
-                            <td>{{$busSchedules->departure_time}}</td>
-                            <td>{{$busSchedules->bus_class}}</td>
+                            <td data-label="departure_time">{{$busSchedules->departure_time}}</td>
+                            <td data-label="bus_class">{{$busSchedules->bus_class}}</td>
                             <td>
                                 <div type="button" class="btn-inner">
                                     <!-- <a href="#" class="text-nav btn-update d-flex align-items-center justify-content-center"><em class="fa fa-pencil" aria-hidden="true"></em>Edit</a> -->
@@ -161,6 +147,29 @@
         </div>
     </div>
 </section>
+
+<script></script>
+
+<!-- Fetch Bus Data -->
+<script>    
+        $('#bus_details').on('show.bs.modal', function(event) {
+            var button = $(event.relatedTarget)
+            var trans_id = button.data('trans_id')
+            var departure = button.data('depart_time')
+            var bus_class = button.data('bus_class')
+            var wifi = button.data('with_wifi')
+            var tv = button.data('with_tv')
+            
+
+            var modal = $(this);
+            /* modal.find('.modal-title').text('View Resident Profile'); */
+            modal.find('.bus-detail #transit_id').val(trans_id);
+            modal.find('.bus-detail #bus_class').val(bus_class);
+            modal.find('.bus-detail #departure').val(departure);
+            modal.find('.bus-detail #wifi').val(wifi);
+            modal.find('.bus-detail #tv').val(tv);
+        })
+    </script>
 @endsection
 
 

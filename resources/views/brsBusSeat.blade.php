@@ -246,7 +246,7 @@
                 <div class="passenger-details col-5 ">
                     
                     <!-- <h4>STANDARD BUS</h1> -->
-                    <div class="bus-details">
+                    <div class="bus-detail">
                         <h5>Bus Details</h5>
                         <input type="text" id="transit_id" name="transit_id" hidden>
                         <p class="content d-flex justify-content-between">Class:<input type="text" id="bus_class" name="bus_class" readonly></p>
@@ -258,9 +258,14 @@
                         <p class="content d-flex justify-content-between">Time:<input type="text" id="departure" name="departure" readonly></p>
                         <p class="content d-flex justify-content-between">Date:<input type="text" readonly></p>
                     </div>
+
+                    <div class="grp-button">
+                        <a href="" type="button">Book Trip</a>
+                        <a href="" type="button" class="btn-cancel p-3" data-bs-dismiss="modal" aria-label="Close">Cancel</a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>>
+</div>
 

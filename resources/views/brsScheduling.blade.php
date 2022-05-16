@@ -8,80 +8,73 @@
 <section class="scheduling">
     <div class="container-xxl">
         <div class="row">
-            <div class="col-md-12 p-0">
-                <div class="scheduling-header d-flex justify-content-end align-items-center">
-                    <div class="add">
-                        <button id="btn_add_sched" class= "btn-add" data-bs-toggle="modal" data-bs-target="#brs-add-schedule">Add Schedule</button>
-                        <button  class= "add-routes">Add Route</button>
+            <div class=" scheduling-header d-flex justify-content-between">
+                <nav class="btn-tabs d-flex">
+                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                        <button class="nav-link active" id="nav-schedule-tab" data-bs-toggle="tab" data-bs-target="#nav-schedule" type="button" role="tab" aria-controls="nav-schedule" aria-selected="false">SCHEDULES</button>
+                        <button class="nav-link" id="nav-route-tab" data-bs-toggle="tab" data-bs-target="#nav-route" type="button" role="tab" aria-controls="nav-route" aria-selected="false">ROUTES</button>
                     </div>
-                    @include('schedule_views.add_schedule')
+                </nav>
+                <div class="add d-flex d-flex justify-content-center align-items-center">
+                    <button id="btn_add_sched" class= "btn-add" data-bs-toggle="modal" data-bs-target="#brs-add-schedule">Add Schedule</button>
+                    <button  id="btn_add_route" class= "add-routes" data-bs-toggle="modal" data-bs-target="#add-route-modal">Add Route</button>
                 </div>
-                
-                <div class="scheduling-content d-flex justify-content-center py-3">
-                    <div class="inner-content col-md-11">
-                        <div class="row py-3">
-                            <div class="col-3 d-flex align-items-center justify-content-center">Route</div>
-                            <div class="col-2 d-flex align-items-center justify-content-center">Departure Time</div>
-                            <div class="col-2 d-flex align-items-center justify-content-center">Bus Class</div>
-                            <div class="col-2 d-flex align-items-center justify-content-center">Features</div>
-                            <div class="col-2 d-flex align-items-center justify-content-center">Seat Status</div>
-                            <div class="col-1 d-flex align-items-center justify-content-center">Actions </div>
-                        </div>
-                        
-                        @if($scheds)
-                        @foreach($scheds as $scheduleList)
-                        <div class="row sched_content my-2">
-                            <div class="col-3 d-flex align-items-center justify-content-center">
-                                <div class="bus-route">
-                                    <div class="route">{{$scheduleList->origin}} - {{$scheduleList->destination}}</div>
-                                    @if($scheduleList->via != "-")
-                                    <div class="via">via {{$scheduleList->via}}</div>
-                                    @endif
-                                </div>
-                                
+                    @include('schedule_views.add_schedule')
+                    @include('schedule_views.brsRoute')
+            </div>  
+            <div class="tab-content d-flex justify-content-center" id="nav-tabContent">
+                <div class="col-11 tab-pane fade show active" id="nav-schedule" aria-labelledby="nav-schedule-tab">
+                    <div class="scheduling-content d-flex justify-content-center py-3">
+                        <div class="inner-content col-md-11">
+                            <div class="row title py-3">
+                                <div class="col-3 d-flex align-items-center justify-content-center">Route</div>
+                                <div class="col-2 d-flex align-items-center justify-content-center">Departure Time</div>
+                                <div class="col-2 d-flex align-items-center justify-content-center">Bus Class</div>
+                                <div class="col-2 d-flex align-items-center justify-content-center">Features</div>
+                                <div class="col-2 d-flex align-items-center justify-content-center">Seat Status</div>
+                                <div class="col-1 d-flex align-items-center justify-content-center">Actions </div>
                             </div>
-                            <div class="col-2 d-flex align-items-center justify-content-center">{{$scheduleList->departure_time}}</div>
-                            <div class="col-2 d-flex align-items-center justify-content-center">{{$scheduleList->bus_class}}</div>
-                            <div class="col-2 d-flex align-items-center justify-content-center">
-                                <div class="features">
-                                    <p>{{$scheduleList->with_wifi}}</p>
-                                    <p>{{$scheduleList->with_tv}}</p>
+                            
+                            @if($scheds)
+                            @foreach($scheds as $scheduleList)
+                            <div class="row sched_content my-2">
+                                <div class="col-3 d-flex align-items-center justify-content-center">
+                                    <div class="bus-route">
+                                        <div class="route">{{$scheduleList->origin}} - {{$scheduleList->destination}}</div>
+                                        @if($scheduleList->via != "-")
+                                        <div class="via">via {{$scheduleList->via}}</div>
+                                        @endif
+                                    </div>
+                                    
                                 </div>
+                                <div class="col-2 d-flex align-items-center justify-content-center">{{$scheduleList->departure_time}}</div>
+                                <div class="col-2 d-flex align-items-center justify-content-center">{{$scheduleList->bus_class}}</div>
+                                <div class="col-2 d-flex align-items-center justify-content-center">
+                                    <div class="features">
+                                        <p>{{$scheduleList->with_wifi}}</p>
+                                        <p>{{$scheduleList->with_tv}}</p>
+                                    </div>
+                                </div>
+                                <div class="col-2 d-flex align-items-center justify-content-center">20 Left</div>
+                                <div class="col-1 d-flex align-items-center justify-content-center"><button>View Details</button></div>
                             </div>
-                            <div class="col-2 d-flex align-items-center justify-content-center">20 Left</div>
-                            <div class="col-1 d-flex align-items-center justify-content-center"><button>View Details</button></div>
+                            @endforeach
+                            @endif
                         </div>
-                        @endforeach
-                        @endif
-                        <!-- <table class="table">
-                            <thead>
-                                <tr>
-                                <th scope="col">Route</th>
-                                <th scope="col">Departure Time</th>
-                                <th scope="col">Bus Class</th>
-                                <th scope="col">Seat Status</th>
-                                <th scope="col">Actions </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr class="row_sched">
-                                    <td>Bulan - Sorsogon</td>
-                                    <td>10:00 AM</td>
-                                    <td>Ordinary</td>
-                                    <td>20 Left</td>
-                                    <td><button>View Details</button></td>
-                                </tr>
-                            </tbody>
-                        </table>  -->
                     </div>
+                </div>
+                <div class="col-11 tab-pane" id="nav-route" aria-labelledby="nav-route-tab">
+
+
                 </div>
             </div>
+                
         </div>
     </div>
 </section>
 
+
 <script>
-        
     $(document).ready(function(){
         var dep_time;
         var acro_sched;
@@ -114,9 +107,59 @@
 </script>
 
 <script>
-    $('#btn_add_sched').on('click', functions(){
+    $('#btn_add_sched').on('click', function(){
         $('#brs-add-schedule form')[0].reset();
     });
+</script>
+
+<script>
+    onChangeOption();
+
+    $(document).ready(function(){
+        $('#add_routeCol').click(function(){
+            var newElem = "";
+            newElem += '<tr>';
+            newElem += '<td><div class="form-group">';
+            newElem += '<select name="bus_route" id="bus_route" class="form-select route_bus" required>';
+            newElem += '<option selected>Choose Option</option>';
+            newElem += '<option value="Terminal">Terminal</option>';
+            newElem += '<option value="Along The Road">Along The Road</option>';
+            newElem += '</select>';
+            newElem += '</div></td>';
+            newElem += '<td><div class="form-group">';
+            newElem += '<input type="text" id="place" name="place" class="form-control inputted_place"  placeholder="" required/>';
+            newElem += '</div></td>';
+            newElem += '<td><button type="button" id="remove_routeCol" class="btn btn-danger"><i class="fa fa-times" aria-hidden="true"></i></button></td>';
+            newElem += '</tr>';
+
+            $('#route_tbl').append(newElem);
+
+            onChangeOption();
+        });
+        
+    });
+
+    $(document).on('click', '#remove_routeCol', function(){
+        $(this).closest('tr').remove();
+    })
+
+    $(document).on('hidden.bs.modal', function(){
+        $('#add-route-modal #route_tbl').find("tr:gt(0)").remove();
+        $('#add-route-modal form')[0].reset();
+    })
+
+    function onChangeOption(){
+        $('.route_bus').change(function(){
+            var parentTR = $(this).closest('tr');
+            if($(this).val() == 'Terminal'){
+                parentTR.find('.inputted_place').attr("placeholder","Add Terminal");
+            }else if($(this).val() == 'Along The Road'){
+                parentTR.find('.inputted_place').attr("placeholder","Add Along The Road");
+            }else{
+                parentTR.find('.inputted_place').attr("placeholder","");
+            }
+        });
+    }
 </script>
 
 @endsection
