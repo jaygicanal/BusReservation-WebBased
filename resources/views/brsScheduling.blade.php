@@ -11,8 +11,8 @@
             <div class=" scheduling-header d-flex justify-content-between">
                 <nav class="btn-tabs d-flex">
                     <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                        <button class="nav-link active" id="nav-schedule-tab" data-bs-toggle="tab" data-bs-target="#nav-schedule" type="button" role="tab" aria-controls="nav-schedule" aria-selected="false">SCHEDULES</button>
-                        <button class="nav-link" id="nav-route-tab" data-bs-toggle="tab" data-bs-target="#nav-route" type="button" role="tab" aria-controls="nav-route" aria-selected="false">ROUTES</button>
+                        <a href="#nav-schedule" class="nav-link active" id="nav-schedule-tab" data-bs-toggle="tab" data-bs-target="#nav-schedule" type="button" role="tab" aria-controls="nav-schedule" aria-selected="false">SCHEDULES</a>
+                        <a href="#nav-route" class="nav-link" id="nav-route-tab" data-bs-toggle="tab" data-bs-target="#nav-route" type="button" role="tab" aria-controls="nav-route" aria-selected="false">ROUTES</a>
                     </div>
                 </nav>
                 <div class="add d-flex d-flex justify-content-center align-items-center">
@@ -23,7 +23,7 @@
                     @include('schedule_views.brsRoute')
             </div>  
             <div class="tab-content d-flex justify-content-center" id="nav-tabContent">
-                <div class="col-11 tab-pane fade show active" id="nav-schedule" aria-labelledby="nav-schedule-tab">
+                <div class="col-11 tab-pane fade" id="nav-schedule" aria-labelledby="nav-schedule-tab">
                     <div class="scheduling-content d-flex justify-content-center py-3">
                         <div class="inner-content col-md-11">
                             <div class="row title py-3">
@@ -64,32 +64,38 @@
                     </div>
                 </div>
                 <div class="col-12 tab-pane" id="nav-route" aria-labelledby="nav-route-tab">
-                    <div class="row">
-                        <div class="col-6">
-                            <h6>Terminal</h6>
-                            @if($routes)
-                            @foreach($routes as $routeList)
-                                @if($routeList->route_category == "Terminal")
-                                    <div class="listofterminals">{{$routeList->place}}</div>
-                                @endif
-                            @endforeach
-                            @endif
-                        </div>
-                        <div class="col-6">
-                            <h6>Along The Road</h6>
-                            @if($routes)
-                            @foreach($routes as $routeList)
-                                @if($routeList->route_category == "Along The Road")
-                                    <div class="listofroads">{{$routeList->place}}</div>
-                                @endif
-                            @endforeach
-                            @endif
+                    <div class="row d-flex justify-content-center">
+                        <div class="division col-11 d-flex justify-content-center">
+                            <div class="terminal col-5 ">
+                                <h6>Terminal</h6>
+                                <div class="content">
+                                    @if($routes)
+                                    @foreach($routes as $routeList)
+                                        @if($routeList->route_category == "Terminal")
+                                            <div class="listofterminals">{{$routeList->place}}</div>
+                                        @endif
+                                    @endforeach
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="space col-1 ">
+                            </div>
+                            <div class="alongtheroad col-5 ">
+                                <h6>Along The Road</h6>
+                                <div class="content">
+                                    @if($routes)
+                                    @foreach($routes as $routeList)
+                                        @if($routeList->route_category == "Along The Road")
+                                            <div class="listofroads">{{$routeList->place}}</div>
+                                        @endif
+                                    @endforeach
+                                    @endif
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                </div>
             </div>
-                
         </div>
     </div>
 </section>
@@ -155,7 +161,10 @@
 
             $('#route_tbl').append(newElem);
 
+            
+
             onChangeOption();
+            
         });
         
     });
@@ -183,5 +192,40 @@
     }
 </script>
 
+<script> 
+        $("#btn_add_route").hide();
+        $("#btn_add_sched").show();
+        $("#nav-schedule-tab").click(function(){
+            $("#btn_add_route").hide();
+            $("#btn_add_sched").show();
+        });
+        $("#nav-route-tab").click(function(){
+            $("#btn_add_sched").hide();
+            $("#btn_add_route").show();
+        });
+        
+</script>
+
+<script>
+    $(".nav-tabs").find("button a").last().click();
+
+    var url = document.URL;
+    var hash = url.substring(url.indexOf('#'));
+
+    $(".nav-tabs").find("button a").each(function(key, val) {
+
+        if (hash == $(val).attr('href')) {
+
+            $(val).click();
+
+        }
+        $(val).click(function(ky, vl) {
+
+            console.log($(this).attr('href'));
+            location.hash = $(this).attr('href');
+        });
+
+    });
+</script>
 
 @endsection

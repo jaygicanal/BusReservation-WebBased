@@ -2,7 +2,7 @@
 <div class="modal fade" id="add-route-modal" tabindex="-1" role="dialog" aria-labelledby="create" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content d-flex justify-content-center">
-            <form action="schedule" method="POST">
+            <form action="routing" method="POST">
                 @csrf
                 <div class="row ">  
                     <div class="add-route-col ">
@@ -23,17 +23,15 @@
                                     <tbody id="route_tbl">
                                         <tr>
                                             <td>
-                                                <div class="form-group">
-                                                    <select name="bus_route" id="bus_route" class="form-select route_bus" required>
-                                                        <option selected>Choose Option</option>
-                                                        <option value="Terminal">Terminal</option>
-                                                        <option value="Along The Road">Along The Road</option>
-                                                    </select>
-                                                </div>
+                                                <select name="route_category[]" class="form-select route_bus" required>
+                                                    <option selected>Choose Option</option>
+                                                    <option value="Terminal">Terminal</option>
+                                                    <option value="Along The Road">Along The Road</option>
+                                                </select>
                                             </td>
                                             <td>
                                                 <div class="form-group">
-                                                    <input type="text" id="place" name="place" class="form-control inputted_place"  placeholder="" required/>
+                                                    <input type="text" name="place[]" class="form-control inputted_place"  placeholder="" required/>
                                                 </div>
                                             </td>
                                             <td><button type="button" id="add_routeCol" class="btn btn-primary"><i class="fa fa-plus" aria-hidden="true"></i></button></td>

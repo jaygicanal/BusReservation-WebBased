@@ -244,7 +244,6 @@
                     </div>
                 </div>
                 <div class="passenger-details col-5 ">
-                    
                     <!-- <h4>STANDARD BUS</h1> -->
                     <div class="bus-detail">
                         <h5>Bus Details</h5>
@@ -253,14 +252,13 @@
                         <p class="content d-flex justify-content-between">Wifi:<input type="text" id="wifi" name="wifi" readonly></p>
                         <p class="content d-flex justify-content-between">TV:<input type="text" id="tv" name="tv" readonly></p>
                         <p class="content d-flex justify-content-between">Seat No.:<input type="text" id="seat_no" name="seat_no" readonly></p>
-                        <p class="content d-flex justify-content-between">Origin:<input type="text" readonly></p>
-                        <p class="content d-flex justify-content-between">Destination:<input type="text" readonly></p>
+                        <p class="content d-flex justify-content-between">Origin:<input type="text" id="origin_confirmation" readonly></p>
+                        <p class="content d-flex justify-content-between">Destination:<input type="text" id="destination_confirmation" readonly></p>
                         <p class="content d-flex justify-content-between">Time:<input type="text" id="departure" name="departure" readonly></p>
-                        <p class="content d-flex justify-content-between">Date:<input type="text" readonly></p>
+                        <p class="content d-flex justify-content-between">Date:<input type="text" id="date_confirmation" readonly></p>
                     </div>
-
                     <div class="grp-button">
-                        <a href="" type="button">Book Trip</a>
+                    <a href="{{ url('payment') }}"  type="button">Book Trip</a>
                         <a href="" type="button" class="btn-cancel p-3" data-bs-dismiss="modal" aria-label="Close">Cancel</a>
                     </div>
                 </div>

@@ -46,6 +46,7 @@ tbody, td, tfoot, th, thead, tr {
     color: #000000;
     font-weight: 900;
 }
+.scheduling .nav-link,
 .scheduling .nav-link{
     color: white;
     font-weight: bolder;
@@ -78,4 +79,25 @@ tbody, td, tfoot, th, thead, tr {
 .scheduling .title{
     font-size: 20px;
     font-weight: bolder;
+}
+.scheduling h6{
+    font-size: 25px;
+    font-weight: bolder;
+    margin-top: 20px;
+    text-align: center;
+}
+.scheduling .listofterminals,
+.scheduling .listofroads{
+    border: 1px solid #e6e6e6 !important;
+    background-color: #e6e6e6;
+    border-radius: 15px;
+    padding: 15px 0;
+    text-align: center;
+    margin-bottom: 5px;
+
+}
+.scheduling .listofterminals:hover,
+.scheduling .listofroads:hover{
+    font-weight: bolder;
+    transform: scale(1.1);
 }

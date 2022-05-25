@@ -14,7 +14,7 @@
                     <nav class="booking-inner col-12">
                         <div class="nav nav-tabs" id="nav-tab" role="tablist">
                             <button class="nav-link active" id="nav-book-tab" data-bs-toggle="tab" data-bs-target="#nav-book" type="button" role="tab" aria-controls="nav-book" aria-selected="false">BOOKED</button>
-                            <button class="nav-link" id="nav-confirm-tab" data-bs-toggle="tab" data-bs-target="#nav-confirm" type="button" role="tab" aria-controls="nav-confirm" aria-selected="false">CONFIRMED</button>
+                            <button class="nav-link " id="nav-confirm-tab" data-bs-toggle="tab" data-bs-target="#nav-confirm" type="button" role="tab" aria-controls="nav-confirm" aria-selected="true">CONFIRMED</button>
                             <button class="nav-link " id="nav-cancel-tab" data-bs-toggle="tab" data-bs-target="#nav-cancel" type="button" role="tab" aria-controls="nav-cancel" aria-selected="true">CANCELED </button>
                         </div>
                     </nav>
@@ -32,8 +32,7 @@
                                     <th scope="col">Origin</th>
                                     <th scope="col">Destination</th>
                                     <th scope="col">Bus Seat</th>
-                                    <th scope="col">Payment</th>
-                                    <th scope="col">Confirmation</th>
+                                    <th scope="col">View Payment</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -44,9 +43,8 @@
                                     <td>9:00 Am</td>
                                     <td>Bulan</td>
                                     <td>Sorsogon</td>
-                                    <td></td>
-                                    <td>Gcash</td>
-                                    <td><button class="confirm">Confirm</button></td> 
+                                    <td>1</td>
+                                    <td><button>View</button></td>
                                     </tr>
                                     <tr>
                                     <th scope="row">2</th>
@@ -55,15 +53,14 @@
                                     <td>6:00 Am</td>
                                     <td>Bulan</td>
                                     <td>Sorsogon</td>
-                                    <td></td>
-                                    <td>Paymaya</td>
-                                    <td><button class="confirm">Confirm</button></td> 
+                                    <td>2</td>
+                                    <td><button>View</button></td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
                     </div>
-                    <div class="tab-pane col-11 fade" id="nav-confirm" aria-labelledby="nav-confirm-tab">
+                    <div class="col-11 tab-pane fade" id="nav-confirm" aria-labelledby="nav-confirm-tab">
                         <div class="confirm-content">
                         <table class="table">
                                 <thead>

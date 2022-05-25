@@ -72,84 +72,9 @@
                                 </center>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-md-5  payment-side">
-                    <!-- Modal  -->
-                    <div class="confirmstion-col row d-flex justify-content-center">
-                        <div class="standard-bus d-flex justify-content-start">
-                            <div class="confimation-header">
-                                <h5>Standard Bus</h5>
-                                <h6>Company Name</h6>
-                                <div class="ratings">
-                                    <span class="fa fa-star"></span>
-                                    <span class="fa fa-star "></span>
-                                    <span class="fa fa-star-half-o "></span>
-                                    <span class="fa fa-star-o"></span>
-                                    <span class="fa fa-star-o"></span>
-                                </div> 
-                                <img src="{{ asset('images/confirmation-image.jpg') }}" alt="">
-                                <div class="bus-features row">
-                                        <div class="li-feat col-6 d-flex align-items-center">
-                                            <div class="icon"><i class="fa fa-wifi" aria-hidden="true"></i></div>
-                                            <div class="feat-name">Wifi</div>
-                                        </div>
-                                        <div class="li-feat col-6 d-flex align-items-center">
-                                            <div class="icon"><i class="fa fa-television" aria-hidden="true"></i></div>
-                                            <div class="feat-name">Television</div>
-                                        </div>
-                                        <div class="li-feat col-6 d-flex align-items-center">
-                                            <div class="icon"><i class="fa fa-wheelchair" aria-hidden="true"></i></div>
-                                            <div class="feat-name">PWD Seat</div>
-                                        </div>
-                                        <div class="li-feat col-6 d-flex align-items-center">
-                                            <div class="icon"><i class="fa fa-dot-circle-o" aria-hidden="true"></i></div>
-                                            <div class="feat-name">Air-Con</div>
-                                        </div>
-                                    </div>
-                            </div>
-                        </div>
-                        <div class="ticket-option d-flex justify-content-start">
-                            <div class="ticket-row">
-                                <div class="ticket-header">
-                                    <h5>Ticket Option</h5>
-                                </div>
-                                <div class="ticket-content">
-                                    <div class="input-form d-flex">
-                                        <div class="icon">
-                                            <i class="fa fa-dot-circle-o" aria-hidden="true"></i>
-                                        </div>
-                                            <input type="text " value="Bulan" readonly>
-                                    </div>
-                                    <div class="input-form d-flex">
-                                        <div class="icon">
-                                            <i class="fa fa-map-marker" aria-hidden="true"></i>
-                                        </div>
-                                        <input type="text" value="Sorsogon" readonly>
-                                    </div>
-                                    <div class="input-group">
-                                        <div class="col-8 input-form d-flex justify-content-center">
-                                            <div class="icon">
-                                                <i class="fa fa-calendar" aria-hidden="true"></i>
-                                            </div>    
-                                            <input type="date" readonly>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="col-4 input-form d-flex">
-                                            <div class="icon">
-                                                <i class="fa fa-user" aria-hidden="true"></i>
-                                            </div>    
-                                            <input type="number" value="1" readonly>
-                                        </div>
-                                    </div>
-                                    <div class="button-sec d-flex justify-content-center">
-                                        <div class="submit">
-                                            <button type="button" data-bs-dismiss="modal">SUBMIT</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                
+                        <div class="button-sec d-flex justify-content-center mt-3">
+                            <div class="submit">
+                                <button type="button" data-bs-dismiss="modal">SUBMIT</button>
                             </div>
                         </div>
                     </div>

@@ -18,6 +18,7 @@ class CreateRoutingsTable extends Migration
             $table->string('route_category');
             $table->string('place');
             $table->timestamps();
+            $table->timestamp('deleted_at')->nullable();
         });
     }
 

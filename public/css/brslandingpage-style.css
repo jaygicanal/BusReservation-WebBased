@@ -83,6 +83,7 @@ body::before{
     margin-top: 30px;
     padding: 10px 60px;
     border-radius: 50px;
+    color: #ffffff;
 }
 .find-bus-section  .form-nav button:hover{
     transform: scale(1.1);

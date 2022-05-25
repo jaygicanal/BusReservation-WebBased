@@ -116,7 +116,7 @@
                         <div class="link-label">Forecasting</div>
                     </li>
                     <li class="nav-item {{Request::is('scheduling') ? 'active':'' }}" data-text="Scheduling">
-                        <a href="{{ url('scheduling') }}" class="nav-link py-3 " title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Orders">
+                        <a href="{{ url('admin/scheduling') }}" class="nav-link py-3 " title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Orders">
                             <em class="fa fa-bus" aria-hidden="true"></em>
                         </a>
                         <div class="link-label">Scheduling</div>
