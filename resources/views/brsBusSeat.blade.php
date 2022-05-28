@@ -245,25 +245,37 @@
                 </div>
                 <div class="passenger-details col-5 ">
                     <!-- <h4>STANDARD BUS</h1> -->
-                    <div class="bus-detail">
-                        <h5>Bus Details</h5>
-                        <input type="text" id="transit_id" name="transit_id" hidden>
-                        <p class="content d-flex justify-content-between">Class:<input type="text" id="bus_class" name="bus_class" readonly></p>
-                        <p class="content d-flex justify-content-between">Wifi:<input type="text" id="wifi" name="wifi" readonly></p>
-                        <p class="content d-flex justify-content-between">TV:<input type="text" id="tv" name="tv" readonly></p>
-                        <p class="content d-flex justify-content-between">Seat No.:<input type="text" id="seat_no" name="seat_no" readonly></p>
-                        <p class="content d-flex justify-content-between">Origin:<input type="text" id="origin_confirmation" readonly></p>
-                        <p class="content d-flex justify-content-between">Destination:<input type="text" id="destination_confirmation" readonly></p>
-                        <p class="content d-flex justify-content-between">Time:<input type="text" id="departure" name="departure" readonly></p>
-                        <p class="content d-flex justify-content-between">Date:<input type="text" id="date_confirmation" readonly></p>
-                    </div>
-                    <div class="grp-button">
-                    <a href="{{ url('payment') }}"  type="button">Book Trip</a>
-                        <a href="" type="button" class="btn-cancel p-3" data-bs-dismiss="modal" aria-label="Close">Cancel</a>
+                    <div class="bus-detail ">
+                        <form action="booking" method="post">
+                            @csrf
+                            <h5>Bus Details</h5>
+                            <input type="text" id="reservation_id" name="reservation_id" hidden>
+                            <input type="text" id="user_id" name="user_id" value="{{ Auth::User()-> id }}" hidden>
+                            <input type="text" id="user_name" name="user_name" value="{{ Auth::User()-> fname }} {{ Auth::User()-> lname }}" hidden>
+                            <input type="text" id="chk_discount" name="chk_discount" value="{{ Auth::User()-> discount }}" hidden>
+                            <input type="text" id="transit_id" name="transit_id" hidden>
+                            <p class="content d-flex justify-content-between">Class:<input type="text" id="bus_class" name="bus_class" readonly></p>
+                            <p class="content d-flex justify-content-between">Wifi:<input type="text" id="wifi" name="wifi" readonly></p>
+                            <p class="content d-flex justify-content-between">TV:<input type="text" id="tv" name="tv" readonly></p>
+                            <p class="content d-flex justify-content-between">Seat No.:<input type="text" id="seat_no" name="seat_no" readonly></p>
+                            <p class="content d-flex justify-content-between">Origin:<input type="text" id="origin_confirmation" name="origin_confirmation" readonly></p>
+                            <p class="content d-flex justify-content-between">Destination:<input type="text" id="destination_confirmation" name="destination_confirmation"readonly></p>
+                            <p class="content d-flex justify-content-between">Time:<input type="text" id="departure" name="departure" readonly></p>
+                            <p class="content d-flex justify-content-between">Date:<input type="text" id="date_confirmation" name="date_confirmation" readonly></p>
+                            <div class="price">
+                                <p class="line d-flex justify-content-center"></p>
+                                <p class="content d-flex justify-content-between">Fare:<input type="text" class="col-5" id="fare" name="fare" readonly></p>
+                                <p class="content d-flex justify-content-between">20% Discount:<input type="text" class="col-5" id="discount" name="discount" readonly></p>
+                                <p class="content d-flex justify-content-between">Total:<input type="text" class="col-5" id="totalFare" name="totalFare" readonly></p>
+                            </div>
+                            <div class="grp-button">
+                                <button type="submit" class="btn-book p-2">Book Trip</button>
+                                <a href="" type="button" class="btn-cancel p-2" data-bs-dismiss="modal" aria-label="Close">Cancel</a>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-

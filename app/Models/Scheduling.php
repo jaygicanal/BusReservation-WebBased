@@ -14,12 +14,12 @@ class Scheduling extends Model
         'trans_id',
         'origin',
         'destination',
-        'via',
         'bus_schedule',
         'departure_time',
         'bus_class',
         'with_wifi',
         'with_tv',
+        'fare',
     ];
 
     protected $dates = [

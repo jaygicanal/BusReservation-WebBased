@@ -115,20 +115,17 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- @if($bus_scheds)
+                        @if($bus_scheds)
                         @foreach($bus_scheds as $busSchedules)
                         <tr>
                             <td>
                                 <span data-label="origin">{{$busSchedules->origin}}</span> - <span data-label="destination">{{$busSchedules->destination}}</span>
-                                @if($busSchedules->via != "-")
-                                <div class="via" data-label="via">via {{$busSchedules->via}}</div>
-                                @endif
                             </td>
                             <td data-label="departure_time">{{$busSchedules->departure_time}}</td>
                             <td data-label="bus_class">{{$busSchedules->bus_class}}</td>
                             <td>
                                 <div type="button" class="btn-inner">
-                                    <a data-bs-toggle="modal" type="button" data-trans_id="{{$busSchedules->trans_id}}" data-depart_time="{{$busSchedules->departure_time}}" data-bus_class="{{$busSchedules->bus_class}}" data-with_wifi="{{$busSchedules->with_wifi}}" data-with_tv="{{$busSchedules->with_tv}}" data-bs-target="#bus_details" class="text-nav btn-view-details d-flex align-items-center justify-content-center" id="btn_viewSeats">
+                                    <a data-bs-toggle="modal" type="button" data-trans_id="{{$busSchedules->trans_id}}" data-depart_time="{{$busSchedules->departure_time}}" data-bus_class="{{$busSchedules->bus_class}}" data-with_wifi="{{$busSchedules->with_wifi}}" data-with_tv="{{$busSchedules->with_tv}}" data-fare="{{$busSchedules->fare}}" data-bs-target="#bus_details" class="text-nav btn-view-details d-flex align-items-center justify-content-center" id="btn_viewSeats">
                                         <em class="fa fa-eye" aria-hidden="true"></em>View
                                     </a>
                                     @include('brsBusSeat')
@@ -136,7 +133,7 @@
                             </td> 
                         </tr>
                         @endforeach
-                        @endif -->
+                        @endif
                     </tbody>
                 </table>
             </div>
@@ -232,6 +229,7 @@
             var bus_class = button.data('bus_class')
             var wifi = button.data('with_wifi')
             var tv = button.data('with_tv')
+            var fare = button.data('fare')
             
 
             var modal = $(this);
@@ -241,9 +239,24 @@
             modal.find('.bus-detail #departure').val(departure);
             modal.find('.bus-detail #wifi').val(wifi);
             modal.find('.bus-detail #tv').val(tv);
+            modal.find('.bus-detail .price #fare').val(fare);
             $('#origin_confirmation').val($('#origin').val());
             $('#destination_confirmation').val($('#destination').val());
             $('#date_confirmation').val($('#date').val());
+
+            var discount = 0.00;
+            var totFare = 0.00;
+                if($('#chk_discount').val() == "None"){
+                    discount = $('#fare').val() * .00;
+                    totFare = $('#fare').val() - discount;
+                    $('#discount').val(-discount + ".00");
+                    $('#totalFare').val(totFare + ".00");
+                }else if($('#chk_discount').val() == "Student" || $('#chk_discount').val() == "Senior Citizen" || $('#chk_discount').val() == "PWD"){
+                    discount = $('#fare').val() * .20;
+                    totFare = $('#fare').val() - discount;
+                    $('#discount').val(-discount + ".00");
+                    $('#totalFare').val(totFare + ".00");
+                }
         })
     </script>
 
@@ -267,6 +280,16 @@
                     
                     $('#seat_no').val(seat_number);
                 }
+
+                var name = $('#user_name').val();
+                var acronym = name.match(/\b(\w)/g).join('');
+
+                var date_departure = $('#date_confirmation').val();
+                var replaced = date_departure.replace(/-/g, '');
+                
+                $('#reservation_id').val(acronym + "-" + replaced + "-" + seat_number);
+
+                
             });
 
             /* $('#btn_viewSeats').click(function(){
@@ -312,6 +335,8 @@
             } */
         })
     </script>
+
+    
 @endsection
 
 

@@ -24,10 +24,7 @@
                                             <div class="separator px-2"><i class="fa fa-minus" aria-hidden="true"></i></div>
                                             <input type="text" id="destination" name="destination" class="form-control"  placeholder="Destination" required/>
                                         </div>
-                                        <div class="form-group d-flex align-items-end justify-content-center pt-2">
-                                            <label for="via" class="px-2">via</label>
-                                            <input type="text" id="via" name="via" class="form-control w-50"  placeholder="" />
-                                        </div>
+                                        
                                     </div>
                                     <div class="form-group">
                                         <label for="bus_schedule">Bus Routine</label>
@@ -83,6 +80,9 @@
                                                 </label>
                                             </div>
                                         </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" id="fare" name="fare" class="form-control"  placeholder="Fare" />
                                     </div>
                                 </div>
                                 <div class="form-content col-12">

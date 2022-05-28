@@ -153,6 +153,45 @@ input::-webkit-inner-spin-button {
     width: 40px;
 }
 
+.modal-content  #bus_class,
+.modal-content  #wifi,
+.modal-content  #tv,
+.modal-content  #seat_no,
+.modal-content  #origin_confirmation,
+.modal-content  #destination_confirmation,
+.modal-content  #departure,
+.modal-content  #date_confirmation,
+.modal-content  #fare,
+.modal-content  #discount,
+.modal-content  #totalFare{
+    border:none;
+    text-align:right;
+}
+
+.modal-content .price .line{
+    background-color: black;
+    width: auto;
+    height:2px;
+}
+.modal-content  #fare{
+    font-weight: bolder;
+}
+.modal-content  #totalFare{
+    font-weight: bolder;
+    height: auto;
+    font-size: 25px;
+    border:2px solid black;
+    border-left:  none;
+    border-right: none;
+    border-bottom: none;
+}
+.modal-content .btn-book,
+.modal-content .btn-cancel{
+    color: white;
+    background-color: #ff6400 ;
+
+}
+
 /* CSS Style when Seat is selected */
 .grp-seats a.selected .icon-seat{
     background-color: #ff6400 !important;

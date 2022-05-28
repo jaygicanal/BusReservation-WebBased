@@ -15,7 +15,19 @@ class CreateReservationsTable extends Migration
     {
         Schema::create('reservations', function (Blueprint $table) {
             $table->id();
+            $table->string('reservation_id');
+            $table->string('user_id');
+            $table->string('trans_id');
+            $table->string('origin');
+            $table->string('destination');
+            $table->date('departure_date');
+            $table->string('seat_no');
+            $table->decimal('total_fare');
+            $table->string('payment_type')->nullable();
+            $table->string('payment_ss')->nullable();
+
             $table->timestamps();
+            $table->timestamp('deleted_at')->nullable();
         });
     }
 

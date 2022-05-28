@@ -23,7 +23,7 @@
                     @include('schedule_views.brsRoute')
             </div>  
             <div class="tab-content d-flex justify-content-center" id="nav-tabContent">
-                <div class="col-11 tab-pane fade" id="nav-schedule" aria-labelledby="nav-schedule-tab">
+                <div class="col-11 tab-pane fade show active" id="nav-schedule" aria-labelledby="nav-schedule-tab">
                     <div class="scheduling-content d-flex justify-content-center py-3">
                         <div class="inner-content col-md-11">
                             <div class="row title py-3">
@@ -41,9 +41,6 @@
                                 <div class="col-3 d-flex align-items-center justify-content-center">
                                     <div class="bus-route">
                                         <div class="route">{{$scheduleList->origin}} - {{$scheduleList->destination}}</div>
-                                        @if($scheduleList->via != "-")
-                                        <div class="via">via {{$scheduleList->via}}</div>
-                                        @endif
                                     </div>
                                     
                                 </div>
@@ -126,10 +123,8 @@
 </script>
 
 <script>
-    $('#add_sched').on('click', function(){
-        if($('#via').val() == ""){
-            $('#via').val("-");
-        }
+    $('#fare').on('change', function(){
+        $('#fare').val($('#fare').val() + ".00")
     });
 </script>
 

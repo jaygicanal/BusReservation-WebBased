@@ -49,12 +49,12 @@ class brsSchedulingController extends Controller
             'trans_id' => 'required',
             'origin' => 'required',
             'destination' => 'required',
-            'via' => 'required',
             'bus_schedule' => 'required',
             'departure_time' => 'required',
             'bus_class' => 'required',
             'with_wifi' => 'required',
             'with_tv' => 'required',
+            'fare' => 'required',
         ]);
 
         if ($validator->fails()) { 
@@ -65,12 +65,12 @@ class brsSchedulingController extends Controller
             'trans_id' => $request['trans_id'], 
             'origin' => $request['origin'], 
             'destination' => $request['destination'],
-            'via' => $request['via'], 
             'bus_schedule' => $request['bus_schedule'], 
             'departure_time' => $request['departure_time'],
             'bus_class' => $request['bus_class'],
             'with_wifi' => $request['with_wifi'],
             'with_tv' => $request['with_tv'],
+            'fare' => $request['fare'], 
         ]);
         event(new Registered($schedule));
 

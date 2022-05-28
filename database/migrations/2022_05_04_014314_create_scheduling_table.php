@@ -18,12 +18,12 @@ class CreateSchedulingTable extends Migration
             $table->string('trans_id');
             $table->string('origin');
             $table->string('destination');
-            $table->string('via')->nullable();
             $table->string('bus_schedule');
             $table->time('departure_time');
             $table->string('bus_class');
             $table->string('with_wifi');
             $table->string('with_tv');
+            $table->decimal('fare');
 
             $table->timestamps();
             $table->timestamp('deleted_at')->nullable();
