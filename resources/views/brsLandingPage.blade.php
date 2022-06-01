@@ -236,7 +236,7 @@
             /* modal.find('.modal-title').text('View Resident Profile'); */
             modal.find('.bus-detail #transit_id').val(trans_id);
             modal.find('.bus-detail #bus_class').val(bus_class);
-            modal.find('.bus-detail #departure').val(departure);
+            modal.find('.bus-detail #departure_time').val(departure);
             modal.find('.bus-detail #wifi').val(wifi);
             modal.find('.bus-detail #tv').val(tv);
             modal.find('.bus-detail .price #fare').val(fare);
@@ -287,7 +287,7 @@
                 var date_departure = $('#date_confirmation').val();
                 var replaced = date_departure.replace(/-/g, '');
                 
-                $('#reservation_id').val(acronym + "-" + replaced + "-" + seat_number);
+                $('#reservation_id').val(acronym + "-" + replaced + "-" + seat_number + "-" +  Math.floor((Math.random() * 99999) + 1));
 
                 
             });

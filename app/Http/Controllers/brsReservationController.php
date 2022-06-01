@@ -92,6 +92,7 @@ class brsReservationController extends Controller
             'origin_confirmation' => 'required',
             'destination_confirmation' => 'required',
             'date_confirmation' => 'required',
+            'departure_time' => 'required',
             'seat_no' => 'required',
             'totalFare' => 'required',
         ]);
@@ -100,6 +101,8 @@ class brsReservationController extends Controller
             return redirect()->back()->withErrors('Required field is empty')->withInput(); 
         }
         
+        $id = $request->input('reservation_id');
+
         $reserved = Reservation::create([
             'reservation_id' => $request['reservation_id'],
             'user_id' => $request['user_id'],
@@ -107,14 +110,13 @@ class brsReservationController extends Controller
             'origin' => $request['origin_confirmation'], 
             'destination' => $request['destination_confirmation'],
             'departure_date' => $request['date_confirmation'], 
+            'departure_time' => $request['departure_time'], 
             'seat_no' => $request['seat_no'], 
             'total_fare' => $request['totalFare'],
         ]);
         event(new Registered($reserved));
 
-        $id = $request->get('reservation_id');
-
-        return redirect()->intended(route('payment', ['id' => $id]))->with('success', 'Seat Reserved!');
+        return redirect()->intended(route('payment'))->with('success', 'Seat Reserved!')->withInput($request->flashOnly('reservation_id'));
     }
 
     /**
@@ -136,7 +138,9 @@ class brsReservationController extends Controller
      */
     public function edit($id)
     {
-        //
+        $reservation_id = Reservation::find($id);
+        //echo "<pre>"; print_r($inventory); die; 
+        return view('brsPayment')->with($reservation_id, $id);
     }
 
     /**
@@ -146,9 +150,37 @@ class brsReservationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'payment_options' => 'required',
+            'imgUpload' => 'required','file',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors('Validation Error')->withInput();
+        }
+
+
+        $sendPayment = "";
+        if($request->hasFile('imgUpload'))
+        {
+            
+            $upload_img = request()->file('imgUpload')->getClientOriginalName();
+            request()->file('imgUpload')->move('images/Payment/', $upload_img);
+            $sendPayment = $upload_img;
+        }
+
+        $status = "Booked";
+
+        $payment = array(
+            'payment_type' => $request['payment_options'],
+            'payment_ss' => $sendPayment,
+            'status' => $status,
+        ); 
+        
+        $reserved = Reservation::findOrFail($request->reservation_id)->update($payment);
+        return redirect()->route('dashboard')->with('success', 'Paid Successfully.', 'Thank you for your payment');
     }
 
     /**

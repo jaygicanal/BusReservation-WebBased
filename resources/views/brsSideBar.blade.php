@@ -104,7 +104,7 @@
                         <div class="link-label">Dashboard</div>
                     </li>
                     <li class="nav-item {{Request::is('booking') ? 'active':'' }} " data-text="Booking">
-                        <a href="{{ url('booking') }}" class="nav-link py-3 ">
+                        <a href="{{ url('admin/manage-booking') }}" class="nav-link py-3 ">
                         <em class="fa fa-calendar-check-o" aria-hidden="true"></em>
                         </a>
                         <div class="link-label">Booking</div>

@@ -10,6 +10,7 @@ use App\Http\Controllers\Auth\AdminController;
 use App\Http\Controllers\Auth\AdminRegisterController;
 use App\Http\Controllers\Auth\brsSchedulingController;
 use App\Http\Controllers\Auth\brsRoutingController;
+use App\Http\Controllers\Auth\brsBookedController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,9 +41,7 @@ Route::prefix('admin')->group(function() {
 
     Route::resource('/routing', brsRoutingController::class);
 
-    Route::get('/booking', function () {
-        return view('brsBooking');
-    });
+    Route::get('/manage-booking', [brsBookedController::class, 'index'])->name('booked');
 
 });
 

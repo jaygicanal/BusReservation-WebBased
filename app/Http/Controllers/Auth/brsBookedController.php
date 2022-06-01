@@ -1,10 +1,20 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Auth;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\User;
+use App\Models\Reservation;
+use App\Providers\RouteServiceProvider; 
+use Illuminate\Auth\Events\Registered; 
+use Illuminate\Support\Facades\Auth; 
+use Illuminate\Support\Facades\Hash; 
+use Illuminate\Support\Facades\Validator; 
+use RealRashid\SweetAlert\Facades\Alert;
+use DB;
 
-class brsBookingController extends Controller
+class brsBookedController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +23,13 @@ class brsBookingController extends Controller
      */
     public function index()
     {
-        //
+        $booked = DB::table('reservations')
+            ->join('users', 'reservations.user_id', '=', 'users.id')
+            ->join('scheduling', 'reservations.trans_id', '=', 'scheduling.trans_id')
+            ->select('reservations.*', 'scheduling.bus_class', 'scheduling.with_wifi', 'scheduling.with_tv', 'users.fname', 'users.mname', 'users.lname', 'users.discount')
+            ->get();
+        // dd($booked);
+        return view('brsBooking')->with('booked', $booked);
     }
 
     /**

@@ -3,7 +3,7 @@
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content d-flex justify-content-center">
             <div class="row col-12">
-                <div class="standard-bus col-7">
+                <div class="standard-bus col-4">
                     <div class="grp-seats d-flex justify-content-center pt-3">
                         <ul>
                             <li class="seats-list">
@@ -243,6 +243,31 @@
                         </ul>
                     </div>
                 </div>
+                <div class="seat-instraction col-3 d-flex align-items-center">
+                    <div class="row">
+                        <div class="available d-flex  align-items-center">
+                            <img src="{{ asset('images/bus-seat.png') }}" class="icon-seat" alt="">
+                            </img>
+                            <div class="text">
+                                -Available Seat
+                            </div>
+                        </div>
+                        <div class="selected d-flex align-items-center">
+                            <img src="{{ asset('images/bus-seat.png') }}" class="icon-seat" alt="">
+                            </img>
+                            <div class="text">
+                                -Selected Seat
+                            </div>
+                        </div>
+                        <div class="reserved d-flex  align-items-center">
+                            <img src="{{ asset('images/bus-seat.png') }}" class="icon-seat" alt="">
+                            </img>
+                            <div class="text">
+                                -Reserved Seat
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="passenger-details col-5 ">
                     <!-- <h4>STANDARD BUS</h1> -->
                     <div class="bus-detail ">
@@ -260,7 +285,7 @@
                             <p class="content d-flex justify-content-between">Seat No.:<input type="text" id="seat_no" name="seat_no" readonly></p>
                             <p class="content d-flex justify-content-between">Origin:<input type="text" id="origin_confirmation" name="origin_confirmation" readonly></p>
                             <p class="content d-flex justify-content-between">Destination:<input type="text" id="destination_confirmation" name="destination_confirmation"readonly></p>
-                            <p class="content d-flex justify-content-between">Time:<input type="text" id="departure" name="departure" readonly></p>
+                            <p class="content d-flex justify-content-between">Time:<input type="text" id="departure_time" name="departure_time" readonly></p>
                             <p class="content d-flex justify-content-between">Date:<input type="text" id="date_confirmation" name="date_confirmation" readonly></p>
                             <div class="price">
                                 <p class="line d-flex justify-content-center"></p>
@@ -268,7 +293,7 @@
                                 <p class="content d-flex justify-content-between">20% Discount:<input type="text" class="col-5" id="discount" name="discount" readonly></p>
                                 <p class="content d-flex justify-content-between">Total:<input type="text" class="col-5" id="totalFare" name="totalFare" readonly></p>
                             </div>
-                            <div class="grp-button">
+                            <div class="grp-button d-flex justify-content-between">
                                 <button type="submit" class="btn-book p-2">Book Trip</button>
                                 <a href="" type="button" class="btn-cancel p-2" data-bs-dismiss="modal" aria-label="Close">Cancel</a>
                             </div>

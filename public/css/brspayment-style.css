@@ -6,37 +6,38 @@ body{
     background-color: white;
 }
 
+.payment .opt{
+    margin-top: 10px;
+}
+
+.payment label{
+    width: 100%;
+}
 
 .payment img{
-    width:100px;
-    height:100px;
+    width: 50px;
+    height:50px;
+    background-color: #ffffff;
+    border-radius: 25px;
+    padding: 6px;
 }
 
-.payment .nav-link{
-    border:10px solid #e5e5e5 !important;
+.payment .icon-txt{
+    font-weight: 600;
+    font-size: 20px;
 }
 
-.payment .nav-link:hover{
-    background-color: #ff6400;
-}
-.payment .nav-link.active img{
-    background-color: #e5e5e5 !important ;
-    border: 5px solid  white;
-}
-.payment .nav-link.active{
-    background-color: #e5e5e5 !important;
+.payment .cnt-details p{
+    font-weight: 500;
+    font-size: 16px;
 }
 
-.payment .tab-content{
-    border: none;
-    padding: 20px;
-    background-color: #e5e5e5;
-}
 .payment .payment-img{
     padding: 25px;
     padding-top: 15px;
     border: 1px solid #ff6400;
-    width: 300px;
+    width: 100%;
+    height: 100px;
 }
 .payment .fa-arrow-circle-down{
     display: flex;

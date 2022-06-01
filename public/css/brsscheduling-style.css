@@ -46,6 +46,9 @@ tbody, td, tfoot, th, thead, tr {
     color: #000000;
     font-weight: 900;
 }
+.scheduling .nav{
+    text-align: center;
+}
 .scheduling .nav-link,
 .scheduling .nav-link{
     color: white;

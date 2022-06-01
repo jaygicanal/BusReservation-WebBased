@@ -16,11 +16,13 @@ body{
     font-weight: bolder;
     font-size: 18px;
 }
+
 .booking .nav-link:hover{
     border: none;
     transform: scale(1.1);
     color: white;
 }
+
 .booking .nav-link.active{
     border: none;
     color: black;
@@ -56,4 +58,26 @@ body{
     border:1px solid black;
     color: white;
     background-color: #ff3200;
+}
+.booking .form-control{
+    margin-right: 10px;
+}
+
+.booking .tab-content .btn-inner a {
+    color: #ff6400;
+    text-decoration: underline;
+}
+/* confirm book */
+.modal-content  h2{
+    margin-bottom: 15px;
+}
+.modal-content .screenshot{
+    border: 1px solid black;height: 300px;
+    margin-bottom: 15px;
+}
+.modal-content input{
+    border: none;
+}
+.modal-content input:focus{
+    outline: none;
 }

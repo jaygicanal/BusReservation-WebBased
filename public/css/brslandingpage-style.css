@@ -141,6 +141,21 @@ input::-webkit-inner-spin-button {
     width: 40px;
 }
 
+.seat-instraction .available .icon-seat{
+    background-color: #b1b1b1;
+    width: 40px;
+}
+.seat-instraction .selected .icon-seat{
+    background-color: #ff6400;
+    width: 40px;
+}
+.seat-instraction .reserved .icon-seat{
+    background-color: #ff3200;
+    width: 40px;
+}
+.seat-instraction .text{
+    font-weight: bolder;
+}
 .grp-seats .seat-nbr{
     position: absolute;
     top: 50%;
@@ -153,28 +168,19 @@ input::-webkit-inner-spin-button {
     width: 40px;
 }
 
-.modal-content  #bus_class,
-.modal-content  #wifi,
-.modal-content  #tv,
-.modal-content  #seat_no,
-.modal-content  #origin_confirmation,
-.modal-content  #destination_confirmation,
-.modal-content  #departure,
-.modal-content  #date_confirmation,
-.modal-content  #fare,
-.modal-content  #discount,
-.modal-content  #totalFare{
+.modal-content  input{
     border:none;
     text-align:right;
+    font-weight: bolder;
+}
+.modal-content  input:focus{
+    outline: none;
 }
 
 .modal-content .price .line{
     background-color: black;
     width: auto;
     height:2px;
-}
-.modal-content  #fare{
-    font-weight: bolder;
 }
 .modal-content  #totalFare{
     font-weight: bolder;
@@ -185,16 +191,27 @@ input::-webkit-inner-spin-button {
     border-right: none;
     border-bottom: none;
 }
-.modal-content .btn-book,
-.modal-content .btn-cancel{
+.modal-content .btn-book{
     color: white;
-    background-color: #ff6400 ;
+    background-color: #ff6400; 
+    border:1px solid #ff6400;
+    width: 150px;
+    font-weight: bolder;
+}
+.modal-content .btn-cancel{
+    color: #ff6400;
+    background-color: whitee; 
+    border:1px solid #ff6400;
+    width: 150px;
+    text-decoration: none;
+    font-weight: bolder;
 
 }
 
 /* CSS Style when Seat is selected */
 .grp-seats a.selected .icon-seat{
     background-color: #ff6400 !important;
+   
 }
 
 .grp-seats a.selected .seat-nbr{
