@@ -67,17 +67,65 @@ body{
     color: #ff6400;
     text-decoration: underline;
 }
+.booking .tab-content .btn-inner:hover a {
+    color: black;
+   transform: scale(1.2);
+   text-decoration: underline;
+}
 /* confirm book */
+.modal-content{
+    padding: 10px;
+}
 .modal-content  h2{
     margin-bottom: 15px;
+    color: #ff6400;
 }
-.modal-content .screenshot{
-    border: 1px solid black;height: 300px;
-    margin-bottom: 15px;
+.modal-content .content{
+    font-weight: 400;
+   
 }
 .modal-content input{
     border: none;
+    font-weight: bolder;
+    
+}
+.modal-content .passenger-details1 input{
+    text-align: right;
 }
 .modal-content input:focus{
     outline: none;
+}
+
+.modal-content .screenshot{
+    width: 100%;
+    height: 450px;
+    border: 1px solid #ff6400;
+    margin-bottom: 15px;
+}
+
+.modal-content .screenshot #imgUploaded{
+    width: 100%;
+    height: 450px;
+    object-fit: contain;
+    object-position: center;
+}
+.modal-content .btn-confirm{
+    color: white;
+    background-color:#ff6400;
+    border: 1px solid #ff6400;
+}
+.modal-content .btn-cancel{
+    color: #ff6400;
+    background-color: none ;
+    border:  1px solid #ff6400;
+    text-decoration: none;
+}
+.modal-content .btn-cancel:hover,
+.modal-content .btn-confirm:hover{
+    transform: scale(1.1);
+}
+
+/* saved book */
+.modal-content .btn-close{
+    font-size: 25px;
 }

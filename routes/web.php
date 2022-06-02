@@ -42,6 +42,7 @@ Route::prefix('admin')->group(function() {
     Route::resource('/routing', brsRoutingController::class);
 
     Route::get('/manage-booking', [brsBookedController::class, 'index'])->name('booked');
+    Route::resource('/manage-booked', brsBookedController::class);
 
 });
 

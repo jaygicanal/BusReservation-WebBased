@@ -26,7 +26,7 @@ class brsBookedController extends Controller
         $booked = DB::table('reservations')
             ->join('users', 'reservations.user_id', '=', 'users.id')
             ->join('scheduling', 'reservations.trans_id', '=', 'scheduling.trans_id')
-            ->select('reservations.*', 'scheduling.bus_class', 'scheduling.with_wifi', 'scheduling.with_tv', 'users.fname', 'users.mname', 'users.lname', 'users.discount')
+            ->select('reservations.*', 'scheduling.bus_class', 'scheduling.with_wifi', 'scheduling.with_tv', 'scheduling.fare', 'users.fname', 'users.mname', 'users.lname', 'users.discount')
             ->get();
         // dd($booked);
         return view('brsBooking')->with('booked', $booked);
@@ -72,7 +72,9 @@ class brsBookedController extends Controller
      */
     public function edit($id)
     {
-        //
+        $reservation_id = Reservation::find($id);
+        //echo "<pre>"; print_r($inventory); die; 
+        return view('brsBooking')->with($reservation_id, $id);
     }
 
     /**
@@ -84,7 +86,14 @@ class brsBookedController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $status = "Confirmed";
+
+        $payment = array(
+            'status' => $status,
+        ); 
+        
+        $reserved = Reservation::findOrFail($request->id)->update($payment);
+        return redirect()->route('booked')->with('success', 'Paid Successfully.');
     }
 
     /**
