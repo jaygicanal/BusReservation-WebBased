@@ -34,7 +34,6 @@
                                 <div class="col-2 d-flex align-items-center justify-content-center">Seat Status</div>
                                 <div class="col-1 d-flex align-items-center justify-content-center">Actions </div>
                             </div>
-                            
                             @if($scheds)
                             @foreach($scheds as $scheduleList)
                             <div class="row sched_content my-2">
@@ -53,7 +52,11 @@
                                     </div>
                                 </div>
                                 <div class="col-2 d-flex align-items-center justify-content-center">20 Left</div>
-                                <div class="col-1 d-flex align-items-center justify-content-center"><button>View Details</button></div>
+                                <div class="col-1 d-flex align-items-center justify-content-center">
+                                    <button  id="view" class= "views" data-bs-toggle="modal" data-bs-target="#view-details">View Details
+                                    </button>
+                                        @include('schedule_views.brsViewDetails')
+                                </div>
                             </div>
                             @endforeach
                             @endif

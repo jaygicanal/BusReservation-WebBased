@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash; 
 use Illuminate\Support\Facades\Validator; 
 use RealRashid\SweetAlert\Facades\Alert;
+use DB;
 
 class brsReservationController extends Controller
 {
@@ -23,48 +24,67 @@ class brsReservationController extends Controller
     public function index(Request $request)
     {
         $bus_scheds = Scheduling::all();
-        $routes = Routing::all();
+        $routes = DB::table('routings')
+            ->orderBy('place', 'asc')
+            ->get();
         $user = Auth::User()->id;
         return view('brsLandingPage')->with('bus_scheds', $bus_scheds)->with('routes', $routes)->with('user', $user);
     }
 
-    // public function search(Request $request){
-    //     if(request()->ajax()){
-    //         $tableRow = "";
-    //         if(!empty($request->origin)){
-    //             $data = DB::table('scheduling')
-    //                 ->where('origin','LIKE','%'.$request->origin."%")
-    //                 ->where('destination', 'LIKE','%'.$request->destination."%")
-    //                 ->whereNot('bus_schedule', $request->dayWeek)
-    //                 ->get();
-    //         }
-    //         /* else{
-    //             $data = Scheduling::select(["trans_id", "origin", "destination", "via", "bus_schedule", "departure_time", "bus_class", "with_wifi", "with_tv"])
-    //                 ->get();
-    //         }
-    //         return datatables()->of($data)->make(true); */
-    //         dd($data);
-    //         if($data){
-    //             foreach($data as $key => $busScheds){
-    //                 $tableRow .= '<tr>'.
-    //                 '<td>'.
-    //                     '<span data-label="origin">'.$busScheds->origin.'</span> - <span data-label="destination">'.$busScheds->destination.'</span>'.
-    //                 '</td>'.
-    //                 '<td data-label="departure_time">'.$busScheds->departure_time.'</td>'.
-    //                 '<td data-label="bus_class">'.$busScheds->bus_class.'</td>'.
-    //                 '<td>'.
-    //                     '<div type="button" class="btn-inner">'.
-    //                         '<a data-bs-toggle="modal" type="button" data-trans_id="'.$busScheds->trans_id.'" data-depart_time="'.$busScheds->departure_time.'" data-bus_class="'.$busScheds->bus_class.'" data-with_wifi="'.$busScheds->with_wifi.'" data-with_tv="'.$busScheds->with_tv.'" data-fare="'.$busScheds->fare.'" data-bs-target="#bus_details" class="text-nav btn-view-details d-flex align-items-center justify-content-center" id="btn_viewSeats">'.
-    //                             '<em class="fa fa-eye" aria-hidden="true"></em>View'.
-    //                         '</a>'.
-    //                         '@include("brsBusSeat")'.
-    //                     '</div>'.
-    //                 '</td></tr>';
-    //             }
-    //             return Response($tableRow);
-    //         }
-    //     }
-    // }
+    public function search(Request $request){
+        $input = $request->all();
+
+        if (!empty($input['query'])) {
+
+            $data = DB::table('scheduling')
+                ->where('origin','LIKE','%'.$request->origin."%")
+                ->where('destination', 'LIKE','%'.$request->destination."%")
+                /* ->whereNot('bus_schedule', $request->dayWeek) */
+                ->get();
+        } else {
+
+            $data = DB::table('scheduling')
+                ->select('scheduling.*')
+                ->get();
+        }
+
+        dd($data);
+        // if(request()->ajax()){
+        //     $tableRow = "";
+        //     if(!empty($request->origin)){
+        //         $data = DB::table('scheduling')
+        //             ->where('origin','LIKE','%'.$request->origin."%")
+        //             ->where('destination', 'LIKE','%'.$request->destination."%")
+        //             ->whereNot('bus_schedule', $request->dayWeek)
+        //             ->get();
+        //     }
+        //     /* else{
+        //         $data = Scheduling::select(["trans_id", "origin", "destination", "via", "bus_schedule", "departure_time", "bus_class", "with_wifi", "with_tv"])
+        //             ->get();
+        //     }
+        //     return datatables()->of($data)->make(true); */
+        //     dd($data);
+        //     if($data){
+        //         foreach($data as $key => $busScheds){
+        //             $tableRow .= '<tr>'.
+        //             '<td>'.
+        //                 '<span data-label="origin">'.$busScheds->origin.'</span> - <span data-label="destination">'.$busScheds->destination.'</span>'.
+        //             '</td>'.
+        //             '<td data-label="departure_time">'.$busScheds->departure_time.'</td>'.
+        //             '<td data-label="bus_class">'.$busScheds->bus_class.'</td>'.
+        //             '<td>'.
+        //                 '<div type="button" class="btn-inner">'.
+        //                     '<a data-bs-toggle="modal" type="button" data-trans_id="'.$busScheds->trans_id.'" data-depart_time="'.$busScheds->departure_time.'" data-bus_class="'.$busScheds->bus_class.'" data-with_wifi="'.$busScheds->with_wifi.'" data-with_tv="'.$busScheds->with_tv.'" data-fare="'.$busScheds->fare.'" data-bs-target="#bus_details" class="text-nav btn-view-details d-flex align-items-center justify-content-center" id="btn_viewSeats">'.
+        //                         '<em class="fa fa-eye" aria-hidden="true"></em>View'.
+        //                     '</a>'.
+        //                     '@include("brsBusSeat")'.
+        //                 '</div>'.
+        //             '</td></tr>';
+        //         }
+        //         return Response($tableRow);
+        //     }
+        // }
+    }
 
     /**
      * Show the form for creating a new resource.

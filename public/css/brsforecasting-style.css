@@ -6,3 +6,7 @@ body{
     width: 100%;
     height: 75px;
 }
+
+.forecasting .forecasting-head h3{
+    color: #ffffff;
+}

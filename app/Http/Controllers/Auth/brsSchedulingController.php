@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Auth\Events\Registered; 
 use Illuminate\Support\Facades\Auth; 
+use DB;
 
 class brsSchedulingController extends Controller
 {
@@ -23,7 +24,10 @@ class brsSchedulingController extends Controller
     public function index()
     {
         $scheds = Scheduling::all();
-        $routes = Routing::all();
+        $routes = DB::table('routings')
+            ->orderBy('place', 'asc')
+            ->get();
+        
         return view('brsScheduling')->with('scheds', $scheds)->with('routes', $routes);
     }
 

@@ -25,7 +25,7 @@
                                             <div class="cmb-ttl">O R I G I N</div>
                                         </div>
                                         <div class="cmb-group">
-                                            <select class="from-city from-city-sm " onblur="this.size=1;"  aria-label=".form-select-lg example" id="origin">
+                                            <select class="from-city from-city-sm" onblur="this.size=1;" aria-label=".form-select-lg example" id="origin" name="origin">
                                                 <option selected>Pick-Up Location</option>
                                                 <optgroup label="Terminal">
                                                 @if($routes)
@@ -48,7 +48,6 @@
                                             </select>
                                         </div>
                                     </div>
-                                
                             </div>
                             <div class="input-form col-6 ">
                                 <div class="to ">
@@ -57,7 +56,7 @@
                                         <div class="cmb-ttl">D E S T I N A T I O N </div>
                                     </div>
                                     <div class="cmb-group">
-                                        <select class="to-city to-city-sm " onblur="this.size=1;"  aria-label=".form-select-lg example" id="destination">
+                                        <select class="to-city to-city-sm " onblur="this.size=1;"  aria-label=".form-select-lg example" id="destination" name="destination">
                                             <option selected>Landingan Location</option>
                                             <optgroup label="Terminal">
                                             @if($routes)
@@ -107,11 +106,10 @@
                 <table class="table" id="scheduledBus">
                     <thead>
                         <tr>
-                        <th scope="col">Route</th>  
+                        <th scope="col">Route</th> 
                         <th scope="col">Time</th>
                         <th scope="col">Class</th>
                         <th scope="col">View Seats</th>
-
                         </tr>
                     </thead>
                     <tbody>
@@ -161,64 +159,26 @@
         $.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
     </script>
 
-    <!-- <script>
-        $(document).ready(function(){
-            searchData();
+    <script>
+        $('#findBus').on('click', function(){
+            var selected = $(this).find(':selected').val();  
+            var parentTR = $(this).closest('tr');
 
-            $('#findBus').click(function(){
-                var origin = $('#origin :selected').val();
-                var destination = $('#destination :selected').val();
-                var dayWeek = $('#dayWeek').val();
-
-                if(origin != "Pick-Up Location" && destination != "Landingan Location" && dayWeek != ''){
-                    $('#scheduledBus').DataTable().destroy();
-                    searchData(origin, destination, dayWeek)
-                }else{
-                    Swal.fire({
-                        title: "Cannot Find Anything!",
-                        text: "Please check if you select an option",
-                        icon: "warning",
-                        showCloseButton: true,
-                        showConfirmButton: false,
-                        timer: 1000
-                    });
+            $.ajax({
+                url: "{{ route('search.busschedule') }}",
+                type: "get",
+                data:{origin:$('#origin').find(':selected').val(), destination:$('#destination').find(':selected').val()}, // the value of input having id vid
+                success: function(response){ // What to do if we succeed
+                    /* parentRow.find('.itemPrice').val(response[0].price);
+                    parentRow.find('.itemQuantity').val(response[0].amount); */
+                    checkData(response[0].amount, response[0].price);
                 }
             });
 
-            function searchData(filterOrigin, filterDestination, filterDate){
-                var dataTable = $('#scheduledBus').DataTable({
-                    processing: true,
-                    serverSide: true, 
-                    ajax:{
-                        url:"route('dashboard')",
-                        data: {filterOrigin:filterOrigin, filterDestination:filterDestination, filterDate:filterDate},
-                    },
-                    columns: [
-                        {
-                            data:'origin',
-                            name:'origin'
-                        },
-                        {
-                            data:'destination',
-                            name:'destination'
-                        },
-                        {
-                            data:'via',
-                            name:'via'
-                        },
-                        {
-                            data:'departure_time',
-                            name:'departure_time'
-                        },
-                        {
-                            data:'bus_class',
-                            name:'bus_class'
-                        },
-                    ]
-                });
-            }
+            parentTR.find('.itemPrice').val("");
+            parentTR.find('.itemQuantity').val("");
         });
-    </script> -->
+    </script>
 
     <!-- Fetch Bus Data -->
     <script>    

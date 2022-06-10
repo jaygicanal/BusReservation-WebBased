@@ -89,6 +89,7 @@ tbody, td, tfoot, th, thead, tr {
     margin-top: 20px;
     text-align: center;
 }
+
 .scheduling .listofterminals,
 .scheduling .listofroads{
     border: 1px solid #e6e6e6 !important;
@@ -97,10 +98,67 @@ tbody, td, tfoot, th, thead, tr {
     padding: 15px 0;
     text-align: center;
     margin-bottom: 5px;
-
+    text-transform: capitalize;
 }
 .scheduling .listofterminals:hover,
 .scheduling .listofroads:hover{
     font-weight: bolder;
     transform: scale(1.1);
+}
+
+/* Add schedule */
+.modal-content #add_sched{
+    background-color: #fa5127;
+    padding: 10px;
+    border: none;
+}
+.modal-content #add_sched:hover{
+    transform: scale(1.1);
+}
+/* Add route */
+.modal-content #add_route,
+.modal-content #add_routeCol{
+    background-color: #fa5127;
+    border: none;
+
+}
+.modal-content #add_route:hover,
+.modal-content #add_routeCol:hover,
+.modal-content #remove_routeCol:hover{
+    transform: scale(1.1);
+    
+}
+/* modal */
+.brs-busseat-modal .content{
+    margin-bottom: 1px;
+}
+.brs-busseat-modal .pass-details,
+.brs-busseat-modal .bus-details{
+    margin-top: 20px;
+}
+/* view details */
+.grp-seats ul{
+    list-style: none;
+}
+
+.grp-seats .grp-inner{
+    position: relative;
+    text-align: center;
+}
+
+.grp-seats .icon-seat{
+    background-color: #b1b1b1;
+    width: 40px;
+}
+
+.grp-seats .seat-nbr{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: bold;
+}
+
+.grp-seats .bus-hallway{
+    width: 40px;
 }

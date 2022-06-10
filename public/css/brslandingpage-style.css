@@ -39,6 +39,11 @@ body::before{
 .find-bus-section  .head-content .h3{
     margin: 0;
 }
+
+.find-bus-section .cmb-group option{
+    text-transform: capitalize;
+}
+
 .find-bus-section  .input-form{
     margin: 20px 0px 0px 0px;
     
@@ -116,6 +121,13 @@ input::-webkit-inner-spin-button {
 .sched-bus thead{
     background-color: #ff3200;
     color: #ffffff;
+}
+.sched-bus .btn-view-details{
+    color: #ff6400;
+}
+.sched-bus .btn-view-details:hover{
+    color: black;
+    transform: scale(1.1);
 }
 
 /* modal */

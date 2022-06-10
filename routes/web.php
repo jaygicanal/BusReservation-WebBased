@@ -11,6 +11,7 @@ use App\Http\Controllers\Auth\AdminRegisterController;
 use App\Http\Controllers\Auth\brsSchedulingController;
 use App\Http\Controllers\Auth\brsRoutingController;
 use App\Http\Controllers\Auth\brsBookedController;
+use App\Http\Controllers\Auth\brsForecastingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,7 +44,7 @@ Route::prefix('admin')->group(function() {
 
     Route::get('/manage-booking', [brsBookedController::class, 'index'])->name('booked');
     Route::resource('/manage-booked', brsBookedController::class);
-
+    Route::get('manage-forecast', [brsForecastingController::class, 'index'])->name('forecast');
 });
 
 // FOR NORMAL USER REGISTRATION AND LOGIN
@@ -72,10 +73,6 @@ Route::get('/booking', function () {
 
 Route::get('/admin', function () {
     return view('brsAdminDashboard');
-});
-
-Route::get('/forecasting', function () {
-    return view('brsForecasting');
 });
 
 

@@ -30,7 +30,7 @@ class brsRegistrationController extends Controller
      */
     public function create()
     {
-        return view('auth.brsRegistration');
+        return view('auth.brsLogin');
     }
 
     /**
@@ -53,12 +53,25 @@ class brsRegistrationController extends Controller
             'email' => 'required','email','unique:users',
             'password' => 'required','min:8', 
             're_password' => 'required','same:password',
-            'avatar' => 'required','file','max:1024', 
+            'profile_upload' => 'required','file',
         ]); 
             
         if ($validator->fails()) { 
             return redirect()->back()->withErrors('Required field is empty')->withInput(); 
         } 
+        
+        // dd($request->hasFile('profile_upload'));
+
+        $userprofile = "";
+        if($request->hasFile('profile_upload'))
+        {
+            $upload_img = request()->file('profile_upload')->getClientOriginalName();
+            request()->file('profile_upload')->move('images/userProfile_uploads/', $upload_img);
+            $userprofile = $upload_img;
+        }
+        else{
+            return redirect()->back()->withErrors('Image Uploaded Not Valid')->withInput(); 
+        }
         
         Auth::login($user = User::create([
             'fname' => $request['fname'], 
@@ -72,12 +85,10 @@ class brsRegistrationController extends Controller
             'email' => $request['email'],
             'password' =>Hash::make($request['password']),
             're_password' =>Hash::make($request['re_password']),
-            'avatar' => $request['avatar'],
+            'avatar' => $userprofile,
         ]));
-        //$user->attachRole($request->role);  
-        event(new Registered($user));
 
-        return redirect()->intended(route('dashboard'))->with('success', 'Login Successfully!');
+        return redirect()->intended(route('dashboard'))->with('success', 'Login Successfully!', $user, 'user');
     }
 
     /**

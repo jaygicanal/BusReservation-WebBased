@@ -4,8 +4,8 @@
 }
 
 @font-face {
-    src: url('/fonts/Poppins-Bold.ttf');
-    font-family: Poppins-Bold;
+    src: url('/fonts/Poppins-Medium.ttf');
+    font-family: Poppins-Medium;
 }
 
 * {
@@ -13,7 +13,7 @@
 }
 
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{
-    font-family: Poppins-Bold, sans-serif;
+    font-family: Poppins-Medium, sans-serif;
     font-weight: 700;
 }
 

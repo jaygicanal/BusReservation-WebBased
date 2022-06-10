@@ -110,7 +110,7 @@
                         <div class="link-label">Booking</div>
                     </li>
                     <li class="nav-item {{Request::is('forecasting') ? 'active':'' }}" data-text="Forecasting">
-                        <a href="{{ url('forecasting') }}" class="nav-link py-3 " title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Orders">
+                        <a href="{{ url('admin/manage-forecast') }}" class="nav-link py-3 " title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Orders">
                             <em class="fa fa-line-chart" aria-hidden="true"></em>
                         </a>
                         <div class="link-label">Forecasting</div>

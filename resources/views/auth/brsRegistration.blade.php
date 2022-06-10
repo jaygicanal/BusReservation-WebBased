@@ -2,7 +2,7 @@
 <div class="modal fade brs-register-modal" tabindex="-1" role="dialog" aria-labelledby="create" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content d-flex justify-content-center">
-            <form action="register" method="POST">
+            <form action="register" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="row ">   
                     <div class="logo-img col-md-4 d-flex justify-content-center align-items-center">
@@ -10,7 +10,7 @@
                             <div class="icon d-flex justify-content-center">
                                 <i class="fa fa-user-circle-o" aria-hidden="true"></i>
                             </div>
-                            <input type="file" id="avatar" name="avatar" accept="image/png,image/jpeg" required></input>
+                            <input type="file" id="profile_upload" name="profile_upload" accept="image/png,image/jpeg" required>
                         </div>
                     </div>
                     <div class="confirmation-col col-md-8 ">
