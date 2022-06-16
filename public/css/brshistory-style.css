@@ -1,0 +1,38 @@
+
+.history .history_inner{
+    border: 1px solid #e6e6e6 !important;
+    background-color: #e6e6e6;
+    border-radius: 15px;
+    padding: 15px 5;
+    margin-bottom: 5px;
+    text-transform: capitalize;
+}
+
+.history .Booked{
+    color: #ff6400;
+}
+.history .Confirmed{
+    color: green;
+}
+.history input{
+    font-weight: bolder;
+    margin: 5px 0 5px 0;
+    border: none;
+}
+.history input:focus{
+outline: none;
+
+}
+.history button{
+    color: #ff3200;
+    background-color: #e6e6e6;
+    border: 2px solid #ff3200;
+    font-weight: bolder;
+    padding: 5px 10px;
+    font-size: 20px;
+}
+.history button:hover{
+    color: white;
+    background-color: #ff3200;
+    border: 2px solid #ff3200;
+}

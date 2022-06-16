@@ -5,6 +5,7 @@ use App\Http\Controllers\brsLoginController;
 use App\Http\Controllers\brsRegistrationController;
 use App\Http\Controllers\brsReservationController;
 use App\Http\Controllers\brsPaymentController;
+use App\Http\Controllers\brsHistoryController;
 use App\Http\Controllers\Auth\AdminLoginController;
 use App\Http\Controllers\Auth\AdminController;
 use App\Http\Controllers\Auth\AdminRegisterController;
@@ -65,6 +66,8 @@ Route::group([ 'middleware' => ['auth']], function () {
     Route::get('/available-bus', function () {
         return view('brsListofBus');
     });
+
+    Route::get('/history', [brsHistoryController::class, 'index'])->name('history');
 });
 
 Route::get('/booking', function () {
@@ -74,6 +77,7 @@ Route::get('/booking', function () {
 Route::get('/admin', function () {
     return view('brsAdminDashboard');
 });
+
 
 
 
