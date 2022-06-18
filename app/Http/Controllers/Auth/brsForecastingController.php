@@ -208,6 +208,286 @@ class brsForecastingController extends Controller
         return response()->json($dataRevenue);
     }
 
+    public function forecastGender(Request $request){
+        $totGenderMale = DB::table('reservations')
+            ->join('users', 'reservations.user_id', 'users.id')
+            ->select('reservation.*', 'users.gender')
+            ->select(DB::raw('COUNT(users.gender) as totalMale_reserved'),DB::raw('YEAR(reservations.created_at) as year, MONTH(reservations.created_at) as month'))
+            ->groupby('year', 'month')
+            ->where('gender', '=', 'Female')
+            ->get();
+
+        $totGenderFemale = DB::table('reservations')
+            ->join('users', 'reservations.user_id', 'users.id')
+            ->select('reservation.*', 'users.gender')
+            ->select(DB::raw('COUNT(users.gender) as totalFemale_reserved'),DB::raw('YEAR(reservations.created_at) as year, MONTH(reservations.created_at) as month'))
+            ->groupby('year', 'month')
+            ->where('gender', '=', 'Male')
+            ->get();
+
+        //dd($totReserved);
+
+        $monthForecast = "";
+        $monMaleValue = 0;
+        $monFemaleValue = 0;
+        /* $forecastRevenueValue = 0;
+        $foreloop = 0; */
+        $ctrMale = 0;
+        $ctrFemale = 0;
+        for($i = 1; $i<=12; $i++){
+            
+            if($i == 1){
+                $monthForecast = "Jan";
+                //condition value for Monthly Revenue------------
+                if($ctrMale >= count($totGenderMale)){
+                    $monMaleValue = '';
+                }else if($i == $totGenderMale[$ctrMale]->month){
+                    $monMaleValue = $totGenderMale[$ctrMale]->totalMale_reserved;
+                    $ctrMale+=1;
+                }else{
+                    $monMaleValue = 0;
+                }
+                //condition value for Forecast Revenue------------
+                if($ctrFemale >= count($totGenderFemale)){
+                    $monFemaleValue = '';
+                }else if($i == $totGenderFemale[$ctrFemale]->month){
+                    $monFemaleValue = $totGenderFemale[$ctrFemale]->totalFemale_reserved;
+                    $ctrFemale+=1;
+                }else{
+                    $monFemaleValue = 0;
+                }
+            }else if($i == 2){
+                $monthForecast = "Feb";
+                //condition value for Monthly Revenue------------
+                if($ctrMale >= count($totGenderMale)){
+                    $monMaleValue = '';
+                }else if($i == $totGenderMale[$ctrMale]->month){
+                    $monMaleValue = $totGenderMale[$ctrMale]->totalMale_reserved;
+                    $ctrMale+=1;
+                }else{
+                    $monMaleValue = 0;
+                }
+                //condition value for Forecast Revenue------------
+                if($ctrFemale >= count($totGenderFemale)){
+                    $monFemaleValue = '';
+                }else if($i == $totGenderFemale[$ctrFemale]->month){
+                    $monFemaleValue = $totGenderFemale[$ctrFemale]->totalFemale_reserved;
+                    $ctrFemale+=1;
+                }else{
+                    $monFemaleValue = 0;
+                }
+            }else if($i == 3){
+                $monthForecast = "Mar";
+                //condition value for Monthly Revenue------------
+                if($ctrMale >= count($totGenderMale)){
+                    $monMaleValue = '';
+                }else if($i == $totGenderMale[$ctrMale]->month){
+                    $monMaleValue = $totGenderMale[$ctrMale]->totalMale_reserved;
+                    $ctrMale+=1;
+                }else{
+                    $monMaleValue = 0;
+                }
+                //condition value for Forecast Revenue------------
+                if($ctrFemale >= count($totGenderFemale)){
+                    $monFemaleValue = '';
+                }else if($i == $totGenderFemale[$ctrFemale]->month){
+                    $monFemaleValue = $totGenderFemale[$ctrFemale]->totalFemale_reserved;
+                    $ctrFemale+=1;
+                }else{
+                    $monFemaleValue = 0;
+                }
+            }else if($i == 4){
+                $monthForecast = "Apr";
+                //condition value for Monthly Revenue------------
+                if($ctrMale >= count($totGenderMale)){
+                    $monMaleValue = '';
+                }else if($i == $totGenderMale[$ctrMale]->month){
+                    $monMaleValue = $totGenderMale[$ctrMale]->totalMale_reserved;
+                    $ctrMale+=1;
+                }else{
+                    $monMaleValue = 0;
+                }
+                //condition value for Forecast Revenue------------
+                if($ctrFemale >= count($totGenderFemale)){
+                    $monFemaleValue = '';
+                }else if($i == $totGenderFemale[$ctrFemale]->month){
+                    $monFemaleValue = $totGenderFemale[$ctrFemale]->totalFemale_reserved;
+                    $ctrFemale+=1;
+                }else{
+                    $monFemaleValue = 0;
+                }
+            }else if($i == 5){
+                $monthForecast = "May";
+                //condition value for Monthly Revenue------------
+                if($ctrMale >= count($totGenderMale)){
+                    $monMaleValue = '';
+                }else if($i == $totGenderMale[$ctrMale]->month){
+                    $monMaleValue = $totGenderMale[$ctrMale]->totalMale_reserved;
+                    $ctrMale+=1;
+                }else{
+                    $monMaleValue = 0;
+                }
+                //condition value for Forecast Revenue------------
+                if($ctrFemale >= count($totGenderFemale)){
+                    $monFemaleValue = '';
+                }else if($i == $totGenderFemale[$ctrFemale]->month){
+                    $monFemaleValue = $totGenderFemale[$ctrFemale]->totalFemale_reserved;
+                    $ctrFemale+=1;
+                }else{
+                    $monFemaleValue = 0;
+                }
+            }else if($i == 6){
+                $monthForecast = "Jun";
+                //condition value for Monthly Revenue------------
+                if($ctrMale >= count($totGenderMale)){
+                    $monMaleValue = '';
+                }else if($i == $totGenderMale[$ctrMale]->month){
+                    $monMaleValue = $totGenderMale[$ctrMale]->totalMale_reserved;
+                    $ctrMale+=1;
+                }else{
+                    $monMaleValue = 0;
+                }
+                //condition value for Forecast Revenue------------
+                if($ctrFemale >= count($totGenderFemale)){
+                    $monFemaleValue = '';
+                }else if($i == $totGenderFemale[$ctrFemale]->month){
+                    $monFemaleValue = $totGenderFemale[$ctrFemale]->totalFemale_reserved;
+                    $ctrFemale+=1;
+                }else{
+                    $monFemaleValue = 0;
+                }
+            }else if($i == 7){
+                $monthForecast = "Jul";
+                //condition value for Monthly Revenue------------
+                if($ctrMale >= count($totGenderMale)){
+                    $monMaleValue = '';
+                }else if($i == $totGenderMale[$ctrMale]->month){
+                    $monMaleValue = $totGenderMale[$ctrMale]->totalMale_reserved;
+                    $ctrMale+=1;
+                }else{
+                    $monMaleValue = 0;
+                }
+                //condition value for Forecast Revenue------------
+                if($ctrFemale >= count($totGenderFemale)){
+                    $monFemaleValue = '';
+                }else if($i == $totGenderFemale[$ctrFemale]->month){
+                    $monFemaleValue = $totGenderFemale[$ctrFemale]->totalFemale_reserved;
+                    $ctrFemale+=1;
+                }else{
+                    $monFemaleValue = 0;
+                }
+            }else if($i == 8){
+                $monthForecast = "Aug";
+                //condition value for Monthly Revenue------------
+                if($ctrMale >= count($totGenderMale)){
+                    $monMaleValue = '';
+                }else if($i == $totGenderMale[$ctrMale]->month){
+                    $monMaleValue = $totGenderMale[$ctrMale]->totalMale_reserved;
+                    $ctrMale+=1;
+                }else{
+                    $monMaleValue = 0;
+                }
+                //condition value for Forecast Revenue------------
+                if($ctrFemale >= count($totGenderFemale)){
+                    $monFemaleValue = '';
+                }else if($i == $totGenderFemale[$ctrFemale]->month){
+                    $monFemaleValue = $totGenderFemale[$ctrFemale]->totalFemale_reserved;
+                    $ctrFemale+=1;
+                }else{
+                    $monFemaleValue = 0;
+                }
+            }else if($i == 9){
+                $monthForecast = "Sep";
+                //condition value for Monthly Revenue------------
+                if($ctrMale >= count($totGenderMale)){
+                    $monMaleValue = '';
+                }else if($i == $totGenderMale[$ctrMale]->month){
+                    $monMaleValue = $totGenderMale[$ctrMale]->totalMale_reserved;
+                    $ctrMale+=1;
+                }else{
+                    $monMaleValue = 0;
+                }
+                //condition value for Forecast Revenue------------
+                if($ctrFemale >= count($totGenderFemale)){
+                    $monFemaleValue = '';
+                }else if($i == $totGenderFemale[$ctrFemale]->month){
+                    $monFemaleValue = $totGenderFemale[$ctrFemale]->totalFemale_reserved;
+                    $ctrFemale+=1;
+                }else{
+                    $monFemaleValue = 0;
+                }
+            }else if($i == 10){
+                $monthForecast = "Oct";
+                //condition value for Monthly Revenue------------
+                if($ctrMale >= count($totGenderMale)){
+                    $monMaleValue = '';
+                }else if($i == $totGenderMale[$ctrMale]->month){
+                    $monMaleValue = $totGenderMale[$ctrMale]->totalMale_reserved;
+                    $ctrMale+=1;
+                }else{
+                    $monMaleValue = 0;
+                }
+                //condition value for Forecast Revenue------------
+                if($ctrFemale >= count($totGenderFemale)){
+                    $monFemaleValue = '';
+                }else if($i == $totGenderFemale[$ctrFemale]->month){
+                    $monFemaleValue = $totGenderFemale[$ctrFemale]->totalFemale_reserved;
+                    $ctrFemale+=1;
+                }else{
+                    $monFemaleValue = 0;
+                }
+            }else if($i == 11){
+                $monthForecast = "Nov";
+                //condition value for Monthly Revenue------------
+                if($ctrMale >= count($totGenderMale)){
+                    $monMaleValue = '';
+                }else if($i == $totGenderMale[$ctrMale]->month){
+                    $monMaleValue = $totGenderMale[$ctrMale]->totalMale_reserved;
+                    $ctrMale+=1;
+                }else{
+                    $monMaleValue = 0;
+                }
+                //condition value for Forecast Revenue------------
+                if($ctrFemale >= count($totGenderFemale)){
+                    $monFemaleValue = '';
+                }else if($i == $totGenderFemale[$ctrFemale]->month){
+                    $monFemaleValue = $totGenderFemale[$ctrFemale]->totalFemale_reserved;
+                    $ctrFemale+=1;
+                }else{
+                    $monFemaleValue = 0;
+                }
+            }else if($i == 12){
+                $monthForecast = "Dec";
+                //condition value for Monthly Revenue------------
+                if($ctrMale >= count($totGenderMale)){
+                    $monMaleValue = '';
+                }else if($i == $totGenderMale[$ctrMale]->month){
+                    $monMaleValue = $totGenderMale[$ctrMale]->totalMale_reserved;
+                    $ctrMale+=1;
+                }else{
+                    $monMaleValue = 0;
+                }
+                //condition value for Forecast Revenue------------
+                if($ctrFemale >= count($totGenderFemale)){
+                    $monFemaleValue = '';
+                }else if($i == $totGenderFemale[$ctrFemale]->month){
+                    $monFemaleValue = $totGenderFemale[$ctrFemale]->totalFemale_reserved;
+                    $ctrFemale+=1;
+                }else{
+                    $monFemaleValue = 0;
+                }
+            }
+
+            $dataRevenue[] = array(
+                "monthlyData" => $monthForecast,
+                "maleValue" => $monMaleValue,
+                "femaleValue" => $monFemaleValue
+            );
+        }
+        
+        return response()->json($dataRevenue);
+    }
+
 
     /**
      * Show the form for creating a new resource.

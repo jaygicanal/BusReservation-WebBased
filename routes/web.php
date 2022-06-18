@@ -48,6 +48,7 @@ Route::prefix('admin')->group(function() {
     Route::get('manage-forecast', [brsForecastingController::class, 'index'])->name('forecast');
 
     Route::get('reserved-forecast', [brsForecastingController::class, 'forecastReserved'])->name('reserved');
+    Route::get('gender-forecast', [brsForecastingController::class, 'forecastGender'])->name('genderForecast');
 });
 
 // FOR NORMAL USER REGISTRATION AND LOGIN
