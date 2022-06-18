@@ -10,7 +10,10 @@
     <section class="payment">
         <div class="container">
             <div class="row d-flex justify-content-center">
-                <div class="col-md-7 payment-content">
+                <div class=" d-flex  justify-content-center align-items-center col-md-6">
+                    <div class="qoute">Understand there is a price to be paid for achieving anything of significant. You must be willing to pay the price.</div>
+                </div>
+                <div class="col-md-6 payment-content">
                     <div class="payment-head">
                         <h2>Payment</h2>
                     </div>
@@ -83,7 +86,7 @@
                         <form enctype="multipart/form-data" action="{{ route('booking.update', 'reservation_id') }}" method="POST" class="payment-inner">
                             @csrf
                             @method('PUT')
-                            <input type="text" id="reservation_id" name="reservation_id" value="{{ old('reservation_id') }}" >
+                            <input type="text" id="reservation_id" name="reservation_id" value="{{ old('reservation_id') }}" hidden>
                             <div class="row">
                                 <div class="payment-type col-6">
                                     <div class="opt col-12">

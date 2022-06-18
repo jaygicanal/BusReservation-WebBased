@@ -2,7 +2,7 @@
 
 @push('styles')
     <link rel="stylesheet" href="{{asset('css/brsforecasting-style.css')}}"> 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.3.2/echarts.min.js" integrity="sha512-weWXHm0Ws2cZKjjwugRMnnOAx9uCP/wUVf84W7/fXQimwYUK28zPDGPprDozomQLpKv6U99xN9PI9+yLI9qxNw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.3.2/dist/echarts.min.js"></script>
 @endpush
 @section('content')
 
@@ -16,140 +16,124 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            <h1 class="text-center">How To Create Dynamic Line Chart In Laravel - techsolutionstuff.com</h1>
-            <div class="col-md-8 col-md-offset-2">
-                <div class="col-xl-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="chart-container">
-                                <div class="chart has-fixed-height" id="line_stacked"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>	
+            <div id="forecast-col" style="width:100%;height:450px;"></div>
         </div>
     </div>
 </section>
 
-<script type="text/javascript">
-    var line_stacked_element = document.getElementById('line_stacked');
-    if (line_stacked_element) {
-        var line_stacked = echarts.init(line_stacked_element);
-        line_stacked.setOption({
-            animationDuration: 750,
-            grid: {
-                left: 0,
-                right: 20,
-                top: 35,
-                bottom: 0,
-                containLabel: true
-            },        
-            legend: {
-                data: ['phone', 'laptop', 'tablet'],
-                itemHeight: 8,
-                itemGap: 20
-            },
-
-            // Add tooltip
-            tooltip: {
-                trigger: 'axis',
-                backgroundColor: 'rgba(0,0,0,0.75)',
-                padding: [10, 15],
-                textStyle: {
-                    fontSize: 13,
-                    fontFamily: 'Roboto, sans-serif'
-                }
-            },
+<script>
+    $(document).ready(function(){
+        fetchDataDemand();
+        function fetchDataDemand(){
+            var myChart = echarts.init(document.getElementById('forecast-col'));
             
-            xAxis: [{
-                type: 'category',
-                boundaryGap: false,
-                data: [
-                    '2018', '2019', '2020'
-                ],
-                axisLabel: {
-                    color: '#333'
+            var option = {
+                animationDuration: 750,
+                grid: {
+                    
+                    containLabel: true
                 },
-                axisLine: {
-                    lineStyle: {
-                        color: '#999'
+                legend: {
+                },    
+                tooltip: {
+                    trigger: 'axis',
+                    backgroundColor: 'rgba(0,0,0,0.75)',
+                    padding: [10, 15],
+                    textStyle: {
+                        fontSize: 13,
+                        fontFamily: 'Poppins, sans-serif'
                     }
                 },
-                splitLine: {
-                    lineStyle: {
-                        color: ['#eee']
-                    }
-                }
-            }],
+                xAxis: {
+                },
+                yAxis: {
+                },
+                series: [
+                ]
+            };
 
-            // Vertical axis
-            yAxis: [{
-                type: 'value',
-                axisLabel: {
-                    color: '#333'
-                },
-                axisLine: {
-                    lineStyle: {
-                        color: '#999'
-                    }
-                },
-                splitLine: {
-                    lineStyle: {
-                        color: ['#eee']
-                    }
-                },
-                splitArea: {
-                    show: true,
-                    areaStyle: {
-                        color: ['rgba(250,250,250,0.1)', 'rgba(0,0,0,0.01)']
-                    }
-                }
-            }],
+            myChart.setOption(option);
 
-            // Add series
-            series: [
-                {
-                    name: 'phone',
-                    type: 'line',
-                    stack: 'Total',
-                    smooth: true,
-                    symbolSize: 7,
-                    data: [{{$phone_count_18}},{{$phone_count_19}},{{$phone_count_20}}],
-                    itemStyle: {
-                        normal: {
-                            borderWidth: 2
-                        }
-                    }
-                },
-                {
-                    name: 'laptop',
-                    type: 'line',
-                    stack: 'Total',
-                    smooth: true,
-                    symbolSize: 7,
-                    data: [{{$laptop_count_18}},{{$laptop_count_19}},{{$laptop_count_20}}],
-                    itemStyle: {
-                        normal: {
-                            borderWidth: 2
-                        }
-                    }
-                },
-                {
-                    name: 'tablet',
-                    type: 'line',
-                    stack: 'Total',
-                    smooth: true,
-                    symbolSize: 7,
-                    data: [{{$tablet_count_18}},{{$tablet_count_19}},{{$tablet_count_20}}],
-                    itemStyle: {
-                        normal: {
-                            borderWidth: 2
-                        }
-                    }
+            $.ajax({
+                url: '{{ route('reserved') }}',
+                type: 'GET',
+                /* data:{input_category:$('.forecast-data').find('#category :selected').val()}, */
+                success: function(response){ 
+                    var months = [];
+                    var reserved = [];
+                    //var forecast = [];
+                    $.each(response, function(index, item) {
+                        months.push(item.monthlyData);
+                        reserved.push(item.reservedValue);
+                        //forecast.push(item.forecastDemand);
+                    });
+                    
+                    myChart.setOption ({
+                        legend: {
+                            data: ['total reservation'],
+                            itemHeight: 8,
+                            itemGap: 20
+                        },
+                        xAxis: {
+                            type:'category',
+                            data: months,
+                            boundaryGap: false,
+                            axisLabel: {
+                                color: '#333'
+                            },
+                            axisLine: {
+                                lineStyle: {
+                                    color: '#999'
+                                }
+                            },
+                            splitLine: {
+                                lineStyle: {
+                                    color: ['#eee']
+                                }
+                            }
+                        },
+                        yAxis: {
+                            type: 'value',
+                            axisLabel: {
+                                color: '#333'
+                            },
+                            axisLine: {
+                                lineStyle: {
+                                    color: '#ddd'
+                                }
+                            },
+                            splitLine: {
+                                lineStyle: {
+                                    color: ['#eee']
+                                }
+                            },
+                            splitArea: {
+                                show: true,
+                                areaStyle: {
+                                    color: ['rgba(250,250,250,0.1)', 'rgba(0,0,0,0.01)']
+                                }
+                            }
+                        },
+                        series: [
+                            /* {
+                                name: 'forecast-demand',
+                                type: 'line',
+                                data: forecastDemand,
+                                color: ['#ff0000'],
+                            }, */
+                            {
+                                name: 'total reservation',
+                                type: 'line',
+                                data: reserved,
+                                color: ['#007fff'],
+                            }
+                            
+                        ]
+                        
+                    });
                 }
-            ]
-        });
-    }
+            });
+        }
+    })
 </script>
 @endsection

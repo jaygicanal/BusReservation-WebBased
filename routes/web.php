@@ -46,6 +46,8 @@ Route::prefix('admin')->group(function() {
     Route::get('/manage-booking', [brsBookedController::class, 'index'])->name('booked');
     Route::resource('/manage-booked', brsBookedController::class);
     Route::get('manage-forecast', [brsForecastingController::class, 'index'])->name('forecast');
+
+    Route::get('reserved-forecast', [brsForecastingController::class, 'forecastReserved'])->name('reserved');
 });
 
 // FOR NORMAL USER REGISTRATION AND LOGIN

@@ -23,29 +23,191 @@ class brsForecastingController extends Controller
      */
     public function index()
     {
-        $phone_count_18 = Product::where('product_type','phone')->where('year','2018')->get()->count(); 
-    	$phone_count_19 = Product::where('product_type','phone')->where('year','2019')->get()->count();
-    	
-    	    	    	
-    	return view('brsForecasting',compact('phone_count_18','phone_count_19','phone_count_20','laptop_count_18','laptop_count_19','laptop_count_20','tablet_count_18','tablet_count_19','tablet_count_20'));
+        $totReserved = DB::table('reservations')
+            ->select(DB::raw('COUNT(*) as total_reserved'),DB::raw('YEAR(created_at) as year, MONTH(created_at) as month'))
+            ->groupby('year', 'month')
+            ->get();
+
+        $totGenderReserved = DB::table('reservations')
+            ->join('users', 'reservations.user_id', 'users.id')
+            ->select('reservation.*', 'users.gender')
+            ->select(DB::raw('COUNT(users.gender) as totalGender_reserved'),DB::raw('YEAR(reservations.created_at) as year, MONTH(reservations.created_at) as month'))
+            ->groupby('year', 'month')
+            ->where('gender', '=', 'Female')
+            ->get();
+
+        //dd($totGenderReserved);
+        return view('brsForecasting');
     }
 
-    public function linechart(Request $request)
-    {
-    	$phone_count_18 = Product::where('product_type','phone')->where('year','2018')->get()->count(); 
-    	$phone_count_19 = Product::where('product_type','phone')->where('year','2019')->get()->count();
-    	$phone_count_20 = Product::where('product_type','phone')->where('year','2020')->get()->count();   	
-    	
-    	$laptop_count_18 = Product::where('product_type','laptop')->where('year','2018')->get()->count();
-    	$laptop_count_19 = Product::where('product_type','laptop')->where('year','2019')->get()->count();
-    	$laptop_count_20 = Product::where('product_type','laptop')->where('year','2020')->get()->count();
+    public function forecastReserved(Request $request){
+        $totReserved = DB::table('reservations')
+            ->select(DB::raw('COUNT(*) as total_reserved'),DB::raw('YEAR(created_at) as year, MONTH(created_at) as month'))
+            ->groupby('year', 'month')
+            ->get();
 
-    	$tablet_count_18 = Product::where('product_type','tablet')->where('year','2018')->get()->count();
-    	$tablet_count_19 = Product::where('product_type','tablet')->where('year','2019')->get()->count();
-    	$tablet_count_20 = Product::where('product_type','tablet')->where('year','2020')->get()->count();
-    	    	    	
-    	return view('linechart',compact('phone_count_18','phone_count_19','phone_count_20','laptop_count_18','laptop_count_19','laptop_count_20','tablet_count_18','tablet_count_19','tablet_count_20'));
+        //dd($totReserved);
+
+        $monthForecast = "";
+        $monReservedValue = 0;
+        /* $forecastRevenueValue = 0;
+        $foreloop = 0; */
+        $ctr = 0;
+        for($i = 1; $i<=12; $i++){
+            
+            if($i == 1){
+                $monthForecast = "Jan";
+                //condition value for Monthly Revenue------------
+                if($ctr >= count($totReserved)){
+                    $monReservedValue = '';
+                }else if($i == $totReserved[$ctr]->month){
+                    $monReservedValue = $totReserved[$ctr]->total_reserved;
+                    $ctr+=1;
+                }else{
+                    $monReservedValue = 0;
+                }
+                //condition value for Forecast Revenue------------
+                /* if($foreloop >= count($forecast_totRevenue)){
+                    $forecastRevenueValue = '';
+                }else if($i == $forecast_totRevenue[$foreloop]->month){
+                    $forecastRevenueValue = $forecast_totRevenue[$foreloop]->totRevenue;
+                    $foreloop+=1;
+                }else{
+                    $forecastRevenueValue = 0;
+                } */
+            }else if($i == 2){
+                $monthForecast = "Feb";
+                //condition value for Monthly Revenue------------
+                if($ctr >= count($totReserved)){
+                    $monReservedValue = '';
+                }else if($i == $totReserved[$ctr]->month){
+                    $monReservedValue = $totReserved[$ctr]->total_reserved;
+                    $ctr+=1;
+                }else{
+                    $monReservedValue = 0;
+                }
+            }else if($i == 3){
+                $monthForecast = "Mar";
+                //condition value for Monthly Revenue------------
+                if($ctr >= count($totReserved)){
+                    $monReservedValue = '';
+                }else if($i == $totReserved[$ctr]->month){
+                    $monReservedValue = $totReserved[$ctr]->total_reserved;
+                    $ctr+=1;
+                }else{
+                    $monReservedValue = 0;
+                }
+            }else if($i == 4){
+                $monthForecast = "Apr";
+                //condition value for Monthly Revenue------------
+                if($ctr >= count($totReserved)){
+                    $monReservedValue = '';
+                }else if($i == $totReserved[$ctr]->month){
+                    $monReservedValue = $totReserved[$ctr]->total_reserved;
+                    $ctr+=1;
+                }else{
+                    $monReservedValue = 0;
+                }
+            }else if($i == 5){
+                $monthForecast = "May";
+                //condition value for Monthly Revenue------------
+                if($ctr >= count($totReserved)){
+                    $monReservedValue = '';
+                }else if($i == $totReserved[$ctr]->month){
+                    $monReservedValue = $totReserved[$ctr]->total_reserved;
+                    $ctr+=1;
+                }else{
+                    $monReservedValue = 0;
+                }
+            }else if($i == 6){
+                $monthForecast = "Jun";
+                //condition value for Monthly Revenue------------
+                if($ctr >= count($totReserved)){
+                    $monReservedValue = '';
+                }else if($i == $totReserved[$ctr]->month){
+                    $monReservedValue = $totReserved[$ctr]->total_reserved;
+                    $ctr+=1;
+                }else{
+                    $monReservedValue = 0;
+                }
+            }else if($i == 7){
+                $monthForecast = "Jul";
+                //condition value for Monthly Revenue------------
+                if($ctr >= count($totReserved)){
+                    $monReservedValue = '';
+                }else if($i == $totReserved[$ctr]->month){
+                    $monReservedValue = $totReserved[$ctr]->total_reserved;
+                    $ctr+=1;
+                }else{
+                    $monReservedValue = 0;
+                }
+            }else if($i == 8){
+                $monthForecast = "Aug";
+                //condition value for Monthly Revenue------------
+                if($ctr >= count($totReserved)){
+                    $monReservedValue = '';
+                }else if($i == $totReserved[$ctr]->month){
+                    $monReservedValue = $totReserved[$ctr]->total_reserved;
+                    $ctr+=1;
+                }else{
+                    $monReservedValue = 0;
+                }
+            }else if($i == 9){
+                $monthForecast = "Sep";
+                //condition value for Monthly Revenue------------
+                if($ctr >= count($totReserved)){
+                    $monReservedValue = '';
+                }else if($i == $totReserved[$ctr]->month){
+                    $monReservedValue = $totReserved[$ctr]->total_reserved;
+                    $ctr+=1;
+                }else{
+                    $monReservedValue = 0;
+                }
+            }else if($i == 10){
+                $monthForecast = "Oct";
+                //condition value for Monthly Revenue------------
+                if($ctr >= count($totReserved)){
+                    $monReservedValue = '';
+                }else if($i == $totReserved[$ctr]->month){
+                    $monReservedValue = $totReserved[$ctr]->total_reserved;
+                    $ctr+=1;
+                }else{
+                    $monReservedValue = 0;
+                }
+            }else if($i == 11){
+                $monthForecast = "Nov";
+                //condition value for Monthly Revenue------------
+                if($ctr >= count($totReserved)){
+                    $monReservedValue = '';
+                }else if($i == $totReserved[$ctr]->month){
+                    $monReservedValue = $totReserved[$ctr]->total_reserved;
+                    $ctr+=1;
+                }else{
+                    $monReservedValue = 0;
+                }
+            }else if($i == 12){
+                $monthForecast = "Dec";
+                //condition value for Monthly Revenue------------
+                if($ctr >= count($totReserved)){
+                    $monReservedValue = '';
+                }else if($i == $totReserved[$ctr]->month){
+                    $monReservedValue = $totReserved[$ctr]->total_reserved;
+                    $ctr+=1;
+                }else{
+                    $monReservedValue = 0;
+                }
+            }
+
+            $dataRevenue[] = array(
+                "monthlyData" => $monthForecast,
+                "reservedValue" => $monReservedValue,
+                //"forecastRevenue" => $forecastRevenueValue
+            );
+        }
+        
+        return response()->json($dataRevenue);
     }
+
 
     /**
      * Show the form for creating a new resource.

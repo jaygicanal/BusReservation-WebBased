@@ -1,5 +1,8 @@
 body{
-    background-color: white !important;
+    background-image: url('/images/landing-background.jpg');
+    background-size: 50% 100vh;
+    background-repeat: no-repeat;
+    background-color: #e5e5e5;
 }
 
 .payment .payment-inner {
@@ -9,11 +12,20 @@ body{
 .payment .opt{
     margin-top: 10px;
 }
+.payment .qoute{
+    background-color: transparent;
+    box-shadow: 0px 0px 100px 1px rgb(2, 2, 2);
+    color:rgb(207, 205, 205);
+    font-weight: bolder;
+}
 
 .payment label{
     width: 100%;
 }
-
+.payment .separate img{
+    width: 100%;
+    height: 100%;
+}
 .payment img{
     width: 50px;
     height:50px;
@@ -50,5 +62,16 @@ body{
     height: 500px;
 }
 
+.payment .btn-success{
+    color: white;
+    background-color: #ff6400;
+    border: 1px solid #ff6400;
+}
+.payment .btn-success:hover{
+    color: white;
+    background-color: #ff6400;
+    border: 1px solid #ff6400;
+    transform: scale(1.1);
+}
 
 

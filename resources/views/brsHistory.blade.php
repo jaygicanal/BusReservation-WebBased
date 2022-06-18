@@ -38,13 +38,41 @@
                 </div>
             </div>
             <div class="col-2 text-center">
-                <button>Cancel</button>
+            <button  id="cancel" class= "views" data-bs-toggle="modal" data-bs-target="#cancel-button">Cancel</button>
             </div>
-            
+            @include('brsCancelButton');
         </div>
         @endforeach
         @endif
     </div>
 </div>
+
+    <script>
+        $(document).ready(function(){
+            findChecked();
+
+            $('.history .btn-check').click(function() { 
+                $(this).attr('checked', 'checked');
+                findChecked();
+            });
+
+            function findChecked(){
+                if($('#opt-payment1').is(':checked')){
+                    $('#cnt_header').text("Payment for GCash");
+                    $('#cnt_accountName').text("Dondon Liner");
+                    $('#cnt_phonNo').text("09090502132");
+                }else if($('#opt-payment2').is(':checked')){
+                    $('#cnt_header').html("Payment for" + '<br>' + "PayMaya");
+                    $('#cnt_accountName').text("Dondon Liner");
+                    $('#cnt_phonNo').text("09090502132");
+                }else if($('#opt-payment3').is(':checked')){
+                    $('#cnt_header').html("Payment for" + '<br>' + "Palawan Express");
+                    $('#cnt_accountName').text("Dondon Liner");
+                    $('#cnt_phonNo').text("09090502132");
+                }
+            }
+        })
+    </script>
+
 @endsection
 
