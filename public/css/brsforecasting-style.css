@@ -1,5 +1,9 @@
 body{
-    background-color: #e5e5e5 !important;
+    background-color: #ffffff !important;
+    overflow: hidden;
+}
+.forecasting {
+    font-size: 18px;
 }
 .forecasting .forecasting-head{
     background-color: #ff3200; 
@@ -9,4 +13,13 @@ body{
 
 .forecasting .forecasting-head h3{
     color: #ffffff;
+}
+
+.forecasting .btn_addForecast{
+    border: 2px solid #ff3200;
+    color: #ff3200;
+    text-decoration: none;
+    border-radius: 5px;
+    padding: 4px 10px;
+    margin: 10px 15px;
 }

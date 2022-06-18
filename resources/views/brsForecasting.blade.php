@@ -15,8 +15,15 @@
         </div>
     </div>
     <div class="row">
+        <div class="col-md-12 d-flex justify-content-end">
+            <a data-bs-toggle type="button" data-bs-target="" class="btn_addForecast">
+                <i class="fa fa-plus-circle" aria-hidden="true"></i> Forecast
+            </a>
+        </div>
+    </div>
+    <div class="row">
         <div class="col-md-12">
-            <div id="forecast-col" style="width:100%;height:450px;"></div>
+            <div id="forecast-col" style="width:70%;height:450px;"></div>
         </div>
     </div>
 </section>
@@ -180,8 +187,8 @@
                     
                     myChart.setOption ({
                         legend: {
-                            data: ['Male', 'Female'],
-                            itemHeight: 8,
+                            data: ['male', 'female'],
+                            itemHeight: 10,
                             itemGap: 20
                         },
                         xAxis: {
@@ -226,16 +233,28 @@
                         },
                         series: [
                             {
-                                name: 'Male',
+                                name: 'male',
                                 type: 'bar',
                                 data: genderMale,
                                 color: ['#ff0000'],
                             },
                             {
-                                name: 'Female',
+                                name: 'male-forecast',
+                                type: 'bar',
+                                data: genderMale,
+                                color: ['#fc491d'],
+                            },
+                            {
+                                name: 'female',
                                 type: 'bar',
                                 data: genderFemale,
                                 color: ['#007fff'],
+                            },
+                            {
+                                name: 'female-forecast',
+                                type: 'bar',
+                                data: genderFemale,
+                                color: ['#fc491d'],
                             }
                             
                         ]
