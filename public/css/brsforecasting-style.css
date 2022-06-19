@@ -1,6 +1,6 @@
 body{
     background-color: #ffffff !important;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 .forecasting {
     font-size: 18px;
@@ -15,11 +15,15 @@ body{
     color: #ffffff;
 }
 
-.forecasting .btn_addForecast{
-    border: 2px solid #ff3200;
-    color: #ff3200;
-    text-decoration: none;
-    border-radius: 5px;
-    padding: 4px 10px;
-    margin: 10px 15px;
+#forecast_tbl .btn-inner{
+    width: 50px !important;
+}
+
+.select2-container .select2-selection--single {
+    padding-top: 6px;
+    height: 40px !important;
+}
+
+.select2-container .select2-selection--single .select2-selection__arrow {
+    height: 40px !important;
 }

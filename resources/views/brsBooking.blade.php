@@ -8,7 +8,7 @@
 
 <section class="booking">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12" style="padding:0;">
                 <div class="booking-head d-flex">                    
                     <nav class="booking-inner col-12 d-flex">
                         <div class="nav nav-tabs col-5" id="nav-tab" role="tablist">

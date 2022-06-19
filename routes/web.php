@@ -43,12 +43,20 @@ Route::prefix('admin')->group(function() {
 
     Route::resource('/routing', brsRoutingController::class);
 
+
     Route::get('/manage-booking', [brsBookedController::class, 'index'])->name('booked');
     Route::resource('/manage-booked', brsBookedController::class);
-    Route::get('manage-forecast', [brsForecastingController::class, 'index'])->name('forecast');
+
+    Route::get('manage-forecast', [brsForecastingController::class, 'index'])->name('forecasting');
+    Route::resource('/forecast', brsForecastingController::class);
 
     Route::get('reserved-forecast', [brsForecastingController::class, 'forecastReserved'])->name('reserved');
     Route::get('gender-forecast', [brsForecastingController::class, 'forecastGender'])->name('genderForecast');
+
+    //Fetch Reserved Gender List of Records
+    Route::get('yearGender-record', [brsForecastingController::class, 'yearRecordListGender'])->name('yearRecordsGender');
+    Route::get('monthGender-record', [brsForecastingController::class, 'monthRecordListGender'])->name('monthRecordsGender');
+    Route::get('valueGender-record', [brsForecastingController::class, 'valueRecordListGender'])->name('valueRecordsGender');
 });
 
 // FOR NORMAL USER REGISTRATION AND LOGIN
@@ -61,7 +69,7 @@ Route::resource('/register', brsRegistrationController::class);
 
 Route::group([ 'middleware' => ['auth']], function () {
     Route::get('/', [brsReservationController::class, 'index'])->name('dashboard');
-    Route::get('searchBusSched', [brsReservationController::class, 'search'])->name('search.busschedule');
+    Route::get('searchBusSched', [brsReservationController::class, 'search'])->name('searchBusSchedule');
     Route::resource('/booking', brsReservationController::class);
 
     Route::get('/payment', [brsPaymentController::class, 'index'])->name('payment');

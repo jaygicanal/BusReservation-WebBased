@@ -26,7 +26,7 @@
                                         </div>
                                         <div class="cmb-group">
                                             <select class="from-city from-city-sm" onblur="this.size=1;" aria-label=".form-select-lg example" id="origin" name="origin">
-                                                <option selected>Pick-Up Location</option>
+                                                <option selected>Origin</option>
                                                 <optgroup label="Terminal">
                                                 @if($routes)
                                                 @foreach($routes as $routesList)
@@ -57,7 +57,7 @@
                                     </div>
                                     <div class="cmb-group">
                                         <select class="to-city to-city-sm " onblur="this.size=1;"  aria-label=".form-select-lg example" id="destination" name="destination">
-                                            <option selected>Landingan Location</option>
+                                            <option selected>Destination</option>
                                             <optgroup label="Terminal">
                                             @if($routes)
                                             @foreach($routes as $routesList)
@@ -112,27 +112,10 @@
                         <th scope="col">View Seats</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        @if($bus_scheds)
-                        @foreach($bus_scheds as $busSchedules)
-                        <tr>
-                            <td>
-                                <span data-label="origin">{{$busSchedules->origin}}</span> - <span data-label="destination">{{$busSchedules->destination}}</span>
-                            </td>
-                            <td data-label="departure_time">{{$busSchedules->departure_time}}</td>
-                            <td data-label="bus_class">{{$busSchedules->bus_class}}</td>
-                            <td>
-                                <div type="button" class="btn-inner">
-                                    <a data-bs-toggle="modal" type="button" data-trans_id="{{$busSchedules->trans_id}}" data-depart_time="{{$busSchedules->departure_time}}" data-bus_class="{{$busSchedules->bus_class}}" data-with_wifi="{{$busSchedules->with_wifi}}" data-with_tv="{{$busSchedules->with_tv}}" data-fare="{{$busSchedules->fare}}" data-bs-target="#bus_details" class="text-nav btn-view-details d-flex align-items-center justify-content-center" id="btn_viewSeats">
-                                        <em class="fa fa-eye" aria-hidden="true"></em>View
-                                    </a>
-                                    @include('brsBusSeat')
-                                </div>
-                            </td> 
-                        </tr>
-                        @endforeach
-                        @endif
+                    <tbody id="schedule_tbl">
+                    
                     </tbody>
+                    @include('brsBusSeat')
                 </table>
             </div>
         </div>
@@ -140,44 +123,40 @@
 </section>
 
     <script type="text/javascript">
-        $('#findBus').click(function(){
-            var origin = $('#origin :selected').val();
-            var destination = $('#destination :selected').val();
-            var dayWeek = $('#dayWeek').val();
-            $.ajax({
-                type : 'get',
-                url : '{{route('search.busschedule')}}',
-                data:{'origin':origin, 'destination':destination, 'date':dayWeek},
-                success:function(data){
-                    $('tbody').html(data);
-                }
-            });
+        $(document).ready(function(){
+            searchBus();
+            $('#findBus').click(function(){
+                $("#scheduledBus").find("tr:gt(0)").remove();
+                searchBus();
+            })
+            function searchBus(){
+                $.ajax({
+                    url: '{{ route('searchBusSchedule') }}',
+                    type: 'GET',
+                    data:{origin:$('#origin').val(), destination:$('#destination').val(), schedule:$('#dayWeek').val()},
+                    success: function(response){ // What to do if we succeed
+                        $.each(response, function(index, item) {
+                            index+=1;
+                            var newRow='';
+                            newRow+='<tr><td>';
+                            newRow+='<span data-label="origin">'+item.origin+'</span> - <span data-label="destination">'+item.destination+'</span></td>';
+                            newRow+='<td data-label="departure_time">'+item.departure_time+'</td>';
+                            newRow+='<td data-label="bus_class">'+item.bus_class+'</td>';
+                            newRow+='<td><div type="button" class="btn-inner">';
+                            newRow+='<a data-bs-toggle="modal" type="button" data-trans_id="'+item.trans_id+'" data-depart_time="'+item.departure_time+'" data-bus_class="'+item.bus_class+'" data-with_wifi="'+item.with_wifi+'" data-with_tv="'+item.with_tv+'" data-fare="'+item.fare+'" data-bs-target="#bus_details" class="text-nav btn-view-details d-flex align-items-center justify-content-center" id="btn_viewSeats">';
+                            newRow+='<em class="fa fa-eye" aria-hidden="true"></em>View</a>';
+                            newRow+='</div></td></tr>';
+
+                            $('#schedule_tbl').append(newRow);
+                        });
+                        
+                    }
+                    /* error: function(XMLHttpRequest, textStatus, errorThrown) {
+                        alert("some error");
+                    } */
+                });
+            }
         })
-    </script>
-
-    <script type="text/javascript">
-        $.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
-    </script>
-
-    <script>
-        $('#findBus').on('click', function(){
-            var selected = $(this).find(':selected').val();  
-            var parentTR = $(this).closest('tr');
-
-            $.ajax({
-                url: "{{ route('search.busschedule') }}",
-                type: "get",
-                data:{origin:$('#origin').find(':selected').val(), destination:$('#destination').find(':selected').val()}, // the value of input having id vid
-                success: function(response){ // What to do if we succeed
-                    /* parentRow.find('.itemPrice').val(response[0].price);
-                    parentRow.find('.itemQuantity').val(response[0].amount); */
-                    checkData(response[0].amount, response[0].price);
-                }
-            });
-
-            parentTR.find('.itemPrice').val("");
-            parentTR.find('.itemQuantity').val("");
-        });
     </script>
 
     <!-- Fetch Bus Data -->

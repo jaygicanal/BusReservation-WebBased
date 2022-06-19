@@ -6,9 +6,9 @@
 
 @section('content')
 <section class="scheduling">
-    <div class="container-xxl">
+    <div class="">
         <div class="row">
-            <div class=" scheduling-header d-flex justify-content-between">
+            <div class="col-md-12 scheduling-header d-flex justify-content-between" style="padding:0;">
                 <nav class="btn-tabs d-flex">
                     <div class="nav nav-tabs" id="nav-tab" role="tablist">
                         <a href="#nav-schedule" class="nav-link active" id="nav-schedule-tab" data-bs-toggle="tab" data-bs-target="#nav-schedule" type="button" role="tab" aria-controls="nav-schedule" aria-selected="false">SCHEDULES</a>
