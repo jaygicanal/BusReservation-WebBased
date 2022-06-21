@@ -29,18 +29,39 @@ class brsReservationController extends Controller
             ->get();
         $user = Auth::User()->id;
 
-        $totRecord = DB::table('scheduling')
-            ->where('origin', '=', 'Sorsogon Terminal')
-            ->where('destination', '=', 'Bulan Terminal')
-            ->where('bus_schedule', '!=', 'Weekend')
+        $totRecord = DB::table('reservations')
+            ->join('scheduling', 'reservations.trans_id', 'scheduling.trans_id')
+            ->select('reservations.*', 'scheduling.trans_id')
+            ->select('reservations.seat_no')
+            ->where('reservations.origin', '=', 'Bulan Terminal')
+            ->where('reservations.destination', '=', 'Sorsogon Terminal')
+            ->where('reservations.departure_date', '=', '2022-06-24')
+            ->whereNotIn('status', ["Cancelled", "Finished"])
             ->get();
         //dd($totRecord);
         return view('brsLandingPage')->with('bus_scheds', $bus_scheds)->with('routes', $routes)->with('user', $user);
     }
 
+    public function searchBusSeat(Request $request){
+        $data = $request->all();
+        
+        $totRecordSeat = DB::table('reservations')
+            ->join('scheduling', 'reservations.trans_id', 'scheduling.trans_id')
+            ->select('reservations.*', 'scheduling.trans_id')
+            ->select('reservations.seat_no')
+            ->where('reservations.origin', '=', $data['origin'])
+            ->where('reservations.destination', '=', $data['destination'])
+            ->where('reservations.departure_date', '=', $data['date'])
+            ->whereNotIn('status', ["Cancelled", "Finished"])
+            ->get();
+        
+        //dd($totRecord);
+
+        return response()->json($totRecordSeat);
+    }
+
     public function search(Request $request){
         $data = $request->all();
-        //dd($data);
         $schedule = "";
         $totRecord = "";
 
@@ -49,16 +70,13 @@ class brsReservationController extends Controller
         }else if($data['schedule'] == "Weekend"){
             $schedule = "Weekdays";
         }
-        if($data['origin'] == "Origin" && $data['destination'] == "Detination" && $data['schedule'] == ""){
-            $totRecord = DB::table('scheduling')
-                ->get();
-        }else{
-            $totRecord = DB::table('scheduling')
-                ->where('origin', '=', $data['origin'])
-                ->where('destination', '=', $data['destination'])
-                ->where('bus_schedule', '!=', $schedule)
-                ->get();
-        }
+        
+        $totRecord = DB::table('scheduling')
+            ->where('origin', '=', $data['origin'])
+            ->where('destination', '=', $data['destination'])
+            ->where('bus_schedule', '!=', $schedule)
+            ->get();
+        
         //dd($totRecord);
 
         return response()->json($totRecord);

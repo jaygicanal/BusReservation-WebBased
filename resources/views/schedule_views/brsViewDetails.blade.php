@@ -3,7 +3,7 @@
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content d-flex justify-content-center">
             <div class="row col-12">
-                <div class="standard-bus col-4 d-flex justify-content-center">
+                <!-- <div class="standard-bus col-4 d-flex justify-content-center">
                     <div class="grp-seats d-flex justify-content-center pt-3">
                         <ul>
                             <li class="seats-list">
@@ -243,7 +243,7 @@
                             </li>
                         </ul>
                     </div>
-                </div>
+                </div> -->
                 <div class="space col-4">
                     <h6>No. of Seat</h6>
                     <div class="incrementing">

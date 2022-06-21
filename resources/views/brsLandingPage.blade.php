@@ -99,7 +99,7 @@
         </div>
     </div>
 </section>
-<section class="sched-bus">
+<section class="sched-bus pt-5">
     <div class="container">
         <div class="row d-flex justify-content-center align-items-center">
             <div class="col-12 sched-content justify-content-center">  
@@ -124,6 +124,36 @@
 
     <script type="text/javascript">
         $(document).ready(function(){
+            /* $('#findBus').click(function(){
+                searchSeats();
+            }) */
+            $('#bus_details').on('show.bs.modal', function(){
+                searchSeats();
+            })
+            function searchSeats(){
+                $.ajax({
+                    url: '{{ route('searchSeats') }}',
+                    type: 'GET',
+                    data:{origin:$('#origin').val(), destination:$('#destination').val(), date:$('#date').val()},
+                    success: function(response){ // What to do if we succeed
+                        console.log(response);
+                        $.each(response, function(index, item) {
+                            var parentGrp = $('.grp-seats');
+                            $('.seat-nbr:contains('+item.seat_no+')').closest('.grp-inner').addClass('reserved');
+
+                            // if($('.seat-nbr:contains('+item.seat_no+')')){
+                            //     alert(item.seat_no + " is reserved");
+                            // }
+                        });
+                        
+                    }
+                });
+            }
+        })
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
             searchBus();
             $('#findBus').click(function(){
                 $("#scheduledBus").find("tr:gt(0)").remove();
@@ -135,25 +165,27 @@
                     type: 'GET',
                     data:{origin:$('#origin').val(), destination:$('#destination').val(), schedule:$('#dayWeek').val()},
                     success: function(response){ // What to do if we succeed
-                        $.each(response, function(index, item) {
-                            index+=1;
-                            var newRow='';
-                            newRow+='<tr><td>';
-                            newRow+='<span data-label="origin">'+item.origin+'</span> - <span data-label="destination">'+item.destination+'</span></td>';
-                            newRow+='<td data-label="departure_time">'+item.departure_time+'</td>';
-                            newRow+='<td data-label="bus_class">'+item.bus_class+'</td>';
-                            newRow+='<td><div type="button" class="btn-inner">';
-                            newRow+='<a data-bs-toggle="modal" type="button" data-trans_id="'+item.trans_id+'" data-depart_time="'+item.departure_time+'" data-bus_class="'+item.bus_class+'" data-with_wifi="'+item.with_wifi+'" data-with_tv="'+item.with_tv+'" data-fare="'+item.fare+'" data-bs-target="#bus_details" class="text-nav btn-view-details d-flex align-items-center justify-content-center" id="btn_viewSeats">';
-                            newRow+='<em class="fa fa-eye" aria-hidden="true"></em>View</a>';
-                            newRow+='</div></td></tr>';
+                        if (response == "") {
+                            var noData = '';
+                            noData+='<tr><td colspan="4">';
+                            noData+='--No Schedule Found--</td></tr>';
+                            $('#schedule_tbl').append(noData);
+                        }else{
+                            $.each(response, function(index, item) {
+                                var newRow='';
+                                newRow+='<tr><td>';
+                                newRow+='<span data-label="origin">'+item.origin+'</span> - <span data-label="destination">'+item.destination+'</span></td>';
+                                newRow+='<td data-label="departure_time">'+item.departure_time+'</td>';
+                                newRow+='<td data-label="bus_class">'+item.bus_class+'</td>';
+                                newRow+='<td><div type="button" class="btn-inner">';
+                                newRow+='<a data-bs-toggle="modal" type="button" data-trans_id="'+item.trans_id+'" data-depart_time="'+item.departure_time+'" data-bus_class="'+item.bus_class+'" data-with_wifi="'+item.with_wifi+'" data-with_tv="'+item.with_tv+'" data-fare="'+item.fare+'" data-bs-target="#bus_details" class="text-nav btn-view-details d-flex align-items-center justify-content-center" id="btn_viewSeats">';
+                                newRow+='<em class="fa fa-eye" aria-hidden="true"></em>View</a>';
+                                newRow+='</div></td></tr>';
 
-                            $('#schedule_tbl').append(newRow);
-                        });
-                        
+                                $('#schedule_tbl').append(newRow);
+                            });
+                        }
                     }
-                    /* error: function(XMLHttpRequest, textStatus, errorThrown) {
-                        alert("some error");
-                    } */
                 });
             }
         })
@@ -185,17 +217,17 @@
 
             var discount = 0.00;
             var totFare = 0.00;
-                if($('#chk_discount').val() == "None"){
-                    discount = $('#fare').val() * .00;
-                    totFare = $('#fare').val() - discount;
-                    $('#discount').val(-discount + ".00");
-                    $('#totalFare').val(totFare + ".00");
-                }else if($('#chk_discount').val() == "Student" || $('#chk_discount').val() == "Senior Citizen" || $('#chk_discount').val() == "PWD"){
-                    discount = $('#fare').val() * .20;
-                    totFare = $('#fare').val() - discount;
-                    $('#discount').val(-discount + ".00");
-                    $('#totalFare').val(totFare + ".00");
-                }
+            if($('#chk_discount').val() == "None"){
+                discount = $('#fare').val() * .00;
+                totFare = $('#fare').val() - discount;
+                $('#discount').val(-discount + ".00");
+                $('#totalFare').val(totFare + ".00");
+            }else if($('#chk_discount').val() == "Student" || $('#chk_discount').val() == "Senior Citizen" || $('#chk_discount').val() == "PWD"){
+                discount = $('#fare').val() * .20;
+                totFare = $('#fare').val() - discount;
+                $('#discount').val(-discount + ".00");
+                $('#totalFare').val(totFare + ".00");
+            }
         })
     </script>
 
@@ -206,13 +238,13 @@
             $('.grp-inner').click(function(){
                 var seat_number = $(this).find('.seat-nbr').text();
 
-                /* if(!$(this).hasClass("selected") && seat_selected == true){
-                    $(this).removeClass('selected');
-                }else */ if($(this).hasClass("selected")  && seat_selected == true){
+                if($(this).hasClass("selected")  && seat_selected == true){
                     $(this).removeClass('selected');
                     seat_selected = false;
 
                     $('#seat_no').val('');
+                }else if($(this).hasClass("reserved")){
+                    seat_selected = false;
                 }else if(!$(this).hasClass("selected")  && seat_selected == false){
                     $(this).addClass('selected');
                     seat_selected = true;

@@ -229,3 +229,11 @@ input::-webkit-inner-spin-button {
 .grp-seats a.selected .seat-nbr{
     color: #ffffff;
 }
+/* CSS Style when Seat is reserved */
+.grp-seats a.reserved .icon-seat{
+    background-color: #ff3200;
+}
+
+.grp-seats a.reserved .seat-nbr{
+    color: #ffffff;
+}

@@ -70,6 +70,7 @@ Route::resource('/register', brsRegistrationController::class);
 Route::group([ 'middleware' => ['auth']], function () {
     Route::get('/', [brsReservationController::class, 'index'])->name('dashboard');
     Route::get('searchBusSched', [brsReservationController::class, 'search'])->name('searchBusSchedule');
+    Route::get('searchBusSeat', [brsReservationController::class, 'searchBusSeat'])->name('searchSeats');
     Route::resource('/booking', brsReservationController::class);
 
     Route::get('/payment', [brsPaymentController::class, 'index'])->name('payment');

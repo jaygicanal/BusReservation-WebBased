@@ -26,7 +26,7 @@
                     <option value="Working Age">Working Age (15-64)</option>
                     <option value="Seniors">Seniors (65-above)</option>
                 </select>
-                <input type="text" name="" id="yearpicker">
+                <select name="" id="yearPicker" style="width: 150px;"></select>
             </div>
         </div>
         <div class="row pt-3">
@@ -94,124 +94,37 @@
 
 <script>
     $(document).ready(function(){
+        yearList();
         fetchData();
 
         $('#genderOpt').change(function(){
             fetchData();
         })
 
-        $('#yearpicker').change(function(){
+        $('#yearPicker').change(function(){
             fetchData();
         })
 
-        function fetchDataReserved(){
-            var myChart = echarts.init(document.getElementById('forecast-col'));
-            
-            var option = {
-                animationDuration: 750,
-                grid: {
-                    
-                    containLabel: true
-                },
-                legend: {
-                },    
-                tooltip: {
-                    trigger: 'axis',
-                    backgroundColor: 'rgba(0,0,0,0.75)',
-                    padding: [10, 15],
-                    textStyle: {
-                        fontSize: 13,
-                        fontFamily: 'Poppins, sans-serif'
-                    }
-                },
-                xAxis: {
-                },
-                yAxis: {
-                },
-                series: [
-                ]
-            };
+        function yearList(){
+            var dataYear = [];
 
-            myChart.setOption(option);
+            var currentYear = new Date().getFullYear() + 5;
+            //Loop and add the Year values to DropDownList.
+            for (var i = currentYear; i >= 1950; i--) {
+                var obj = new Object;
 
-            $.ajax({
-                url: '{{ route('reserved') }}',
-                type: 'GET',
-                /* data:{input_category:$('.forecast-data').find('#category :selected').val()}, */
-                success: function(response){ 
-                    var months = [];
-                    var reserved = [];
-                    //var forecast = [];
-                    $.each(response, function(index, item) {
-                        months.push(item.monthlyData);
-                        reserved.push(item.reservedValue);
-                        //forecast.push(item.forecastDemand);
-                    });
-                    
-                    myChart.setOption ({
-                        legend: {
-                            data: ['total reservation'],
-                            itemHeight: 8,
-                            itemGap: 20
-                        },
-                        xAxis: {
-                            type:'category',
-                            data: months,
-                            boundaryGap: false,
-                            axisLabel: {
-                                color: '#333'
-                            },
-                            axisLine: {
-                                lineStyle: {
-                                    color: '#999'
-                                }
-                            },
-                            splitLine: {
-                                lineStyle: {
-                                    color: ['#eee']
-                                }
-                            }
-                        },
-                        yAxis: {
-                            type: 'value',
-                            axisLabel: {
-                                color: '#333'
-                            },
-                            axisLine: {
-                                lineStyle: {
-                                    color: '#ddd'
-                                }
-                            },
-                            splitLine: {
-                                lineStyle: {
-                                    color: ['#eee']
-                                }
-                            },
-                            splitArea: {
-                                show: true,
-                                areaStyle: {
-                                    color: ['rgba(250,250,250,0.1)', 'rgba(0,0,0,0.01)']
-                                }
-                            }
-                        },
-                        series: [
-                            /* {
-                                name: 'forecast-demand',
-                                type: 'line',
-                                data: forecastDemand,
-                                color: ['#ff0000'],
-                            }, */
-                            {
-                                name: 'total reservation',
-                                type: 'line',
-                                data: reserved,
-                                color: ['#007fff'],
-                            }
-                            
-                        ]
-                        
-                    });
+                if(i==(currentYear-5)){
+                    obj.selected = true;
                 }
+
+                obj.id = i;
+                obj.text = i;
+                dataYear.push(obj);
+            }
+            $("#yearPicker").select2({
+                selectOnClose: true,
+                //placeholder: "-- Choose Year --",
+                data: dataYear,
             });
         }
 
@@ -249,7 +162,7 @@
             $.ajax({
                 url: '{{ route('genderForecast') }}',
                 type: 'GET',
-                data:{record:$('.forecasting').find('#genderOpt :selected').val(), year:$('#yearpicker').val()},
+                data:{record:$('.forecasting').find('#genderOpt :selected').val(), year:$('#yearPicker :selected').val()},
                 success: function(response){ 
                     var months = [];
                     var records = [];

@@ -157,27 +157,70 @@
             </div>
     </div>
 </section>
-<script> 
-        $("#book-id").show();
-        $("#confirm-id").hide();
-        $("#cancel-id").hide();
-        $("#nav-book-tab").click(function(){
+    <script type="text/javascript">
+        $(document).ready(function(){
+            searchBus();
+            $('#findBus').click(function(){
+                $("#scheduledBus").find("tr:gt(0)").remove();
+                searchBus();
+            })
+            function searchBus(){
+                $.ajax({
+                    url: '{{ route('searchBusSchedule') }}',
+                    type: 'GET',
+                    data:{origin:$('#origin').val(), destination:$('#destination').val(), schedule:$('#dayWeek').val()},
+                    success: function(response){ // What to do if we succeed
+                        if (response == "") {
+                            var noData = '';
+                            noData+='<tr><td colspan="4">';
+                            noData+='--No Schedule Found--</td></tr>';
+                            $('#schedule_tbl').append(noData);
+                        }
+                        $.each(response, function(index, item) {
+                            index+=1;
+                            var newRow='';
+                            newRow+='<tr><td>';
+                            newRow+='<span data-label="origin">'+item.origin+'</span> - <span data-label="destination">'+item.destination+'</span></td>';
+                            newRow+='<td data-label="departure_time">'+item.departure_time+'</td>';
+                            newRow+='<td data-label="bus_class">'+item.bus_class+'</td>';
+                            newRow+='<td><div type="button" class="btn-inner">';
+                            newRow+='<a data-bs-toggle="modal" type="button" data-trans_id="'+item.trans_id+'" data-depart_time="'+item.departure_time+'" data-bus_class="'+item.bus_class+'" data-with_wifi="'+item.with_wifi+'" data-with_tv="'+item.with_tv+'" data-fare="'+item.fare+'" data-bs-target="#bus_details" class="text-nav btn-view-details d-flex align-items-center justify-content-center" id="btn_viewSeats">';
+                            newRow+='<em class="fa fa-eye" aria-hidden="true"></em>View</a>';
+                            newRow+='</div></td></tr>';
+
+                            $('#schedule_tbl').append(newRow);
+                        });
+                        
+                    }
+                    /* error: function(textStatus) {
+                        alert(textStatus);
+                    } */
+                });
+            }
+        })
+    </script>
+
+    <script> 
             $("#book-id").show();
             $("#confirm-id").hide();
             $("#cancel-id").hide();
-        });
-        $("#nav-confirm-tab").click(function(){
-            $("#book-id").hide();
-            $("#confirm-id").show();
-            $("#cancel-id").hide();
-        });
-        $("#nav-cancel-tab").click(function(){
-            $("#book-id").hide();
-            $("#confirm-id").hide();
-            $("#cancel-id").show();
-        });
-        
-</script>
+            $("#nav-book-tab").click(function(){
+                $("#book-id").show();
+                $("#confirm-id").hide();
+                $("#cancel-id").hide();
+            });
+            $("#nav-confirm-tab").click(function(){
+                $("#book-id").hide();
+                $("#confirm-id").show();
+                $("#cancel-id").hide();
+            });
+            $("#nav-cancel-tab").click(function(){
+                $("#book-id").hide();
+                $("#confirm-id").hide();
+                $("#cancel-id").show();
+            });
+            
+    </script>
 
     <!-- Fetch Bus Data -->
     <script>    
