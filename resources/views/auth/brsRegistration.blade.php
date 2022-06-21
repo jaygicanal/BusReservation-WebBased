@@ -51,8 +51,6 @@
                                         <option selected>Discounted 20%</option>
                                         <option value="None">None</option>
                                         <option value="PWD">PWD</option>
-                                        <option value="Senior Citizen">Senior Citizen</option>
-                                        <option value="Student">Student</option>
                                     </select>
                                 </div>
                                 <div class="form-group" id="grp_id-number">

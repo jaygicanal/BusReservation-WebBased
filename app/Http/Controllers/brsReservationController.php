@@ -196,7 +196,7 @@ class brsReservationController extends Controller
         ); 
         
         $reserved = Reservation::findOrFail($request->reservation_id)->update($payment);
-        return redirect()->route('dashboard')->with('success', 'Paid Successfully.');
+        return redirect()->route('history')->with('success', 'Paid Successfully.');
     }
 
     /**

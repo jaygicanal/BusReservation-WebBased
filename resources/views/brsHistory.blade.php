@@ -40,7 +40,7 @@
             <div class="col-2 text-center">
             <button  id="cancel" class= "views" data-bs-toggle="modal" data-bs-target="#cancel-button">Cancel</button>
             </div>
-            @include('brsCancelButton');
+            @include('brsCancelButton')
         </div>
         @endforeach
         @endif

@@ -107,7 +107,27 @@
                 calculated_age = output_value;
             }
             document.getElementById('age').value = calculated_age;
+
         }
+    </script>
+
+    <script>
+        $(document).ready(function(){
+            $('#bday').change(function() { 
+                var counter=0;
+                var ctr=0; 
+                if ( $('#age').val() < 60){
+                        $('#discount').find("option[value='Student']").remove();
+                        $('#discount').find("option[value='Senior Citizen']").remove();
+                        $('#discount').append('<option value="Student">Student</option>');
+                }
+                if  ( $('#age').val() >= 60){
+                        $('#discount').find("option[value='Senior Citizen']").remove();
+                        $('#discount').find("option[value='Student']").remove();
+                        $('#discount').append('<option value="Senior Citizen">Senior Citizen</option>');
+                }
+            });
+        })
     </script>
     
     <script>

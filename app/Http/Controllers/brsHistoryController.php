@@ -25,7 +25,7 @@ class brsHistoryController extends Controller
         $reservedData = DB::table('reservations')
             ->join('scheduling', 'reservations.trans_id', '=', 'scheduling.trans_id')
             ->select('reservations.*', 'scheduling.bus_class')
-            ->orderBy('reservations.created_at', 'asc')
+            ->orderBy('reservations.id', 'DESC')
             ->where('user_id','=', Auth::User()->id)
             ->get();
 

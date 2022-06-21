@@ -70,9 +70,6 @@
                     <li>
                         <a href="{{ url('history') }}" class="nav-item position-relative">
                             <em class="fa fa-book" aria-hidden="true"></em>
-                            <span class="badge_alert position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle">
-                                <span class="visually-hidden">New Reserved</span>
-                            </span>
                         </a>
                     </li>
                 </ul>
