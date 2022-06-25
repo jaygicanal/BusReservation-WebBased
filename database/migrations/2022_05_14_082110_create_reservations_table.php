@@ -23,7 +23,7 @@ class CreateReservationsTable extends Migration
             $table->date('departure_date');
             $table->time('departure_time');
             $table->string('seat_no');
-            $table->decimal('total_fare');
+            $table->float('total_fare');
             $table->string('payment_type')->nullable();
             $table->string('payment_ss')->nullable();
             $table->string('status')->nullable();

@@ -26,6 +26,12 @@
                 <div class="col-11 tab-pane fade show active" id="nav-schedule" aria-labelledby="nav-schedule-tab">
                     <div class="scheduling-content d-flex justify-content-center py-3">
                         <div class="inner-content col-md-11">
+                            <div class="date d-flex justify-content-end align-items-center">
+                                <div class="text">DATE<input type="date" id="date" name="date" placeholder="Date" required/>
+                                </div>
+                                
+                               
+                            </div>
                             <div class="row title py-3">
                                 <div class="col-4 d-flex align-items-center justify-content-center">Route</div>
                                 <div class="col-2 d-flex align-items-center justify-content-center">Departure Time</div>
@@ -53,7 +59,7 @@
                                 </div>
                                 <!-- <div class="col-2 d-flex align-items-center justify-content-center">20 Left</div> -->
                                 <div class="col-2 d-flex align-items-center justify-content-center">
-                                    <button  id="view" class= "views" data-bs-toggle="modal" data-bs-target="#view-details">View Details
+                                    <button class="views" data-bs-toggle="modal" data-id="{{$scheduleList->trans_id}}" data-bs-target="#view-details">View Details
                                     </button>
                                         @include('schedule_views.brsViewDetails')
                                 </div>
@@ -100,6 +106,47 @@
     </div>
 </section>
 
+<!-- fetch schedule data when selected -->
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#view-details').on('show.bs.modal', function(event){
+            var button = $(event.relatedTarget)
+            var id = button.data('id')
+
+            $('.seats-list .grp-inner').each(function(){
+                if($(this).hasClass("reserved")){
+                    $(this).removeClass('reserved');
+                }
+            })
+            searchBus(id);
+        })
+        function searchBus(id){
+            $.ajax({
+                url: '{{ route('reservedeRecords') }}',
+                type: 'GET',
+                data:{id:id, date:$('#date').val()},
+                success: function(response){ // What to do if we succeed
+                    $('#reserved_number').empty();
+                    $('#reserved_name').empty();
+                    $.each(response, function(index, item) {
+                        var parentGrp = $('.grp-seats');
+                        $('.standard-bus .seat-nbr:contains('+item.seat_no+'):first').closest('.grp-inner').addClass('reserved');
+
+                        
+                        $('#reserved_number').append('<input type="text" class="seat_no" value="'+ item.seat_no +'" readonly>');
+                        $('#reserved_name').append('<input type="text" class="name" value="'+ item.fname +' '+ item.lname +'" readonly>');
+                    });
+                }
+            });
+        }
+    })
+</script>
+
+<!-- to restrict past dates -->
+<script>
+    var date = new Date().toISOString().slice(0,10);
+    $('#date').attr('min', date);  //To restrict past date
+</script>
 
 <script>
     $(document).ready(function(){

@@ -31,6 +31,25 @@ class brsSchedulingController extends Controller
         return view('brsScheduling')->with('scheds', $scheds)->with('routes', $routes);
     }
 
+    public function fetchReservedSchedule(Request $request){
+        $data = $request->all();
+        
+        $totRecordSeat = DB::table('reservations')
+            ->join('scheduling', 'reservations.trans_id', 'scheduling.trans_id')
+            ->join('users', 'reservations.user_id', 'users.id')
+            ->select('reservations.*', 'scheduling.trans_id', 'users.fname', 'users.lname')
+            ->select('reservations.seat_no', 'users.fname', 'users.lname')
+            ->where('reservations.trans_id', '=', $data['id'])
+            ->where('reservations.departure_date', '=', $data['date'])
+            ->whereNotIn('status', ["Cancelled", "Finished"])
+            ->orderBy('reservations.seat_no', 'ASC')
+            ->get();
+        
+        //dd($totRecordSeat);
+
+        return response()->json($totRecordSeat);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

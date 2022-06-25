@@ -98,7 +98,7 @@
                 </div>
                 <ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
                     <li class="nav-item orm-tooltip {{Request::is('admin') ? 'active':''}}" data-text="Dashboard">
-                        <a href="{{ url('/admin') }}" class=" nav-link py-3 ">
+                        <a href="{{ url('/admin/dashboard') }}" class=" nav-link py-3 ">
                             <em class="fa fa-home"></em>
                         </a>
                         <div class="link-label">Dashboard</div>

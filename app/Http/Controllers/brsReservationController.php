@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Scheduling;
 use App\Models\Routing;
 use App\Models\Reservation;
+use App\Models\CancelBooked;
 use App\Providers\RouteServiceProvider; 
 use Illuminate\Auth\Events\Registered; 
 use Illuminate\Support\Facades\Auth; 
@@ -49,13 +50,12 @@ class brsReservationController extends Controller
             ->join('scheduling', 'reservations.trans_id', 'scheduling.trans_id')
             ->select('reservations.*', 'scheduling.trans_id')
             ->select('reservations.seat_no')
-            ->where('reservations.origin', '=', $data['origin'])
-            ->where('reservations.destination', '=', $data['destination'])
+            ->where('reservations.trans_id', '=', $data['id'])
             ->where('reservations.departure_date', '=', $data['date'])
             ->whereNotIn('status', ["Cancelled", "Finished"])
             ->get();
         
-        //dd($totRecord);
+        //dd($totRecordSeat);
 
         return response()->json($totRecordSeat);
     }
@@ -80,6 +80,38 @@ class brsReservationController extends Controller
         //dd($totRecord);
 
         return response()->json($totRecord);
+    }
+
+    public function bookCancellation(Request $request){
+        $validator = Validator::make($request->all(), [
+            'reservation_id' => 'required',
+            'payment_options' => 'required',
+            'name' => 'required',
+            'mobile_number' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors('Validation Error')->withInput();
+        }
+
+        $status = "Cancelled";
+
+        $cancellationData = CancelBooked::create([
+            'reservation_id' => $request['reservation_id'],
+            'payment_type' => $request['payment_options'],
+            'name' => $request['name'],
+            'mobile_number' => $request['mobile_number'],
+        ]);
+        event(new Registered($cancellationData));
+
+        $payment = array(
+            'status' => $status,
+        ); 
+        
+        $reserved = DB::table('reservations')
+            ->where('id', $request->reservation_id)
+            ->update(['status' => $status]);
+        return redirect()->route('history')->with('success', 'Cancelled Successfully.');
     }
 
     /**

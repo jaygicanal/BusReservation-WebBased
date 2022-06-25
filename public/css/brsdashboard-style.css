@@ -1,0 +1,11 @@
+.dashboard .box-values {
+    border: 3px solid #ff0000;
+    font-size: 50px;
+    font-weight: bolder;
+    border-bottom: none;
+} 
+.dashboard .box-title {
+    font-size: 20px;
+    font-weight: bolder;
+    margin-bottom: 25px;
+}

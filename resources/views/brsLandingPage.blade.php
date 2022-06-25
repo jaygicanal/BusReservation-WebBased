@@ -127,28 +127,10 @@
             /* $('#findBus').click(function(){
                 searchSeats();
             }) */
-            $('#bus_details').on('show.bs.modal', function(){
-                searchSeats();
+            $('#bus_details').on('show.bs.modal', function(event){
+                
             })
-            function searchSeats(){
-                $.ajax({
-                    url: '{{ route('searchSeats') }}',
-                    type: 'GET',
-                    data:{origin:$('#origin').val(), destination:$('#destination').val(), date:$('#date').val()},
-                    success: function(response){ // What to do if we succeed
-                        console.log(response);
-                        $.each(response, function(index, item) {
-                            var parentGrp = $('.grp-seats');
-                            $('.seat-nbr:contains('+item.seat_no+')').closest('.grp-inner').addClass('reserved');
-
-                            // if($('.seat-nbr:contains('+item.seat_no+')')){
-                            //     alert(item.seat_no + " is reserved");
-                            // }
-                        });
-                        
-                    }
-                });
-            }
+            
         })
     </script>
 
@@ -202,6 +184,12 @@
             var tv = button.data('with_tv')
             var fare = button.data('fare')
             
+            $('.seats-list .grp-inner').each(function(){
+                if($(this).hasClass("reserved")){
+                    $(this).removeClass('reserved');
+                }
+            })
+            searchSeats(trans_id);
 
             var modal = $(this);
             /* modal.find('.modal-title').text('View Resident Profile'); */
@@ -220,15 +208,31 @@
             if($('#chk_discount').val() == "None"){
                 discount = $('#fare').val() * .00;
                 totFare = $('#fare').val() - discount;
-                $('#discount').val(-discount + ".00");
-                $('#totalFare').val(totFare + ".00");
+                $('#discount').val(-discount);
+                $('#totalFare').val(totFare);
             }else if($('#chk_discount').val() == "Student" || $('#chk_discount').val() == "Senior Citizen" || $('#chk_discount').val() == "PWD"){
                 discount = $('#fare').val() * .20;
                 totFare = $('#fare').val() - discount;
-                $('#discount').val(-discount + ".00");
-                $('#totalFare').val(totFare + ".00");
+                $('#discount').val(-discount);
+                $('#totalFare').val(totFare);
             }
         })
+
+        function searchSeats(id){
+            $.ajax({
+                url: '{{ route('searchSeats') }}',
+                type: 'GET',
+                data:{id:id, date:$('#date').val()},
+                success: function(response){ // What to do if we succeed
+                    console.log(response);
+                    $.each(response, function(index, item) {
+                        var parentGrp = $('.grp-seats');
+                        $('.seat-nbr:contains('+item.seat_no+'):first').closest('.grp-inner').addClass('reserved');
+                    });
+                    
+                }
+            });
+        }
     </script>
 
     

@@ -3,7 +3,10 @@
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content d-flex justify-content-center">
             <div class="row col-12">
-                <!-- <div class="standard-bus col-4 d-flex justify-content-center">
+                <div class="left d-flex justify-content-end">
+                    <div type="button" class="btn-close p-3 " data-bs-dismiss="modal" aria-label="Close"></div>
+                </div>
+                <div class="standard-bus col-4 d-flex justify-content-center">
                     <div class="grp-seats d-flex justify-content-center pt-3">
                         <ul>
                             <li class="seats-list">
@@ -243,105 +246,17 @@
                             </li>
                         </ul>
                     </div>
-                </div> -->
-                <div class="space col-4">
+                </div>
+                <div class="space col-3 ">
                     <h6>No. of Seat</h6>
-                    <div class="incrementing">
-                    <input type="text" id="bus_class" name="bus_class" readonly>
-                    <input type="text" id="bus_class" name="bus_class" readonly>
-                    <input type="text" id="bus_class" name="bus_class" readonly>
-                    <input type="text" id="bus_class" name="bus_class" readonly>
-                    <input type="text" id="bus_class" name="bus_class" readonly>
-                    <input type="text" id="bus_class" name="bus_class" readonly>
-                    <input type="text" id="bus_class" name="bus_class" readonly>
-                    <input type="text" id="bus_class" name="bus_class" readonly>
-                    <input type="text" id="bus_class" name="bus_class" readonly>
-                    <input type="text" id="bus_class" name="bus_class" readonly>
-                    <input type="text" id="bus_class" name="bus_class" readonly>
-                    <input type="text" id="bus_class" name="bus_class" readonly>
-                    <input type="text" id="bus_class" name="bus_class" readonly>
-                    <input type="text" id="bus_class" name="bus_class" readonly>
-                    <input type="text" id="bus_class" name="bus_class" readonly>
-                    <input type="text" id="bus_class" name="bus_class" readonly>
-                    <input type="text" id="bus_class" name="bus_class" readonly>
-                    <input type="text" id="bus_class" name="bus_class" readonly>
-                    <input type="text" id="bus_class" name="bus_class" readonly>
-                    <input type="text" id="bus_class" name="bus_class" readonly>
-                    <input type="text" id="bus_class" name="bus_class" readonly>
-                    <input type="text" id="bus_class" name="bus_class" readonly>
-                    <input type="text" id="bus_class" name="bus_class" readonly>
-                    <input type="text" id="bus_class" name="bus_class" readonly>
-                    <input type="text" id="bus_class" name="bus_class" readonly>
-                    <input type="text" id="bus_class" name="bus_class" readonly>
-                    <input type="text" id="bus_class" name="bus_class" readonly>
-                    <input type="text" id="bus_class" name="bus_class" readonly>
-                    <input type="text" id="bus_class" name="bus_class" readonly>
-                    <input type="text" id="bus_class" name="bus_class" readonly>
-                    <input type="text" id="bus_class" name="bus_class" readonly>
-                    <input type="text" id="bus_class" name="bus_class" readonly>
-                    <input type="text" id="bus_class" name="bus_class" readonly>
-                    <input type="text" id="bus_class" name="bus_class" readonly>
-                    <input type="text" id="bus_class" name="bus_class" readonly>
-                    <input type="text" id="bus_class" name="bus_class" readonly>
-                    <input type="text" id="bus_class" name="bus_class" readonly>
-                    <input type="text" id="bus_class" name="bus_class" readonly>
-                    <input type="text" id="bus_class" name="bus_class" readonly>
-                    <input type="text" id="bus_class" name="bus_class" readonly>
-                    <input type="text" id="bus_class" name="bus_class" readonly>
-                    <input type="text" id="bus_class" name="bus_class" readonly>
-                    <input type="text" id="bus_class" name="bus_class" readonly>
-                    <input type="text" id="bus_class" name="bus_class" readonly>
-                    <input type="text" id="bus_class" name="bus_class" readonly>
+                    <div id="reserved_number">
+                    
                     </div>
                 </div>
-                <div class="space col-4">
+                <div class="space col-5">
                     <h6>Name</h6>
-                    <div class="incrementing">
-                    <input type="text" id="bus_class" name="bus_class" readonly>
-                    <input type="text" id="bus_class" name="bus_class" readonly>
-                    <input type="text" id="bus_class" name="bus_class" readonly>
-                    <input type="text" id="bus_class" name="bus_class" readonly>
-                    <input type="text" id="bus_class" name="bus_class" readonly>
-                    <input type="text" id="bus_class" name="bus_class" readonly>
-                    <input type="text" id="bus_class" name="bus_class" readonly>
-                    <input type="text" id="bus_class" name="bus_class" readonly>
-                    <input type="text" id="bus_class" name="bus_class" readonly>
-                    <input type="text" id="bus_class" name="bus_class" readonly>
-                    <input type="text" id="bus_class" name="bus_class" readonly>
-                    <input type="text" id="bus_class" name="bus_class" readonly>
-                    <input type="text" id="bus_class" name="bus_class" readonly>
-                    <input type="text" id="bus_class" name="bus_class" readonly>
-                    <input type="text" id="bus_class" name="bus_class" readonly>
-                    <input type="text" id="bus_class" name="bus_class" readonly>
-                    <input type="text" id="bus_class" name="bus_class" readonly>
-                    <input type="text" id="bus_class" name="bus_class" readonly>
-                    <input type="text" id="bus_class" name="bus_class" readonly>
-                    <input type="text" id="bus_class" name="bus_class" readonly>
-                    <input type="text" id="bus_class" name="bus_class" readonly>
-                    <input type="text" id="bus_class" name="bus_class" readonly>
-                    <input type="text" id="bus_class" name="bus_class" readonly>
-                    <input type="text" id="bus_class" name="bus_class" readonly>
-                    <input type="text" id="bus_class" name="bus_class" readonly>
-                    <input type="text" id="bus_class" name="bus_class" readonly>
-                    <input type="text" id="bus_class" name="bus_class" readonly>
-                    <input type="text" id="bus_class" name="bus_class" readonly>
-                    <input type="text" id="bus_class" name="bus_class" readonly>
-                    <input type="text" id="bus_class" name="bus_class" readonly>
-                    <input type="text" id="bus_class" name="bus_class" readonly>
-                    <input type="text" id="bus_class" name="bus_class" readonly>
-                    <input type="text" id="bus_class" name="bus_class" readonly>
-                    <input type="text" id="bus_class" name="bus_class" readonly>
-                    <input type="text" id="bus_class" name="bus_class" readonly>
-                    <input type="text" id="bus_class" name="bus_class" readonly>
-                    <input type="text" id="bus_class" name="bus_class" readonly>
-                    <input type="text" id="bus_class" name="bus_class" readonly>
-                    <input type="text" id="bus_class" name="bus_class" readonly>
-                    <input type="text" id="bus_class" name="bus_class" readonly>
-                    <input type="text" id="bus_class" name="bus_class" readonly>
-                    <input type="text" id="bus_class" name="bus_class" readonly>
-                    <input type="text" id="bus_class" name="bus_class" readonly>
-                    <input type="text" id="bus_class" name="bus_class" readonly>
-                    <input type="text" id="bus_class" name="bus_class" readonly>
+                    <div id="reserved_name">
+                        
                     </div>
                 </div>
             </div>

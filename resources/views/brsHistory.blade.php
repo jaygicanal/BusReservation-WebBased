@@ -38,7 +38,11 @@
                 </div>
             </div>
             <div class="col-2 text-center">
-            <button  id="cancel" class= "views" data-bs-toggle="modal" data-bs-target="#cancel-button">Cancel</button>
+                @if($reservationlist->status == "Booked" || $reservationlist->status == "Confirmed")
+                    <button type="button" data-bs-toggle="modal" data-reservation_id="{{$reservationlist->id}}" data-bs-target="#mdlCancel">
+                        Cancel
+                    </button>
+                @endif
             </div>
             @include('brsCancelButton')
         </div>
@@ -71,6 +75,16 @@
                     $('#cnt_phonNo').text("09090502132");
                 }
             }
+        })
+    </script>
+
+    <script>
+        $('#mdlCancel').on('show.bs.modal', function(event){
+            var button = $(event.relatedTarget)
+            var reserv_id = button.data('reservation_id')
+            
+            var modal = $(this);
+            modal.find('.cnt-infobox #reservation_id').val(reserv_id);
         })
     </script>
 

@@ -1,5 +1,5 @@
 <!-- Modal -->
-<div class="modal fade" id="cancel-button" tabindex="-1" role="dialog" aria-labelledby="create" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true">
+<div class="modal fade" id="mdlCancel" tabindex="-1" role="dialog" aria-labelledby="create" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content d-flex justify-content-center">
             <div class="row d-flex justify-content-center">
@@ -9,9 +9,8 @@
                         <div type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></div>
                     </div>
                     <div class="payment-content">
-                        <form enctype="multipart/form-data" action="{{ route('booking.update', 'reservation_id') }}" method="POST" class="payment-inner">
+                        <form action="{{ route('bookCancel', 'reservation_id') }}" method="POST" class="payment-inner">
                             @csrf
-                            @method('PUT')
                             <input type="text" id="reservation_id" name="reservation_id" value="{{ old('reservation_id') }}" hidden>
                             <div class="row">
                                 <div class="payment-type col-5">
@@ -41,9 +40,10 @@
                                 </div>
                                 <div class="cnt-details col-7 d-flex justify-content-center align-items-center">
                                     <div class="cnt-infobox">
+                                        <input type="text" name="reservation_id" id="reservation_id" style="border:1px solid #000000" required>
                                         <h4 class="text-center py-3" id="cnt_header"></h4>
-                                        <p>Account Name: <input type="text" id="name"></p>
-                                        <p>Mobile Number: <input type="number" id="mobile"></p>
+                                        <p>Account Name: <input type="text" id="name" name="name" required></p>
+                                        <p>Mobile Number: <input type="number" id="mobile" name="mobile_number" required></p>
                                     </div>
                                 </div>
                             </div>

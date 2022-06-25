@@ -8,6 +8,7 @@ use App\Http\Controllers\brsPaymentController;
 use App\Http\Controllers\brsHistoryController;
 use App\Http\Controllers\Auth\AdminLoginController;
 use App\Http\Controllers\Auth\AdminController;
+use App\Http\Controllers\Auth\brsAdminDashboardController;
 use App\Http\Controllers\Auth\AdminRegisterController;
 use App\Http\Controllers\Auth\brsSchedulingController;
 use App\Http\Controllers\Auth\brsRoutingController;
@@ -33,13 +34,18 @@ Route::get('admin/', function () {
 Route::prefix('admin')->group(function() {
     Route::get('/login',[AdminLoginController::class, 'showLoginForm'])->name('admin.login');
     Route::post('/login',[AdminLoginController::class, 'login'])->name('admin.login.submit');
-    Route::get('logout/', [AdminLoginController::class, 'logout'])->name('admin.logout');
+    Route::get('logout', [AdminLoginController::class, 'logout'])->name('admin.logout');
     Route::get('/register', [AdminRegisterController::class, 'index'])->name('admin.register');
     Route::post('/register', [AdminRegisterController::class, 'store'])->name('admin.register.submit');
-    Route::get('/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
+
+    //=====DASHBOARD FETCH DATA AND VIEWS======//
+    Route::get('/dashboard', [brsAdminDashboardController::class, 'index'])->name('dashboard');
+    Route::get('/searchReserveCancel', [brsAdminDashboardController::class, 'totReservedCancelledperYear'])->name('searchRC');
+    Route::get('/fetchRecords', [brsAdminDashboardController::class, 'recordsData'])->name('fetchRecords');
 
     Route::get('/scheduling', [brsSchedulingController::class, 'index'])->name('scheduling');
     Route::resource('/schedule', brsSchedulingController::class);
+    Route::get('/fetchReservedRecords', [brsSchedulingController::class, 'fetchReservedSchedule'])->name('reservedeRecords');
 
     Route::resource('/routing', brsRoutingController::class);
 
@@ -71,6 +77,7 @@ Route::group([ 'middleware' => ['auth']], function () {
     Route::get('/', [brsReservationController::class, 'index'])->name('dashboard');
     Route::get('searchBusSched', [brsReservationController::class, 'search'])->name('searchBusSchedule');
     Route::get('searchBusSeat', [brsReservationController::class, 'searchBusSeat'])->name('searchSeats');
+    Route::post('booked-cancel', [brsReservationController::class, 'bookCancellation'])->name('bookCancel');
     Route::resource('/booking', brsReservationController::class);
 
     Route::get('/payment', [brsPaymentController::class, 'index'])->name('payment');

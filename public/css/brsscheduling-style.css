@@ -162,3 +162,21 @@ tbody, td, tfoot, th, thead, tr {
 .grp-seats .bus-hallway{
     width: 40px;
 }
+.inner-content .date .text{
+ font-size: 25px;
+ background-color: #e6e6e6;
+ font-weight: bolder;
+ padding:10px
+}
+.inner-content .date input{
+    font-size: 25px;
+}
+
+/* CSS Style when Seat is reserved */
+.grp-seats a.reserved .icon-seat{
+    background-color: #ff3200;
+}
+
+.grp-seats a.reserved .seat-nbr{
+    color: #ffffff;
+}

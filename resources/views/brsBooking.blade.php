@@ -43,8 +43,8 @@
                                     <tr>
                                     <th scope="col">#</th>
                                     <th scope="col">Name</th>
-                                    <th scope="col">Date</th>
-                                    <th scope="col">Time</th>
+                                    <th scope="col">Departure Date</th>
+                                    <th scope="col">Departure Time</th>
                                     <th scope="col">Route</th>
                                     <th scope="col">View Payment</th>
                                     </tr>
@@ -75,13 +75,13 @@
                     </div>
                     <div class="col-11 tab-pane fade" id="nav-confirm" aria-labelledby="nav-confirm-tab">
                         <div class="confirm-content">
-                        <table class="table">
-                        <thead>
+                            <table class="table">
+                                <thead>
                                     <tr>
                                     <th scope="col">#</th>
                                     <th scope="col">Name</th>
-                                    <th scope="col">Date</th>
-                                    <th scope="col">Time</th>
+                                    <th scope="col">Departure Date</th>
+                                    <th scope="col">Departure Time</th>
                                     <th scope="col">Route</th>
                                     <th scope="col">View Payment</th>
                                     </tr>
@@ -113,42 +113,36 @@
                     <div class="tab-pane col-11 fade" id="nav-cancel" aria-labelledby="nav-cancel-tab">
                         <div class="cancel-content">
                             <table class="table">
-                                <thead>
+                            <thead>
                                     <tr>
                                     <th scope="col">#</th>
                                     <th scope="col">Name</th>
-                                    <th scope="col">Date</th>
-                                    <th scope="col">Time</th>
-                                    <th scope="col">Origin</th>
-                                    <th scope="col">Destination</th>
-                                    <th scope="col">Bus Seat</th>
-                                    <th scope="col">Payment</th>
-                                    <th scope="col">Refund</th>
+                                    <th scope="col">Departure Date</th>
+                                    <th scope="col">Departure Time</th>
+                                    <th scope="col">Route</th>
+                                    <th scope="col">View Payment</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @if($booked)
+                                    @foreach($booked as $bookedList)
                                     <tr>
-                                    <th scope="row">1</th>
-                                    <td>Mauro Laudit</td>
-                                    <td>10/10/22</td>
-                                    <td>9:00 Am</td>
-                                    <td>Bulan</td>
-                                    <td>Sorsogon</td>
-                                    <td>1</td>
-                                    <td>Gcash</td>
-                                    <td><button class="refund">Refund</button></td> 
+                                        @if($bookedList->status == "Cancelled")
+                                        <th scope="row">{{$bookedList->id}}</th>
+                                        <td>{{$bookedList->lname}}, {{$bookedList->fname}} {{$bookedList->mname}}</td>
+                                        <td>{{$bookedList->departure_date}}</td>
+                                        <td>{{$bookedList->departure_time}}</td>
+                                        <td>{{$bookedList->origin}} - {{$bookedList->destination}}</td>
+                                        <td>
+                                            <div type="button" class="btn-inner">
+                                                <a type="button" id="view" class= "views" data-bs-toggle="modal" data-bs-target="#refund"><em class="fa fa-eye" aria-hidden="true"></em>REFUND</a>
+                                        @include('.brsrefund')
+                                            </div>
+                                        </td>
+                                        @endif
                                     </tr>
-                                    <tr>
-                                    <th scope="row">2</th>
-                                    <td>Kenneth Casim</td>
-                                    <td>11/11/22</td>
-                                    <td>6:00 Am</td>
-                                    <td>Bulan</td>
-                                    <td>Sorsogon</td>
-                                    <td>2</td>
-                                    <td>Paymaya</td>
-                                    <td><button class="refund">Refund</button></td> 
-                                    </tr>
+                                    @endforeach
+                                    @endif
                                 </tbody>
                             </table>
                         </div>
